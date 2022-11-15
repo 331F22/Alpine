@@ -1,4 +1,4 @@
 # Alpine
 BSF Volunteer Tracker I
 
-Group 2 - Admin dashboard
+Group 5 - Blacklisting/Whitelisting Volunteers
