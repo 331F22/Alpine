@@ -10,6 +10,8 @@ const CurrentEntries = () => {
 
   // READ (GET)
   useEffect(() => {
+    console.log(process.env)
+
     axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
       setEntryList(response.data)
     })

@@ -1,0 +1,13 @@
+.dashboardContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation {
+    z-index: 100;
+}
+
+.content {
+    width: 100%;
+    background-color: #f5f3f4;
+}
