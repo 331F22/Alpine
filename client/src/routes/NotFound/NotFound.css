@@ -1,0 +1,19 @@
+.notFoundContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5f3f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeLink {
+    color: #3335338d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.homeLink:hover {
+    color: #333533;
+}
