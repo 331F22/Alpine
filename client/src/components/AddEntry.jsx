@@ -1,4 +1,6 @@
 import { useState, useRef } from 'react';
+import DisplayJob from './DisplayJob.jsx';
+import {Route, Routes} from 'react-router-dom';
 import axios from 'axios'
 
 const AddEntry = () => {
@@ -30,6 +32,9 @@ const AddEntry = () => {
   function refreshPage() {
     window.location.reload(false);
   }
+  const redirectToJob = () => {
+    window.location.href="/DisplayJob.jsx";
+  }
   
   return (
     <div className="addEntry">
@@ -50,7 +55,8 @@ const AddEntry = () => {
         <button className="submitBtn"
           onClick={() => {
             if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
-              submitEntry(); refreshPage();
+              submitEntry();
+              redirectToJob;
             }
           }}
         >Add Entry</button>
