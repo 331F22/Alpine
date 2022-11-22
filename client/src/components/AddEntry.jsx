@@ -33,7 +33,7 @@ const AddEntry = () => {
     window.location.reload(false);
   }
   const redirectToJob = () => {
-    window.location.href="/DisplayJob.jsx";
+    window.location.href="/DisplayJob.js";
   }
   
   return (
