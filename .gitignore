@@ -114,3 +114,5 @@ dist
 *.swp
 *.save
 
+# Emacs Backups
+*.*~
