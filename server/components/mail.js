@@ -9,6 +9,17 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+async function sendTestMail() {
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Bridger Ski Foundation" <bsf-auto@outlook.com>', // sender address
+    to: "colespencerbrooks@gmail.com", // list of receivers
+    subject: "TEST", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+}
+
 module.exports = {
     // TODO: Expose public API here
     sendConfirmation: () => {
