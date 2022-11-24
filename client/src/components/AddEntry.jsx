@@ -26,9 +26,9 @@ const AddEntry = ({enablePopup}) => {
     setEmailAddress('')
   }
   
-  function refreshPage() {
-    window.location.reload(false);
-  }
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
 
   // TODO: Implement popup for frontend email confirmation
 
