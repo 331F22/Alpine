@@ -1,6 +1,14 @@
 "use strict";
 const nodemailer = require("nodemailer");
 
+const transporter = nodemailer.createTransport({
+    service: "hotmail",
+    auth {
+	user: "bsf-auto@outlook.com",
+	pass: "CSCI331-Group-7"
+    },
+});
+
 module.exports = {
     // TODO: Expose public API here
     sendConfirmation: () => {
