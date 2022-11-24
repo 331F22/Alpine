@@ -35,12 +35,12 @@ app.post("/api/create", (req, res) => {
     const ln = req.body.last
     const ea = req.body.email
     const sqlInsert = "INSERT INTO volunteers (first_name, last_name, email_address) VALUES (?,?,?);"
-    console.log("HERE");
     db.query(sqlInsert, [fn, ln, ea], (err, result) => {
         if(err) throw err
         console.log("Server posted: ", fn, ln)
         res.send(result)
-    })
+    });
+    mail.sendConfirmation();
 })
 
 // DELETE
