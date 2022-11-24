@@ -1,8 +1,7 @@
 import { useState, useRef } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-const AddEntry = () => {
-
+const AddEntry = ({enablePopup}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -32,7 +31,7 @@ const AddEntry = () => {
   }
 
   // TODO: Implement popup for frontend email confirmation
-  
+
   return (
     <div className="addEntry">
       <h2>Add an Entry</h2>
@@ -51,8 +50,8 @@ const AddEntry = () => {
         </div>
         <button className="submitBtn"
           onClick={() => {
-            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
-              submitEntry(); refreshPage();
+	    if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
+	      submitEntry(); enablePopup();
             }
           }}
         >Add Entry</button>
