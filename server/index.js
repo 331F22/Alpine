@@ -40,7 +40,7 @@ app.post("/api/create", (req, res) => {
         console.log("Server posted: ", fn, ln)
         res.send(result)
     });
-    mail.sendConfirmation();
+    mail.sendCreateConfirmation();
 })
 
 // DELETE
