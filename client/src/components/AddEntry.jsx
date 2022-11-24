@@ -30,6 +30,8 @@ const AddEntry = () => {
   function refreshPage() {
     window.location.reload(false);
   }
+
+  // TODO: Implement popup for frontend email confirmation
   
   return (
     <div className="addEntry">
