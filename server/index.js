@@ -39,8 +39,8 @@ app.post("/api/create", (req, res) => {
         if(err) throw err
         console.log("Server posted: ", fn, ln)
         res.send(result)
+	mail.sendCreateConfirmation(ea, fn);
     });
-    mail.sendCreateConfirmation();
 })
 
 // DELETE

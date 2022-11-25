@@ -1,5 +1,10 @@
 "use strict";
 const nodemailer = require("nodemailer");
+const handlebars = require("handlebars");
+const { promisify } = require('util');
+const fs = require('fs');
+
+const readFile = promisify(fs.readFile);
 
 const transporter = nodemailer.createTransport({
     service: "hotmail",
@@ -10,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendTestMail() {
-    // send mail with defined transport object
+    // Send a test mail. Please change the "to" field before using. 
     try {
 	const info = await transporter.sendMail({
     	    from: '"Bridger Ski Foundation" <bsf-auto@outlook.com>', // sender address
@@ -23,19 +28,41 @@ async function sendTestMail() {
     } catch(err) {
 	console.log(err);
     }
+}
 
+async function sendCreateConfirmation(email, firstName) {
+    let rawHTML = await readFile('./components/mailHTMLTemplates/createConfirmation.html', 'utf8'); // Read HTML template
+    let template = handlebars.compile(rawHTML); // Compile template with handlebars 
+    let userInfo = {
+	firstName: firstName,
+    };
+    let htmlToSend = template(userInfo); // Use handlebars to populate fields
+    let mailConfig = {
+	from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
+	to: email,
+	subject: "Volunteer Enrollment Confirmation",
+	html: htmlToSend,
+    }; 
+    try {
+	const info = await transporter.sendMail(mailConfig);
+	console.log(`Confirmation sent successfully, ID: ${info.messageId}`);
+    } catch(err) {
+	console.log(err);
+	throw(err);
+    }
 }
 
 module.exports = {
-    // TODO: Write various API functions
-    sendCreateConfirmation: () => {
-	sendTestMail();
+    sendCreateConfirmation: (email, firstName) => {
+	sendCreateConfirmation(email, firstName);
     },
 
     sendUpdateConfirmation: () => {
+	// TODO: Write sendUpdateConfirmation function
     },
 
     sendDeleteConfirmation: () => {
+	// TODO: Write sendDeleteConfirmation function
     },
 };
 
