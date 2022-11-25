@@ -25,7 +25,7 @@ function App() {
       <hr />
       <Footer />
 				<Popup trigger={buttonPopup} disablePopup={disablePopup}>
-          <h1>TEST POPUP</h1>
+          <h1>Confirmation E-Mail Sent!</h1>
       </Popup>
     </div>
   )

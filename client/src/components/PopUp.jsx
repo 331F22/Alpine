@@ -5,7 +5,7 @@ function refreshPage() {
     window.location.reload(false);
 }
 
-// TODO: Implement frontend confirmation popup
+// TODO: Rework popup body
 function PopUp(props) {
     return (props.trigger) ? (
 	<div className="popup">

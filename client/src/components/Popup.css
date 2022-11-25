@@ -23,4 +23,7 @@
     position: absolute;
     bottom: 16px;
     right: 16px;
+    background-color: #b01b1f;
+    border: solid 1px #b01b1f;
+    color: #ffffff;
 }
