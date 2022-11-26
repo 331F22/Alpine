@@ -3,7 +3,7 @@ import './App.css';
 import AddEntry from '../AddEntry.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx'
-import Popup from '../Popup';
+import Popup from "../PopUp";
 
 function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
