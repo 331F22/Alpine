@@ -91,6 +91,35 @@ async function sendUpdateConfirmation(oldEmail, newEmail) {
   }
 }
 
+/**
+ * Send confirmation of volunteer removal
+ * @param {string} ea the volunteers email address
+ */
+async function sendDeleteConfirmation(ea) {
+  let rawHTML = await readFile(
+    "./components/mailHTMLTemplates/deleteConfirmation.html",
+    "utf8"
+  ); // Read HTML template
+  let template = handlebars.compile(rawHTML); // Compile template with handlebars
+  let userInfo = {
+    email: ea,
+  };
+  let htmlToSend = template(userInfo); // Use handlebars to populate fields
+  let mailConfig = {
+    from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
+    to: newEmail,
+    subject: "Volunteer Enrollment Update",
+    html: htmlToSend,
+  };
+  try {
+    const info = await transporter.sendMail(mailConfig);
+    console.log(`Message sent successfully, ID: ${info.messageId}`);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 module.exports = {
   sendCreateConfirmation: (email, firstName) => {
     sendCreateConfirmation(email, firstName);
@@ -100,7 +129,7 @@ module.exports = {
     sendUpdateConfirmation(oldEmail, newEmail);
   },
 
-  sendDeleteConfirmation: () => {
-    // TODO: Write sendDeleteConfirmation function
+  sendDeleteConfirmation: (ea) => {
+    sendDeleteConfirmation(ea)
   },
 };
