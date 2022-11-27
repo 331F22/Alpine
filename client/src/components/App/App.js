@@ -21,7 +21,7 @@ function App() {
       <h1>Entries</h1>
       <AddEntry enablePopup={enablePopup}/>
       <hr />
-      <CurrentEntries />
+      <CurrentEntries enablePopup={enablePopup}/>
       <hr />
       <Footer />
 				<Popup trigger={buttonPopup} disablePopup={disablePopup}>

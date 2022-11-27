@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios'
 
-const CurrentEntries = () => {
+const CurrentEntries = ({enablePopup}) => {
 
   const SECRET = process.env.REACT_APP_PASSCODE
 
@@ -141,11 +141,12 @@ const CurrentEntries = () => {
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
 
-                deleteEntry(val.email_address)
+                deleteEntry(val.email_address); enablePopup();
               }}>delete</button>
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
+                  enablePopup();
                 }
               }}>update</button>
               <input type="email" className="updateInput" placeholder={val.email_address}
