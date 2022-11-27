@@ -6,6 +6,7 @@ const fs = require("fs");
 
 const readFile = promisify(fs.readFile);
 
+// Create a transport email to send automatic emails from
 const transporter = nodemailer.createTransport({
   service: "hotmail",
   auth: {
@@ -14,6 +15,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+/**
+ * Send a test email to your self (change the 'to' field BEFORE use)
+ * @access private
+ */
 async function sendTestMail() {
   // Send a test mail. Please change the "to" field before using.
   try {

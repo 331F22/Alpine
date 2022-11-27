@@ -61,9 +61,8 @@ app.delete("/api/delete/:emailAddress", (req, res) => {
 // UPDATE
 app.put("/api/update", (req, res) => {
   // console.log(req)
-
-  const ne = req.body.new;
-  const oe = req.body.old;
+  const ne = req.body.new; // New email
+  const oe = req.body.old; // Old email
   console.log("Ready to change: ", oe, "to", ne);
   const sqlUpdate =
     "UPDATE volunteers SET email_address = ? WHERE email_address = ?";
