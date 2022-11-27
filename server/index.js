@@ -67,6 +67,7 @@ app.put("/api/update", (req, res) => {
         if(err)  throw err;
         console.log("Server changed: ", oe, "to", ne)
         res.send(result)
+    mail.sendUpdateConfirmation(oe, ne);
     })
 })
 
