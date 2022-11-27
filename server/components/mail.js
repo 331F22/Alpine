@@ -32,8 +32,8 @@ async function sendTestMail() {
 
 /**
  * Create a confirmation & send to the proper volunteer via email
- * @param {string} email 
- * @param {string} firstName 
+ * @param {string} email the volunteers email address
+ * @param {string} firstName the volunteers first name
  */
 async function sendCreateConfirmation(email, firstName) {
   let rawHTML = await readFile(
@@ -60,25 +60,25 @@ async function sendCreateConfirmation(email, firstName) {
   }
 }
 
-// TODO: Configure update confirmation template & code with proper information
 /**
- * Send confirmation update
- * @param {*} email 
- * @param {*} firstName 
+ * Send an auto email confirmation when the volunteer requests a change in email
+ * @param {string} oldEmail the volunteers old email address
+ * @param {string} newEmail the volunteers new email address
  */
-async function sendUpdateConfirmation(email, firstName) {
+async function sendUpdateConfirmation(oldEmail, newEmail) {
   let rawHTML = await readFile(
     "./components/mailHTMLTemplates/updateConfirmation.html",
     "utf8"
   ); // Read HTML template
   let template = handlebars.compile(rawHTML); // Compile template with handlebars
   let userInfo = {
-    firstName: firstName,
+    oldEmail: oldEmail,
+    newEmail: newEmail
   };
   let htmlToSend = template(userInfo); // Use handlebars to populate fields
   let mailConfig = {
     from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
-    to: email,
+    to: newEmail,
     subject: "Volunteer Enrollment Update",
     html: htmlToSend,
   };
@@ -97,7 +97,7 @@ module.exports = {
   },
 
   sendUpdateConfirmation: () => {
-    sendUpdateConfirmation(email, firstName);
+    sendUpdateConfirmation(oldEmail, newEmail);
   },
 
   sendDeleteConfirmation: () => {
