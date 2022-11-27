@@ -96,7 +96,7 @@ module.exports = {
     sendCreateConfirmation(email, firstName);
   },
 
-  sendUpdateConfirmation: () => {
+  sendUpdateConfirmation: (oldEmail, newEmail) => {
     sendUpdateConfirmation(oldEmail, newEmail);
   },
 
