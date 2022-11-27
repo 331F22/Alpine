@@ -107,7 +107,7 @@ async function sendDeleteConfirmation(ea) {
   let htmlToSend = template(userInfo); // Use handlebars to populate fields
   let mailConfig = {
     from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
-    to: newEmail,
+    to: ea,
     subject: "Volunteer Enrollment Update",
     html: htmlToSend,
   };
