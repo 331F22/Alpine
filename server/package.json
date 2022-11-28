@@ -9,7 +9,7 @@
     "devStart": "nodemon index.js"
   },
   "keywords": [],
-  "author": "Daniel DeFrance",
+  "author": "Group 5",
   "license": "ISC",
   "dependencies": {
     "body": "^5.1.0",
