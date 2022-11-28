@@ -5,8 +5,13 @@ BSF Volunteer Tracker I
 Description: Group 5, delegated to presenting a blacklist/whitelist system to properly ban or permit volunteers to the foundation through the platform.
 
 - Ali Khaef, Front-End Developer: User-Interface and View Builder
+    - Site Link: 
 - Kelby Abel, Back-End Developer: Javascript/ Interaction Builder
+    - Site Link:
 - Jace Zavarelli, Back-End Developer: Database Interaction Builder/ Writer and Archivist
+    - Site Link:
+
+Presentation Link: [Group 5 Presentation](https://montanaedu-my.sharepoint.com/:p:/g/personal/n76t836_msu_montana_edu/EXnP-EaggBxCm5c9ba41PQEBSQJCCufEI_R-_LILFCBotw?e=fmNRHe)
 
 ## Creative Objectives
 Description: Group 5 wished to create a means to sort through the accepted volunteers within the platform, and to create a whitelisting/blacklisting system that will provide further safety to physical members of the foundation. Blacklisting certain members, banning individuals, is a way to regulate the safety of people in the foundation and would help to regulate members who could be a danger to others. The whitelist/blacklist system will delegate everyone to the whitelist category, and when someone recieves enough complaints the admin can easily blacklist, with proper reason, when it is needed at the foundation.
