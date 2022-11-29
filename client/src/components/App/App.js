@@ -15,10 +15,14 @@ function App() {
       {/* <hr /> */}
       {/* <CurrentEntries /> */}
       {/* <hr /> */}
-      <button>Click Me Boi!</button>
-      <hr />
 
-      <table id="table" class="table table-striped table-hover">
+      <div id="butt">
+      <button class="btn btn-lg btn-primary active" onclick="history.back()">Click Me Boi!</button>
+      </div>
+      
+      <hr/>
+      <table id="table" class="table border table-striped table-hover">
+        
         <thead>
           <tr>
             <th scope="col">First Name</th>
@@ -50,9 +54,11 @@ function App() {
         </tbody>
       </table>
 
-      <hr />
-      {/* <Footer />  */}
     </div>
+
+
+    
+  
   )
 }
 

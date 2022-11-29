@@ -3,7 +3,7 @@ body {
 }
 .App {
   font-family: Arial, Helvetica, sans-serif;
-  max-width:600px;
+  /* max-width:600px; */
   margin: auto;
 }
 #userInput {
@@ -83,5 +83,16 @@ body {
 }
 
 #table {
-  margin: left;
+  width: 50%;
+  margin: 50px;
+  max-width: 45%;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+#butt {
+  text-align: center;
 }
