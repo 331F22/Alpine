@@ -81,3 +81,7 @@ body {
 #submitEmailsButton{
   display: none;
 }
+
+#table {
+  margin: left;
+}

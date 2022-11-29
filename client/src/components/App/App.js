@@ -18,7 +18,7 @@ function App() {
       <button>Click Me Boi!</button>
       <hr />
 
-      <table class="table table-striped table-hover">
+      <table id="table" class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">First Name</th>
