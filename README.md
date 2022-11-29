@@ -5,9 +5,9 @@ BSF Volunteer Tracker I
 Description: Group 5, delegated to presenting a blacklist/whitelist system to properly ban or permit volunteers to the foundation through the platform.
 
 - Ali Khaef, Front-End Developer: User-Interface and View Builder
-    - Site Link: 
+    - Site Link: [Ali's Link to Site](http://csci331.cs.montana.edu:3010/)
 - Kelby Abel, Back-End Developer: Javascript/ Interaction Builder
-    - Site Link:
+    - Site Link: [Kelby's Link to Site](http://csci331.cs.montana.edu:3073/)
 - Jace Zavarelli, Back-End Developer: Database Interaction Builder/ Writer and Archivist
     - Site Link: [Jace's Link to Site](http://csci331.cs.montana.edu:3046/)
 
