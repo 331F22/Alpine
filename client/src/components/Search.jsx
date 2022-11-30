@@ -1,42 +1,33 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios'
 
+// one component to take the input, search based on the input, and display the results
 const Search = () => {
     
-    const [selectedValue, setSelectedValue] = useState('')
-    const [first, setFirst] = useState('')
-    const [last, setLast] = useState('')
-    const [code, setCode] = useState('')
-    const [evt, setEvt] = useState('');
-    const [resultList, setResultList] = useState([])
-    const [headers, setHeaders] = useState([])
-    const [evts, setEvts] = useState([])
+    const [selectedValue, setSelectedValue] = useState('')  // stores the type of search to perform
+    const [first, setFirst] = useState('')  // stores first name param to search by
+    const [last, setLast] = useState('')    // stores last name param to search by
+    const [code, setCode] = useState('')    // stores code param to search by   
+    const [evt, setEvt] = useState('')      // stores event param to search by
+    const [resultList, setResultList] = useState([])    // stores results of db query for search
+    const [headers, setHeaders] = useState([])  // stores headers for table
+    const [evts, setEvts] = useState([])    // stores all events for event selection
 
-    function setHeaders(){
-        if(evt === "codesByEvents"){
-            headers = [] // list of headers for this search
-        }
-        if(evt === "peopleByCodes"){
-            headers = [] // list of headers for this search
-        }
-        if(evt === "peopleByCodes"){
-            headers = [] // list of headers for this search
-        }
-        if(evt === "peopleByEvents"){
-            headers = [] // list of headers for this search
-        }
-    }
-
+    // updates selectedValue based on search type selected,
+    // clears stored vals for params, and sets header list
     function handleSelectorChange(event){
+        // set the search type
         setSelectedValue(event.target.value)
-        //clear values before input
+        // clear values before input
         setFirst('')
         setLast('')
         setCode('')
         setEvt('')
+        // set headers based on search type
         setHeaders()
     }
 
+    // fills up select options based on events available for search
     function makeEventSelector(){
         axios.get(`${process.env.REACT_APP_HOST}/api/read/eventsList`).then((response) => {
             setEvts(response.data)})
@@ -47,7 +38,9 @@ const Search = () => {
         }
     }
 
+    // sets the input fields based on what the user selected for search type
     function setInputFields(){
+        // Search codes by events, makes drop-down to select an event to search by
         if(selectedValue === "codesByEvents"){
             return(
                 <div id="codesByEventsInputs">
@@ -60,6 +53,7 @@ const Search = () => {
                 </div>
             )
         }
+        // Search people by codes, makes text input field to input code to search by
         if(selectedValue === "peopleByCodes"){
             return(
                 <div id="peopleByCodesInputs">
@@ -69,6 +63,8 @@ const Search = () => {
                 </div>
             )
         }
+        // Search codes by people, makes text input fields for first name and last name
+        // may need to adjust search query to be able to search for one or the other or both?
         if(selectedValue === "codesByPeople"){
             return(
                 <div id="codesByPeopleInputs">
@@ -81,6 +77,8 @@ const Search = () => {
                 </div>
             )
         }
+        // Search people by events, makes text input fields for first name and last name
+        // may need to adjust search query to be able to search for one or the other or both?
         if(selectedValue === "peopleByEvents"){
             return(
                 <div id="peopleByEventsInputs">
@@ -93,6 +91,7 @@ const Search = () => {
                 </div>
             )
         }
+        // don't add input fields if nothing has been selected
         if(selectedValue === ""){
             return(
                 <div id="noInputs"></div>
@@ -100,6 +99,7 @@ const Search = () => {
         }
     }
 
+    // calls server to search
     function handleSearch(){
         if(selectedValue === codesByEvents){
             axios.get(`${process.env.REACT_APP_HOST}/api/read/codesByEvents/${evt}`).then((response) => {
@@ -122,6 +122,35 @@ const Search = () => {
         }
     }
 
+    // sets headers to use when making table, based on search type
+    function setHeaders(){
+        if(evt === "codesByEvents"){
+            headers = [] // TODO: list of headers for this search
+        }
+        if(evt === "peopleByCodes"){
+            headers = [] // TODO: list of headers for this search
+        }
+        if(evt === "peopleByCodes"){
+            headers = [] // TODO: list of headers for this search
+        }
+        if(evt === "peopleByEvents"){
+            headers = [] // TODO: list of headers for this search
+        }
+    }
+
+    // make table from results
+    function makeTable(){
+        const htmlToReturn = 
+        <table>
+            <tr>
+                {makeHeaders}
+            </tr>
+            {makeEntries}
+        </table>
+        return(htmlToReturn)
+    }
+
+    // make headers for table
     function makeHeaders(){
         return(
         {const: () => {
@@ -132,16 +161,8 @@ const Search = () => {
         )
     }
 
-    function getItems(res){
-        return(
-            {const: () => {
-                for(item in res){
-                    <td>{item}</td>
-                }
-            }}
-        )
-    }
-
+    
+    // make rows in table for each result
     function makeEntries(){
         return(
             {const: () => {
@@ -154,30 +175,20 @@ const Search = () => {
         )
     }
 
-    function makeTable(){
-        const htmlToReturn = 
-        <table>
-            <tr>
-                {makeHeaders}
-            </tr>
-            {makeEntries}
-        </table>
-        return(htmlToReturn)
+    // make table data for each row
+    function getItems(res){
+        return(
+            {const: () => {
+                for(item in res){
+                    <td>{item}</td>
+                }
+            }}
+        )
     }
 
-    // need search functionality
-        // need selector
-            // need inputs based on selector
-        // need search button
-    // need search results
-        // get results based on above inputs
-        // display results as table based on results (size)
-
-    //return html that does all of the above
     return (
         <div>
             <div>
-                // form/search div
                 <label htmlFor="select">
                     <select id="select" onChange={handleSelectorChange} value={selectedValue}>
                         <option vlaue="codesByEvents">Codes by events</option>

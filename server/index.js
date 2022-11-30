@@ -5,7 +5,8 @@ const app = express()
 const mysql = require('mysql')
 const dotenv = require('dotenv').config()
 
-const db = mysql.createPool({ // createConnection
+// createConnection
+const db = mysql.createPool({
     host: 'localhost',
     user: process.env.DBUSER,
     password: process.env.DBPASS,
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 //get codes by events
 app.get("/api/read/codesByEvents/:evt", (req, res) => {
     const evt = req.params.evt
-    const sqlSelect = "" //need query here
+    const sqlSelect = "" // TODO: need query here
     db.query(sqlSelect,[evt], (err, result) => { 
         if(err){
             throw err;
@@ -32,7 +33,7 @@ app.get("/api/read/codesByEvents/:evt", (req, res) => {
 //get people by codes
 app.get("/api/read/peopleByCodes/:code", (req, res) => {
     const code = req.params.code
-    const sqlSelect = "" //need query here
+    const sqlSelect = "" // TODO: need query here
     db.query(sqlSelect, [code], (err, result) => { 
         if(err){
             throw err;
@@ -45,7 +46,7 @@ app.get("/api/read/peopleByCodes/:code", (req, res) => {
 app.get("/api/read/codesByPeople", (req, res) => {
     const first = req.body.fn
     const last = req.body.ln
-    const sqlSelect = "" //need query here
+    const sqlSelect = "" // TODO: need query here
     db.query(sqlSelect, [first, last], (err, result) => { 
         if(err){
             throw err;
@@ -57,7 +58,7 @@ app.get("/api/read/codesByPeople", (req, res) => {
 //get people by events
 app.get("/api/read/peopleByEvents/:evt", (req, res) => {
     const evt = req.params.evt
-    const sqlSelect = "" //need query here
+    const sqlSelect = "" //TODO: need query here
     db.query(sqlSelect, [evt], (err, result) => { 
         if(err){
             throw err;
@@ -66,8 +67,9 @@ app.get("/api/read/peopleByEvents/:evt", (req, res) => {
     })
 })
 
+// get list of events for event selector
 app.get("/api/read/eventsList"), (req, res) => {
-    const sqlSelect = "" //need query here
+    const sqlSelect = "" // TODO: need query here
     db.query(sqlSelect, [evt], (err, result) => { 
         if(err){
             throw err;
