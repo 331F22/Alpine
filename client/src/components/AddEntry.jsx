@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
+import SignatureBox from './SignatureBox.jsx';
+
 
 const AddEntry = () => {
 
@@ -47,6 +49,7 @@ const AddEntry = () => {
           <label htmlFor="email">Email Address</label>
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
+        <SignatureBox />
         <button className="submitBtn"
           onClick={() => {
             if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
