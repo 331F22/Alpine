@@ -65,3 +65,13 @@ app.get("/api/read/peopleByEvents/:evt", (req, res) => {
         res.send(result);
     })
 })
+
+app.get("/api/read/eventsList"), (req, res) => {
+    const sqlSelect = "" //need query here
+    db.query(sqlSelect, [evt], (err, result) => { 
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+}

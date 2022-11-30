@@ -9,6 +9,23 @@ const Search = () => {
     const [code, setCode] = useState('')
     const [evt, setEvt] = useState('');
     const [resultList, setResultList] = useState([])
+    const [headers, setHeaders] = useState([])
+    const [evts, setEvts] = useState([])
+
+    function setHeaders(){
+        if(evt === "codesByEvents"){
+            headers = [] // list of headers for this search
+        }
+        if(evt === "peopleByCodes"){
+            headers = [] // list of headers for this search
+        }
+        if(evt === "peopleByCodes"){
+            headers = [] // list of headers for this search
+        }
+        if(evt === "peopleByEvents"){
+            headers = [] // list of headers for this search
+        }
+    }
 
     function handleSelectorChange(event){
         setSelectedValue(event.target.value)
@@ -17,11 +34,12 @@ const Search = () => {
         setLast('')
         setCode('')
         setEvt('')
+        setHeaders()
     }
 
     function makeEventSelector(){
-        let evts = []
-        //get events from db and store in list
+        axios.get(`${process.env.REACT_APP_HOST}/api/read/eventsList`).then((response) => {
+            setEvts(response.data)})
         for(let anEvt in evts){
             return(
                 <option value={anEvt}>{anEvt}</option>
@@ -104,82 +122,47 @@ const Search = () => {
         }
     }
 
+    function makeHeaders(){
+        return(
+        {const: () => {
+            for(head in headers){
+                <th>{head}</th>
+            }
+        }}
+        )
+    }
+
+    function getItems(res){
+        return(
+            {const: () => {
+                for(item in res){
+                    <td>{item}</td>
+                }
+            }}
+        )
+    }
+
+    function makeEntries(){
+        return(
+            {const: () => {
+                for(result in resultList){
+                    <tr>
+                    {getItems(result)}
+                    </tr>
+                }
+            }}
+        )
+    }
+
     function makeTable(){
-        if(selectedValue === "codesByEvents"){
-            let strToReturn = "<table><tr>"
-            let headers = "<th>?</th>"// need list of headers to expect from queries in server/index.js
-            //put header where question mark is, repeat for each expected header
-            strToReturn += headers
-            strToReturn += "</tr>"
-            for(var result in resultList){
-                strToReturn += "<tr>"
-                for(var item in result){
-                    strToReturn += "<td>"
-                    strToReturn += item.toString
-                    strToReturn += "</td>"
-                }
-                strToReturn += "</tr>"
-            }
-            strToReturn += "</table>"
-            return(strToReturn)
-        }
-        if(selectedValue === "peopleByCodes"){
-            let strToReturn = "<table><tr>"
-            let headers = "<th>?</th>"// need list of headers to expect from queries in server/index.js
-            //put header where question mark is, repeat for each expected header
-            strToReturn += headers
-            strToReturn += "</tr>"
-            for(var result in resultList){
-                strToReturn += "<tr>"
-                for(var item in result){
-                    strToReturn += "<td>"
-                    strToReturn += item.toString
-                    strToReturn += "</td>"
-                }
-                strToReturn += "</tr>"
-            }
-            strToReturn += "</table>"
-            return(strToReturn)
-        }
-        if(selectedValue === "codesByPeople"){
-            let strToReturn = "<table><tr>"
-            let headers = "<th>?</th>"// need list of headers to expect from queries in server/index.js
-            //put header where question mark is, repeat for each expected header
-            strToReturn += headers
-            strToReturn += "</tr>"
-            for(var result in resultList){
-                strToReturn += "<tr>"
-                for(var item in result){
-                    strToReturn += "<td>"
-                    strToReturn += item.toString
-                    strToReturn += "</td>"
-                }
-                strToReturn += "</tr>"
-            }
-            strToReturn += "</table>"
-            return(strToReturn)
-        }
-        if(selectedValue === "peopleByEvents"){
-            let strToReturn = "<table><tr>"
-            let headers = "<th>?</th>"// need list of headers to expect from queries in server/index.js
-            //put header where question mark is, repeat for each expected header
-            strToReturn += headers
-            strToReturn += "</tr>"
-            for(var result in resultList){
-                strToReturn += "<tr>"
-                for(var item in result){
-                    strToReturn += "<td>"
-                    strToReturn += item.toString
-                    strToReturn += "</td>"
-                }
-                strToReturn += "</tr>"
-            }
-            strToReturn += "</table>"
-            return(strToReturn)
-        }
-        else{
-            return
-        }
+        const htmlToReturn = 
+        <table>
+            <tr>
+                {makeHeaders}
+            </tr>
+            {makeEntries}
+        </table>
+        return(htmlToReturn)
     }
 
     // need search functionality
@@ -201,7 +184,6 @@ const Search = () => {
                         <option value="peopleByCodes">People by codes</option>
                         <option value="codesByPeople">Codes by People</option>
                         <option value="peopleByEvents">People by Events</option>
-                        <option></option>
                     </select>
                 </label>
                 <div>
