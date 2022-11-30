@@ -1,0 +1,16 @@
+/*
+Were using this css fix to make ink line up under cursor properly.
+https://stackoverflow.com/questions/68018558/problem-with-react-signature-canvas-offset-ink 
+*/
+
+.signature-wrapper {
+    position: relative;
+    width: 400px;
+    height: 200px;
+}
+
+.signature {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

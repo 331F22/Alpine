@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
-import SignatureBox from './SignatureBox.jsx';
+import SignatureBox from './SignatureBox/SignatureBox.jsx';
 
 
 const AddEntry = () => {
