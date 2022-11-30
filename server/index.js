@@ -8,10 +8,10 @@ const dotenv = require('dotenv').config()
 // createConnection
 const db = mysql.createPool({
     host: 'localhost',
-    user: process.env.DBUSER,
-    password: process.env.DBPASS,
-    database: process.env.DATABASE,
-    port: process.env.DBPORT
+    user: process.dotenv.DBUSER,
+    password: process.dotenv.DBPASS,
+    database: process.dotenv.DATABASE,
+    port: process.dotenv.DBPORT
 })
 
 app.use(cors())
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 //get codes by events
 app.get("/api/read/codesByEvents/:evt", (req, res) => {
     const evt = req.params.evt
-    const sqlSelect = "" // TODO: need query here
+    const sqlSelect = "SELECT event_name, event_date, ticketCode FROM events JOIN volunteers ON events.volunteer_list_id = volunteers.volunteer_list_id JOIN tickets ON volunteers.volunteer_id = tickets.volunteer_id WHERE event_name = ?" // TODO: need query here
     db.query(sqlSelect,[evt], (err, result) => { 
         if(err){
             throw err;
@@ -33,7 +33,7 @@ app.get("/api/read/codesByEvents/:evt", (req, res) => {
 //get people by codes
 app.get("/api/read/peopleByCodes/:code", (req, res) => {
     const code = req.params.code
-    const sqlSelect = "" // TODO: need query here
+    const sqlSelect = "SELECT first_name, last_name, email_address, ticketCode FROM tickets JOIN volunteers ON tickets.volunteer_id = volunteers.volunteer_id WHERE ticketCode = ?" // TODO: need query here
     db.query(sqlSelect, [code], (err, result) => { 
         if(err){
             throw err;
@@ -46,7 +46,7 @@ app.get("/api/read/peopleByCodes/:code", (req, res) => {
 app.get("/api/read/codesByPeople", (req, res) => {
     const first = req.body.fn
     const last = req.body.ln
-    const sqlSelect = "" // TODO: need query here
+    const sqlSelect = "SELECT ticketCode, first_name, last_name FROM volunteers JOIN tickets ON volunteers.volunteer_id = tickets.volunteer_id WHERE first_name = ? AND last_name = ?" // TODO: need query here
     db.query(sqlSelect, [first, last], (err, result) => { 
         if(err){
             throw err;
@@ -58,7 +58,7 @@ app.get("/api/read/codesByPeople", (req, res) => {
 //get people by events
 app.get("/api/read/peopleByEvents/:evt", (req, res) => {
     const evt = req.params.evt
-    const sqlSelect = "" //TODO: need query here
+    const sqlSelect = "SELECT event_name, event_date, first_name, last_name FROM events JOIN volunteers ON events.volunteer_list_id = volunteers.volunteer_list_id WHERE event_name = ?" //TODO: need query here
     db.query(sqlSelect, [evt], (err, result) => { 
         if(err){
             throw err;
@@ -69,7 +69,7 @@ app.get("/api/read/peopleByEvents/:evt", (req, res) => {
 
 // get list of events for event selector
 app.get("/api/read/eventsList"), (req, res) => {
-    const sqlSelect = "" // TODO: need query here
+    const sqlSelect = "SELECT event_name FROM events" // TODO: need query here
     db.query(sqlSelect, [evt], (err, result) => { 
         if(err){
             throw err;

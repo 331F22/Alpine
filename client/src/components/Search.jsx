@@ -10,12 +10,12 @@ const Search = () => {
     const [code, setCode] = useState('')    // stores code param to search by   
     const [evt, setEvt] = useState('')      // stores event param to search by
     const [resultList, setResultList] = useState([])    // stores results of db query for search
-    const [headers, setHeaders] = useState([])  // stores headers for table
+    let headers = useState([])  // stores headers for table
     const [evts, setEvts] = useState([])    // stores all events for event selection
 
     // updates selectedValue based on search type selected,
     // clears stored vals for params, and sets header list
-    function handleSelectorChange(event){
+    function handleSelectorChange(event, value){
         // set the search type
         setSelectedValue(event.target.value)
         // clear values before input
@@ -46,8 +46,8 @@ const Search = () => {
                 <div id="codesByEventsInputs">
                     <label htmlFor='eventSelector'>
                         Select an event:
-                        <select id="eventSelector" name="eventSelector" onChange={setEvt(value)}>
-                            {makeEventSelector}
+                        <select id="eventSelector" name="eventSelector" value="" onChange={setEvt()}>
+                            {makeEventSelector()}
                         </select>
                     </label>
                 </div>
@@ -77,16 +77,15 @@ const Search = () => {
                 </div>
             )
         }
-        // Search people by events, makes text input fields for first name and last name
-        // may need to adjust search query to be able to search for one or the other or both?
+        // Search people by events, dropdown to search events
         if(selectedValue === "peopleByEvents"){
             return(
-                <div id="peopleByEventsInputs">
-                    <label htmlFor='firstName'>
-                        <input id="firstName" name="firstName" type="text" value={first}></input>
-                    </label>
-                    <label htmlFor='lastName'>
-                        <input id="lastName" name="lastName" type="text" value={last}></input>
+                <div id="codesByEventsInputs">
+                    <label htmlFor='eventSelector'>
+                        Select an event:
+                        <select id="eventSelector" name="eventSelector" value="" onChange={setEvt()}>
+                            {makeEventSelector()}
+                        </select>
                     </label>
                 </div>
             )
@@ -101,19 +100,19 @@ const Search = () => {
 
     // calls server to search
     function handleSearch(){
-        if(selectedValue === codesByEvents){
+        if(selectedValue === "codesByEvents"){
             axios.get(`${process.env.REACT_APP_HOST}/api/read/codesByEvents/${evt}`).then((response) => {
                 setResultList(response.data)})
         }
-        if(selectedValue === peopleByCodes){
+        if(selectedValue === "peopleByCodes"){
             axios.get(`${process.env.REACT_APP_HOST}/api/read/peopleByCodes/${code}`).then((response) => {
                 setResultList(response.data)})
         }
-        if(selectedValue === codesByPeople){
+        if(selectedValue === "codesByPeople"){
             axios.get(`${process.env.REACT_APP_HOST}/api/read/codesByPeople`, {fn: first, ln:last}).then((response) => {
                 setResultList(response.data)})
         }
-        if(selectedValue === peopleByEvents){
+        if(selectedValue === "peopleByEvents"){
             axios.get(`${process.env.REACT_APP_HOST}/api/read/peopleByEvents/${evt}`).then((response) => {
                 setResultList(response.data)})
         }
@@ -125,65 +124,45 @@ const Search = () => {
     // sets headers to use when making table, based on search type
     function setHeaders(){
         if(evt === "codesByEvents"){
-            headers = [] // TODO: list of headers for this search
+            headers = [`Event Name`, `Event Date`, `Ticket Codes`] // TODO: list of headers for this search
         }
         if(evt === "peopleByCodes"){
-            headers = [] // TODO: list of headers for this search
+            headers = [`First Name`, `Last Name`, `Email Address`, `Ticket Code`] // TODO: list of headers for this search
         }
-        if(evt === "peopleByCodes"){
-            headers = [] // TODO: list of headers for this search
+        if(evt === "codesByPeople"){
+            headers = [`Ticket Code`, `First Name`, `Last Name`] // TODO: list of headers for this search
         }
         if(evt === "peopleByEvents"){
-            headers = [] // TODO: list of headers for this search
+            headers = [`Event Name`, `Event Date`, `First Name`, `Last Name`] // TODO: list of headers for this search
         }
     }
 
     // make table from results
     function makeTable(){
-        const htmlToReturn = 
-        <table>
-            <tr>
-                {makeHeaders}
-            </tr>
-            {makeEntries}
-        </table>
+        const htmlToReturn = <table><thead><tr>{makeHeaders()}</tr></thead><tbody>{makeEntries()}</tbody></table>
         return(htmlToReturn)
     }
 
     // make headers for table
     function makeHeaders(){
-        return(
-        {const: () => {
-            for(head in headers){
-                <th>{head}</th>
-            }
-        }}
-        )
+        var htmlToReturn = null
+        for(var head in headers){htmlToReturn += <th>{head}</th>}
+        return(htmlToReturn)
     }
 
     
     // make rows in table for each result
     function makeEntries(){
-        return(
-            {const: () => {
-                for(result in resultList){
-                    <tr>
-                    {getItems(result)}
-                    </tr>
-                }
-            }}
-        )
+        var htmlToReturn = null
+        for(var result in resultList){htmlToReturn += <tr>{getItems(result)}</tr>}
+        return(htmlToReturn)
     }
 
     // make table data for each row
     function getItems(res){
-        return(
-            {const: () => {
-                for(item in res){
-                    <td>{item}</td>
-                }
-            }}
-        )
+        var htmlToReturn = null
+        for(var item in res){htmlToReturn += <td>{item}</td>}
+        return(htmlToReturn)
     }
 
     return (
