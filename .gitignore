@@ -1,6 +1,10 @@
 # Unique footer file for each person
 client/src/components/Footer.jsx
 
+# Unique .env & package files
+package-lock.json
+package.json
+
 # Logs
 logs
 *.log
