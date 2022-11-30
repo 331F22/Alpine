@@ -20,11 +20,11 @@ Description:<br>
 
 ## Tech Summary
 Description:<br> 
-&emsp;A summarized area of the tools and software used within the project to provide functionality into platform.
+&emsp;A summary of the tools, libraries, software, and items used to create the project are present within the Tech Summary. The following will be cumulative of everything the team has used to develop the project as a whole.
 
 ## Individual Notes
 Description:<br>
-&emsp;The delegated and described task, as of, by each member within Group 5.
+&emsp;The delegated and described task, as of, by each member within Group 5. Each member of Group 5 has given different contributions and notes on the work accomplished within the project. Notes can consist of problems, risk, developments, tools, and much more that is assessed within the greater project.
 
 - Ali
     - A
@@ -44,7 +44,9 @@ Description:<br>
 
 ## Conclusion
 Description:<br>
-&emsp;A
+&emsp;The developments of Group 5 are done in association, and under the guidance, with Montana State Universities professors, teacher assistants, and online resources provided to the student body. The following acknowledges the assistance that these listed items have given for the overall success of Group 5's task.
+<br>
+&emsp;Group 5 has developed an Admin access, and unique, blacklist whitelist page for quick banning usage for the BSF entity. The page acts as a clean and unique view for administrators to view all blacklisted individuals, or to blacklist individuals that have recieved many complaints, and or, issues on the grounds of BSF. Group 5 feels we have learned more about the world of Javascript, React, and Express. The group took multiple tools, as listed above, and were able to use a database to access an archive of volunteers and sort them into proper listings. The feature developed took much time to develop, but is a simple tool that implements extra functionality in a select area for any administrator. The Group worked hard to achieve the overall goal of the project and bring it to a working level for future usage. **Thus concludes the work done by Group 5 of CSCI 331.
 
 ## Works Cited
 
