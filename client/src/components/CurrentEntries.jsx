@@ -231,7 +231,7 @@ function DeletedEmailConfirmModal() {
 function UpdateConfirmModal() {
   return (
     <>
-      <h1>Volunteer update successfully</h1>
+      <h1>Volunteers email updated successfully</h1>
     </>
   );
 }
