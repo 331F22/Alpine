@@ -5,142 +5,129 @@ import { ModalContext } from "../context/ModalContext";
 const CurrentEntries = () => {
   let { handleModal } = useContext(ModalContext);
 
-  const SECRET = process.env.REACT_APP_PASSCODE;
+  const SECRET = process.env.REACT_APP_PASSCODE
 
-  const [entryList, setEntryList] = useState([]);
+  const [entryList, setEntryList] = useState([])
+
 
   // READ (GET)
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
-      setEntryList(response.data);
-    });
-  }, []);
+      setEntryList(response.data)
+    })
+  }, [])
 
-  const [newEmail, setNewEmail] = useState("");
-  const [passcode, setPasscode] = useState("");
+  const [newEmail, setNewEmail] = useState('')
+  const [passcode, setPasscode] = useState('')
 
   function getObjectByValue(objVal) {
-    let objectWithValue = {};
-    entryList.forEach((entry) => {
-      if (Object.values(entry).indexOf(objVal) > -1) {
-        // email value is inside obj inside array
-        console.log("entry", entry);
-        objectWithValue = entry;
+    let objectWithValue = {}
+    entryList.forEach(entry => {
+      if (Object.values(entry).indexOf(objVal) > -1) { // email value is inside obj inside array
+        console.log('entry', entry)
+        objectWithValue = entry
       }
-    });
-    return objectWithValue;
+    })
+    return objectWithValue
   }
 
   // DELETE
-  const deleteEntry = (email) => {
-    // deletes ALL such email instances in the database
-    axios
-      .delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`)
-      .then((response) => {
-        let objToDelete = getObjectByValue(email);
-        const index = entryList.indexOf(objToDelete); // deletes ONE instance in the state var
-        if (index > -1) {
-          let entryListCopy = [...entryList]; // copy
-          entryListCopy.splice(index, 1); // remove index
-          setEntryList(entryListCopy);
-        }
-      }); //close .then()
-      refreshPage()
-  };
+  const deleteEntry = (email) => { // deletes ALL such email instances in the database
+    axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
+      let objToDelete = getObjectByValue(email)
+      const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
+      if (index > -1) {
+        let entryListCopy = [...entryList] // copy
+        entryListCopy.splice(index, 1) // remove index
+        setEntryList(entryListCopy)
+      }
+    }) //close .then()
+  }
 
   // UPDATE (PUT)
-  const updateEmail = (email) => {
-    // replaces ALL such email instances in the database
-    axios
-      .put(`${process.env.REACT_APP_HOST}/api/update`, {
-        old: email,
-        new: newEmail,
-      })
-      .then((response) => {
-        let objToChange = getObjectByValue(email);
-        const index = entryList.indexOf(objToChange); // deletes ONE instance in the state var
-        objToChange.email_address = newEmail;
-        if (index > -1) {
-          let entryListCopy = [...entryList];
-          entryListCopy[index] = objToChange;
-          setEntryList(entryListCopy);
-        }
-      }); //close .then()
+  const updateEmail = (email) => { // replaces ALL such email instances in the database
+    axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
+      let objToChange = getObjectByValue(email)
+      const index = entryList.indexOf(objToChange)  // deletes ONE instance in the state var
+      objToChange.email_address = newEmail
+      if (index > -1) {
+        let entryListCopy = [...entryList]
+        entryListCopy[index] = objToChange
+        setEntryList(entryListCopy)
+      }
+    }) //close .then()
 
-    setNewEmail(""); // clear all update email input fields
-    let updateInputs = document.getElementsByClassName("updateInput");
+    setNewEmail('') // clear all update email input fields
+    let updateInputs = document.getElementsByClassName('updateInput');
     for (let i = 0; i < updateInputs.length; i++) {
-      updateInputs[i].value = "";
+      updateInputs[i].value = ''
     }
-    refreshPage()
-  };
+  }
 
   const refPass = useRef(null);
 
   function handleEditList(e) {
-    const collection = document.getElementsByClassName("editControls");
-    const editButton = document.getElementById("editButton");
-    const doneButton = document.getElementById("doneButton");
-    const editPasscodeInput = document.getElementById("editPasscodeInput");
-    const submitEmailsButton = document.getElementById("submitEmailsButton");
+    const collection = document.getElementsByClassName("editControls")
+    const editButton = document.getElementById('editButton')
+    const doneButton = document.getElementById('doneButton')
+    const editPasscodeInput = document.getElementById('editPasscodeInput')
+    const submitEmailsButton = document.getElementById('submitEmailsButton')
 
     if (passcode === SECRET) {
       for (let i = 0; i < collection.length; i++)
-        collection[i].style.display = "block";
-      doneButton.style.display = "inline";
-      editButton.style.display = "none";
-      editPasscodeInput.style.visibility = "hidden";
-      submitEmailsButton.style.display = "block";
+        collection[i].style.display = 'block'
+      doneButton.style.display = 'inline'
+      editButton.style.display = 'none'
+      editPasscodeInput.style.visibility = 'hidden'
+      submitEmailsButton.style.display = 'block'
+
     } else {
       for (let i = 0; i < collection.length; i++)
-        collection[i].style.display = "none";
-      doneButton.style.display = "none";
-      editButton.style.display = "inline";
-      editPasscodeInput.style.visibility = "visible";
-      editPasscodeInput.focus();
+        collection[i].style.display = 'none'
+      doneButton.style.display = 'none'
+      editButton.style.display = 'inline'
+      editPasscodeInput.style.visibility = 'visible'
+      editPasscodeInput.focus()
     }
-    setPasscode("");
-    refPass.current.value = "";
+    setPasscode('')
+    refPass.current.value = ''
   }
 
   function handleFinishedEditing() {
-    const editPasscodeInput = document.getElementById("editPasscodeInput");
-    const editButton = document.getElementById("editButton");
-    const doneButton = document.getElementById("doneButton");
-    const collection = document.getElementsByClassName("editControls");
-    const submitEmailsButton = document.getElementById("submitEmailsButton");
+    const editPasscodeInput = document.getElementById('editPasscodeInput')
+    const editButton = document.getElementById('editButton')
+    const doneButton = document.getElementById('doneButton')
+    const collection = document.getElementsByClassName("editControls")
+    const submitEmailsButton = document.getElementById('submitEmailsButton')
 
     for (let i = 0; i < collection.length; i++)
-      collection[i].style.display = "none";
-    editPasscodeInput.style.visibility = "hidden";
-    doneButton.style.display = "none";
-    editButton.style.display = "inline";
-    editButton.innerHTML = "Edit List";
-    submitEmailsButton.style.display = "none";
+      collection[i].style.display = 'none'
+    editPasscodeInput.style.visibility = 'hidden'
+    doneButton.style.display = 'none'
+    editButton.style.display = 'inline'
+    editButton.innerHTML = "Edit List"
+    submitEmailsButton.style.display = 'none'
   }
 
   function checkPasscode(e) {
-    const editButton = document.getElementById("editButton");
-    if (e.target.value === SECRET) {
-      editButton.innerHTML = "OK";
-      editButton.focus();
-    } else {
-      editButton.innerHTML = "Edit List";
+    const editButton = document.getElementById('editButton')
+    if ((e.target.value) === SECRET) {
+      editButton.innerHTML = "OK"
+      editButton.focus()
     }
-    setPasscode(e.target.value);
+    else {
+      editButton.innerHTML = "Edit List"
+    }
+    setPasscode(e.target.value)
   }
 
   function abortPasscodeAttempt(e) {
-    const editPasscodeInput = document.getElementById("editPasscodeInput");
+    const editPasscodeInput = document.getElementById('editPasscodeInput')
     if (e !== SECRET) {
-      setPasscode("");
-      refPass.current.value = "";
-      editPasscodeInput.style.visibility = "hidden";
+      setPasscode('')
+      refPass.current.value = ''
+      editPasscodeInput.style.visibility = 'hidden'
     }
-  }
-
-  function refreshPage() {
-    window.location.reload(false);
   }
 
   return (
