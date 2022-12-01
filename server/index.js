@@ -4,6 +4,8 @@ const cors = require('cors')
 const app = express()
 const mysql = require('mysql')
 const dotenv = require('dotenv').config()
+const multer = require('multer')
+const upload = multer({dest: 'ticket_sheets/'})
 
 const db = mysql.createPool({ // createConnection
     host: 'localhost',
@@ -66,6 +68,10 @@ app.put("/api/update", (req, res) => {
         console.log("Server changed: ", oe, "to", ne)
         res.send(result)
     })
+})
+
+app.post("/api/ticket_sheet", upload.single('ticket_sheet'), (req, res, next) => {
+    console.log(req.file)
 })
 
 const PORT = process.env.EXPRESSPORT;

@@ -3,6 +3,7 @@ import './App.css';
 import AddEntry from '../AddEntry.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx'
+import FileInput from "../FileInput.jsx";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <CurrentEntries />
       <hr />
       <Footer />
+      <FileInput/>
     </div>
   )
 }
