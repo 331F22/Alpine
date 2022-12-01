@@ -181,7 +181,7 @@ const CurrentEntries = () => {
             </div>
           );
         })}
-        <div className="editField editGui">
+        <div className="formbold-form-wrapper">
           <button id="editButton" className="formbold-btn-small" onClick={handleEditList}>
             Edit List
           </button>
