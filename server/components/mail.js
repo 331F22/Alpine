@@ -8,10 +8,10 @@ const readFile = promisify(fs.readFile);
 
 // Create a transport email to send automatic emails from
 const transporter = nodemailer.createTransport({
-  service: "hotmail",
+  service: process.env.EMAIL_PROVIDER,
   auth: {
-    user: "bsf-auto@outlook.com",
-    pass: "CSCI331-Group-7",
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
