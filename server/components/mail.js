@@ -35,6 +35,29 @@ async function sendTestMail() {
   }
 }
 
+
+/**
+ * Send an email 
+ * @param {string} email the volunteers email address
+ * @param {string} subject the subject of the email
+ * @param {string} htmlToSend a prepopulated html template
+ */
+async function sendNewMail(email, subject, htmlToSend) {
+  let mailConfig = {
+    from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
+    to: email,
+    subject: subject,
+    html: htmlToSend,
+  };
+  try {
+    const info = await transporter.sendMail(mailConfig);
+    console.log(`Email sent successfully, ID: ${info.messageId}`);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 /**
  * Create a confirmation & send to the proper volunteer via email
  * @param {string} email the volunteers email address
