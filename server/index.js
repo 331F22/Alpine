@@ -4,8 +4,20 @@ const cors = require('cors')
 const app = express()
 const mysql = require('mysql')
 const dotenv = require('dotenv').config()
+const path = require('path')
+const fs = require('fs')
 const multer = require('multer')
-const upload = multer({dest: 'ticket_sheets/'})
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'ticket_sheets/')
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const parsedPath = path.parse(file.originalname)
+        cb(null, parsedPath.name + '-' + uniqueSuffix + parsedPath.ext)
+    }
+})
+const upload = multer( {storage: storage})
 
 const db = mysql.createPool({ // createConnection
     host: 'localhost',
@@ -70,8 +82,16 @@ app.put("/api/update", (req, res) => {
     })
 })
 
-app.post("/api/ticket_sheet", upload.single('ticket_sheet'), (req, res, next) => {
-    console.log(req.file)
+app.post("/api/ticket_sheet", upload.array('ticket_sheet'), (req, res, next) => {
+    //console.log(req) // for debugging
+    res.send();
+})
+
+app.get("/api/ticket_sheet", (req, res, next) => {
+    console.log(req);
+    fs.promises.readdir("./ticket_sheets" ).then((files) => {
+        res.send(files);
+    }).catch((err) => res.send(err));
 })
 
 const PORT = process.env.EXPRESSPORT;
