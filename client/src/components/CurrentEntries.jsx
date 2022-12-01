@@ -152,7 +152,7 @@ const CurrentEntries = () => {
 
               <div className="editControls editGui">
                 <button
-                  className="delete"
+                  className="formbold-btn-small"
                   onClick={() => {
                     deleteEntry(val.email_address);
                     handleModal(<DeletedEmailConfirmModal />);
@@ -161,7 +161,7 @@ const CurrentEntries = () => {
                   delete
                 </button>
                 <button
-                  className="update"
+                  className="formbold-btn-small"
                   onClick={() => {
                     if (newEmail.length > 0) {
                       updateEmail(val.email_address);
@@ -173,7 +173,7 @@ const CurrentEntries = () => {
                 </button>
                 <input
                   type="email"
-                  className="updateInput"
+                  className="formbold-form-input"
                   placeholder={val.email_address}
                   onChange={(e) => setNewEmail(e.target.value)}
                 />
@@ -189,7 +189,7 @@ const CurrentEntries = () => {
             Done
           </button>
           <input
-            id="editPasscodeInput"
+            id="formbold-form-input"
             ref={refPass}
             type="password"
             placeholder="Enter passcode"
