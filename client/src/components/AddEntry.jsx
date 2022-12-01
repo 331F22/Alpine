@@ -66,53 +66,56 @@ const AddEntry = () => {
 
   return (
     <div className="formbold-main-wrapper">
-      <div className="formbold-form-wrapper">
-        <form onSubmit={onSubmit}>
-          <div className="addEntry">
-            <h2>Register New Volunteer</h2>
-            <div id="userInput">
-              <div className="formbold-mb-5">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  ref={ref1}
-                  id="firstName"
-                  type="text"
-                  name="firstName"
-                  className="formbold-form-input"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </div>
-              <div className="formbold-mb-5">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  ref={ref2}
-                  id="lastName"
-                  type="text"
-                  name="lastName"
-                  className="formbold-form-input"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-              <br />
-              <div className="emailField formbold-mb-5">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  ref={ref3}
-                  id="email"
-                  type="email"
-                  name="email"
-                  className="formbold-form-input"
-                  onChange={(e) => setEmailAddress(e.target.value)}
-                />
-              </div>
-              <button type="submit" className="submitBtn">
-                Add Entry
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+    <div className="formbold-form-wrapper">
+      <form onSubmit={onSubmit}>
+        <div className="formbold-mb-5">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            ref={ref1}
+            placeholder="First Name"
+            className="formbold-form-input"
+            id="firstName"
+            type="text"
+            name="firstName"
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
+
+        <div className="formbold-mb-5">
+          <label htmlFor="firstName">Last Name</label>
+
+          <input
+            ref={ref2}
+            placeholder="Last Name"
+            className="formbold-form-input"
+            id="lastName"
+            type="text"
+            name="lastName"
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
+        <div className="formbold-mb-5">
+          <label htmlFor="email" className="formbold-form-label">
+            Email Address
+          </label>
+          <input
+            ref={ref3}
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            className="formbold-form-input"
+            onChange={(e) => setEmailAddress(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <button className="formbold-btn">Submit</button>
+        </div>
+      </form>
     </div>
+  </div>
   );
 };
 
