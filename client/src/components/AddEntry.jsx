@@ -78,6 +78,7 @@ const AddEntry = () => {
                   id="firstName"
                   type="text"
                   name="firstName"
+                  className="formbold-form-input"
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
@@ -88,6 +89,7 @@ const AddEntry = () => {
                   id="lastName"
                   type="text"
                   name="lastName"
+                  className="formbold-form-input"
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
@@ -99,6 +101,7 @@ const AddEntry = () => {
                   id="email"
                   type="email"
                   name="email"
+                  className="formbold-form-input"
                   onChange={(e) => setEmailAddress(e.target.value)}
                 />
               </div>
