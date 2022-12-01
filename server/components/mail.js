@@ -45,23 +45,29 @@ async function sendCreateConfirmation(email, firstName) {
     "./components/mailHTMLTemplates/createConfirmation.html",
     "utf8"
   ); // Read HTML template
+
   let template = handlebars.compile(rawHTML); // Compile template with handlebars
+
   let userInfo = {
     firstName: firstName,
   };
   let htmlToSend = template(userInfo); // Use handlebars to populate fields
+
   let mailConfig = {
     from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
     to: email,
     subject: "Volunteer Enrollment Confirmation",
     html: htmlToSend,
   };
-  try {
-    const info = await transporter.sendMail(mailConfig);
-    console.log(`Confirmation sent successfully, ID: ${info.messageId}`);
-  } catch (err) {
-    console.log(err);
-    throw err;
+
+  if(isValidEmail(email)) {
+    try {
+      const info = await transporter.sendMail(mailConfig);
+      console.log(`Confirmation sent successfully, ID: ${info.messageId}`);
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 }
 
@@ -78,7 +84,7 @@ async function sendUpdateConfirmation(oldEmail, newEmail) {
   let template = handlebars.compile(rawHTML); // Compile template with handlebars
   let userInfo = {
     oldEmail: oldEmail,
-    newEmail: newEmail
+    newEmail: newEmail,
   };
   let htmlToSend = template(userInfo); // Use handlebars to populate fields
   let mailConfig = {
@@ -125,6 +131,18 @@ async function sendDeleteConfirmation(ea) {
   }
 }
 
+function isValidEmail(str) {
+  let isValid = false;
+  let strAfterAtSign = str.split("@")[1];
+  if (strAfterAtSign.includes("example.com") || strAfterAtSign.includes("test.com")) {
+    isValid = false;
+    return isValid;
+  } else {
+    isValid = true;
+    return isValid;
+  }
+}
+
 module.exports = {
   sendCreateConfirmation: (email, firstName) => {
     sendCreateConfirmation(email, firstName);
@@ -135,6 +153,6 @@ module.exports = {
   },
 
   sendDeleteConfirmation: (ea) => {
-    sendDeleteConfirmation(ea)
+    sendDeleteConfirmation(ea);
   },
 };
