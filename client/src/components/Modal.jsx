@@ -5,6 +5,10 @@ import "./styles/Modal.css";
 
 const ModalDisplay = () => {
   let { modalContent, handleModal, modal } = useContext(ModalContext);
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
   if (modal) {
     return ReactDOM.createPortal(
       <div className="popup">
@@ -14,7 +18,7 @@ const ModalDisplay = () => {
             </div>
             <div className="card-footer text-center">
             <button className="btn btn-danger btn-sm float-right"
-                    id="right" style={{color: 'white'}} onClick={() => handleModal()}>
+                    id="right" style={{color: 'white'}} onClick={() => {handleModal(); refreshPage()}}>
                 Close
             </button>
             </div>
