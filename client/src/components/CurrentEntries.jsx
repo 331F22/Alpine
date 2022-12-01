@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect} from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import axios from "axios";
 import { ModalContext } from "../context/ModalContext";
 
@@ -181,29 +181,39 @@ const CurrentEntries = () => {
             </div>
           );
         })}
-        <div className="formbold-form-wrapper">
-          <button id="editButton" className="formbold-btn-small" onClick={handleEditList}>
-            Edit List
+        <div className="formbold-main-wrapper">
+          <div className="formbold-form-wrapper">
+            <button
+              id="editButton"
+              className="formbold-btn-small"
+              onClick={handleEditList}
+            >
+              Edit List
+            </button>
+            <button
+              id="doneButton"
+              className="formbold-btn-small"
+              onClick={handleFinishedEditing}
+            >
+              Done
+            </button>
+            <input
+              id="formbold-form-input"
+              ref={refPass}
+              type="password"
+              placeholder="Enter passcode"
+              onChange={checkPasscode}
+              onBlur={(e) => abortPasscodeAttempt(e.target.value)}
+            />
+          </div>
+          <button
+            id="submitEmailsButton"
+            className="formbold-btn-small"
+            onClick={() => alert("TODO: Send It!")}
+          >
+            Email Vouchers
           </button>
-          <button id="doneButton" className="formbold-btn-small" onClick={handleFinishedEditing}>
-            Done
-          </button>
-          <input
-            id="formbold-form-input"
-            ref={refPass}
-            type="password"
-            placeholder="Enter passcode"
-            onChange={checkPasscode}
-            onBlur={(e) => abortPasscodeAttempt(e.target.value)}
-          />
         </div>
-        <button
-          id="submitEmailsButton"
-          className="formbold-btn-small"
-          onClick={() => alert("TODO: Send It!")}
-        >
-          Email Vouchers
-        </button>
       </div>
     </div>
   );
@@ -225,6 +235,5 @@ function UpdateConfirmModal() {
     </>
   );
 }
-
 
 export default CurrentEntries;
