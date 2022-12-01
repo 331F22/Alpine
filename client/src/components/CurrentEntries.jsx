@@ -137,6 +137,10 @@ const CurrentEntries = () => {
     }
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="currentEntries posRel">
       <h2>Current Volunteers</h2>
@@ -156,6 +160,7 @@ const CurrentEntries = () => {
                   onClick={() => {
                     deleteEntry(val.email_address);
                     handleModal(<DeletedEmailConfirmModal />);
+                    refreshPage()
                   }}
                 >
                   delete
@@ -166,6 +171,7 @@ const CurrentEntries = () => {
                     if (newEmail.length > 0) {
                       updateEmail(val.email_address);
                       handleModal(<UpdateConfirmModal />);
+                      refreshPage()
                     }
                   }}
                 >

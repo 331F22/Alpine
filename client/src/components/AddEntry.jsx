@@ -62,6 +62,7 @@ const AddEntry = () => {
           emailAddress={emailAddress}
         />
       );
+      refreshPage();
     } else {
       toast.error("Fields cannot be blank");
     }
