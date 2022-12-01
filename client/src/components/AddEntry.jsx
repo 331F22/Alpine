@@ -67,6 +67,10 @@ const AddEntry = () => {
     }
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="formbold-main-wrapper">
       <div className="formbold-form-wrapper">
