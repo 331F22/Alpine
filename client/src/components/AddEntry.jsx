@@ -92,7 +92,7 @@ const AddEntry = () => {
                 />
               </div>
               <br />
-              <div className="emailField className="formbold-mb-5"">
+              <div className="emailField formbold-mb-5">
                 <label htmlFor="email">Email Address</label>
                 <input
                   ref={ref3}
