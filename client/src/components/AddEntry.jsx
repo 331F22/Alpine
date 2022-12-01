@@ -48,11 +48,15 @@ const AddEntry = () => {
     // console.log(firstName);
     // console.log(lastName);
     // console.log(emailAddress);
-    if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
+    if (
+      firstName.length > 0 &&
+      lastName.length > 0 &&
+      emailAddress.length > 0
+    ) {
       submitEntry();
       handleModal(<AddEntryModal />);
     } else {
-      toast.error('Fields cannot be blank');
+      toast.error("Fields cannot be blank");
     }
   }
 
@@ -61,45 +65,51 @@ const AddEntry = () => {
   // }
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="addEntry">
-        <h2>Add an Entry</h2>
-        <div id="userInput">
-          <div>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              ref={ref1}
-              id="firstName"
-              type="text"
-              name="firstName"
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+    <div className="formbold-main-wrapper">
+      <div className="formbold-form-wrapper">
+        <form onSubmit={onSubmit}>
+          <div className="addEntry">
+            <h2>Register New Volunteer</h2>
+            <div id="userInput">
+              <div className="formbold-mb-5">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  ref={ref1}
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div className="formbold-mb-5">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  ref={ref2}
+                  id="lastName"
+                  type="text"
+                  name="lastName"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+              <br />
+              <div className="emailField className="formbold-mb-5"">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  ref={ref3}
+                  id="email"
+                  type="email"
+                  name="email"
+                  onChange={(e) => setEmailAddress(e.target.value)}
+                />
+              </div>
+              <button type="submit" className="submitBtn">
+                Add Entry
+              </button>
+            </div>
           </div>
-          <div>
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              ref={ref2}
-              id="lastName"
-              type="text"
-              name="lastName"
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <br />
-          <div className="emailField">
-            <label htmlFor="email">Email Address</label>
-            <input
-              ref={ref3}
-              id="email"
-              type="email"
-              name="email"
-              onChange={(e) => setEmailAddress(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="submitBtn">Add Entry</button>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 
