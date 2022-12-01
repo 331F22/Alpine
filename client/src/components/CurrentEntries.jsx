@@ -45,6 +45,7 @@ const CurrentEntries = () => {
           setEntryList(entryListCopy);
         }
       }); //close .then()
+      refreshPage()
   };
 
   // UPDATE (PUT)
@@ -71,6 +72,7 @@ const CurrentEntries = () => {
     for (let i = 0; i < updateInputs.length; i++) {
       updateInputs[i].value = "";
     }
+    refreshPage()
   };
 
   const refPass = useRef(null);
@@ -160,7 +162,7 @@ const CurrentEntries = () => {
                   onClick={() => {
                     deleteEntry(val.email_address);
                     handleModal(<DeletedEmailConfirmModal />);
-                    refreshPage()
+
                   }}
                 >
                   delete
@@ -171,7 +173,6 @@ const CurrentEntries = () => {
                     if (newEmail.length > 0) {
                       updateEmail(val.email_address);
                       handleModal(<UpdateConfirmModal />);
-                      refreshPage()
                     }
                   }}
                 >
@@ -204,7 +205,8 @@ const CurrentEntries = () => {
               Done
             </button>
             <input
-              id="formbold-form-input"
+              id="editPasscodeInput"
+              className="formbold-form-input"
               ref={refPass}
               type="password"
               placeholder="Enter passcode"
