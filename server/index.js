@@ -7,6 +7,9 @@ const dotenv = require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
 const multer = require('multer')
+
+const fromExcel = require('./ToExcel.js')
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'ticket_sheets/')
@@ -83,15 +86,23 @@ app.put("/api/update", (req, res) => {
 })
 
 app.post("/api/ticket_sheet", upload.array('ticket_sheet'), (req, res, next) => {
-    //console.log(req) // for debugging
+    //console.log(req)
     res.send();
 })
 
 app.get("/api/ticket_sheet", (req, res, next) => {
-    console.log(req);
+    //console.log(req);
     fs.promises.readdir("./ticket_sheets" ).then((files) => {
         res.send(files);
-    }).catch((err) => res.send(err));
+    }).catch((err) => {
+        res.send(err)
+    });
+})
+
+app.put("/api/ticket_sheet/:name", (req, res, next) => {
+    const fileName = req.params.name;
+    fromExcel.insertTicketsToDB(fileName, db);
+    res.send();
 })
 
 const PORT = process.env.EXPRESSPORT;
