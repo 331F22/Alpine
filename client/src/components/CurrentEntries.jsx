@@ -1,7 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
-import axios from 'axios'
+import { useState, useRef, useContext, useEffect } from "react";
+import axios from "axios";
+import { ModalContext } from "../context/ModalContext";
 
-const CurrentEntries = ({enablePopup}) => {
+const CurrentEntries = () => {
+  let { handleModal } = useContext(ModalContext);
 
   const SECRET = process.env.REACT_APP_PASSCODE
 
@@ -129,44 +131,104 @@ const CurrentEntries = ({enablePopup}) => {
   }
 
   return (
-
     <div className="currentEntries posRel">
-      <h2>Current Entries</h2>
+      <h2>Current Volunteers</h2>
 
-      <div className='userData'>
+      <div className="userData">
         {entryList.map((val, k) => {
-          return (<div key={k}>
-            <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
+          return (
+            <div key={k}>
+              <div>
+                {val.last_name}, {val.first_name}{" "}
+                <span className="emailListed">{val.email_address}</span>{" "}
+              </div>
 
-            <div className="editControls editGui">
-              <button className='delete' onClick={() => {
+              <div className="editControls editGui">
+                <button
+                  className="formbold-btn-small"
+                  onClick={() => {
+                    deleteEntry(val.email_address);
+                    handleModal(<DeletedEmailConfirmModal />);
 
-                deleteEntry(val.email_address); enablePopup();
-              }}>delete</button>
-              <button className='update' onClick={() => {
-                if (newEmail.length > 0) {
-                  updateEmail(val.email_address);
-                  enablePopup();
-                }
-              }}>update</button>
-              <input type="email" className="updateInput" placeholder={val.email_address}
-                onChange={(e) => setNewEmail(e.target.value)} />
+                  }}
+                >
+                  delete
+                </button>
+                <button
+                  className="formbold-btn-small"
+                  onClick={() => {
+                    if (newEmail.length > 0) {
+                      updateEmail(val.email_address);
+                      handleModal(<UpdateConfirmModal />);
+                    }
+                  }}
+                >
+                  update
+                </button>
+                <input
+                  type="email"
+                  className="formbold-form-input"
+                  placeholder={val.email_address}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                />
+              </div>
             </div>
-          </div>)
-
+          );
         })}
-        <div className="editField editGui">
-          <button id="editButton" onClick={handleEditList}>Edit List</button>
-          <button id="doneButton" onClick={handleFinishedEditing}>Finished Editing</button>
-          <input id="editPasscodeInput" ref={refPass} type="password"
-            placeholder='Enter passcode' onChange={checkPasscode}
-            onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
+        <div className="formbold-main-wrapper">
+          <div className="formbold-form-wrapper">
+            <button
+              id="editButton"
+              className="formbold-btn-small"
+              onClick={handleEditList}
+            >
+              Edit List
+            </button>
+            <button
+              id="doneButton"
+              className="formbold-btn-small"
+              onClick={handleFinishedEditing}
+            >
+              Done
+            </button>
+            <input
+              id="editPasscodeInput"
+              className="formbold-form-input"
+              ref={refPass}
+              type="password"
+              placeholder="Enter passcode"
+              onChange={checkPasscode}
+              onBlur={(e) => abortPasscodeAttempt(e.target.value)}
+            />
+          </div>
+          <button
+            id="submitEmailsButton"
+            className="formbold-btn-small"
+            onClick={() => alert("TODO: Send It!")}
+          >
+            Email Vouchers
+          </button>
         </div>
-        <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
-
       </div>
     </div>
-  )
+  );
+};
+
+// The message of the popup that should be displayed should be styled and implemented here
+function DeletedEmailConfirmModal() {
+  return (
+    <>
+      <h1>Volunteer deleted successfully</h1>
+    </>
+  );
+}
+
+function UpdateConfirmModal() {
+  return (
+    <>
+      <h1>Volunteers email updated successfully</h1>
+    </>
+  );
 }
 
 export default CurrentEntries;
