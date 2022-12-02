@@ -99,7 +99,7 @@ app.get("/api/ticket_sheet", (req, res, next) => {
     });
 })
 
-app.put("/api/ticket_sheet/:name", (req, res, next) => {
+app.patch("/api/ticket_sheet/:name", (req, res, next) => {
     const fileName = req.params.name;
     fromExcel.insertTicketsToDB(fileName, db);
     res.send();
