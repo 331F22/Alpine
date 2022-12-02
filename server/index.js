@@ -4,6 +4,23 @@ const cors = require('cors')
 const app = express()
 const mysql = require('mysql')
 const dotenv = require('dotenv').config()
+const path = require('path')
+const fs = require('fs')
+const multer = require('multer')
+
+const fromExcel = require('./ToExcel.js')
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'ticket_sheets/')
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const parsedPath = path.parse(file.originalname)
+        cb(null, parsedPath.name + '-' + uniqueSuffix + parsedPath.ext)
+    }
+})
+const upload = multer( {storage: storage})
 
 const db = mysql.createPool({ // createConnection
     host: 'localhost',
@@ -66,6 +83,26 @@ app.put("/api/update", (req, res) => {
         console.log("Server changed: ", oe, "to", ne)
         res.send(result)
     })
+})
+
+app.post("/api/ticket_sheet", upload.array('ticket_sheet'), (req, res, next) => {
+    //console.log(req)
+    res.send();
+})
+
+app.get("/api/ticket_sheet", (req, res, next) => {
+    //console.log(req);
+    fs.promises.readdir("./ticket_sheets" ).then((files) => {
+        res.send(files);
+    }).catch((err) => {
+        res.send(err)
+    });
+})
+
+app.patch("/api/ticket_sheet/:name", (req, res, next) => {
+    const fileName = req.params.name;
+    fromExcel.insertTicketsToDB(fileName, db);
+    res.send();
 })
 
 const PORT = process.env.EXPRESSPORT;
