@@ -3,14 +3,22 @@ import { GridFooter, GridFooterContainer, useGridApiContext } from "@mui/x-data-
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import "./Users.css"
+import "./Volunteers.css"
 
+/**
+ * Custom dataGrid footer component that includes buttons for bulk operations
+ * @param {*} props 
+ */
 const BulkFooter = (props) => {
+    // Reference to the grid API context (for interfacing with the grid component)
     const gridRef = useGridApiContext();
 
+    // Callback for deleting selected entries from the database
     const handleDeleteSelected = () => {
+        // Get selected entry IDs
         const selectedIDs = Array.from(gridRef.current.getSelectedRows().keys());
 
+        // Pass the IDs to the 'handleDelete' callback from the Volunteers component
         props?.handleDelete(selectedIDs)();
     }
 

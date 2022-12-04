@@ -16,14 +16,12 @@ const NavigationContainer = ({ title, routes }) => {
     const [collapsed, setCollapsed] = useState(true)
     const containerRef = useRef(null)
 
-    // Callback that toggles the 'collapsed' state and updates the width of 
-    // the navigation menu as appropriate
+    // Callback that toggles the 'collapsed' state and updates the width of the navigation menu as appropriate
     const toggleCollapse = () => {
         // Update 'collapsed' state
         setCollapsed((prev) => !prev);
 
-        // Update the width of the navigation menu to match the 'collapsed'
-        // state
+        // Update the width of the navigation menu to match the 'collapsed' state
         if (collapsed) {
             containerRef.current.style.width = "250px"
         } else {

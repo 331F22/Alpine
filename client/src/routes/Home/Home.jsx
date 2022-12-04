@@ -5,7 +5,6 @@ import CurrentEntries from '../../components/CurrentEntries';
 
 /**
  * The Homepage where volunteers can create a sign-in entry 
- * @returns 
  */
 function Home() {
 

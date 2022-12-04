@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import NotFound from "./routes/NotFound/NotFound";
 import Home from "./routes/Home/Home";
 import Dashboard from "./routes/Dashboard/Dashboard";
-import Users from "./components/Dashboard/Users/Users";
+import Volunteers from "./components/Dashboard/Volunteers/Volunteers";
 
 import {
     createBrowserRouter, RouterProvider
@@ -24,8 +24,8 @@ const routes = [
                 element: <Dashboard />,
                 children: [
                     {
-                        path: "users",
-                        element: <Users />,
+                        path: "Volunteers",
+                        element: <Volunteers />,
                     },
                     {
                         path: "vouchers",

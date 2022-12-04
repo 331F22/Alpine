@@ -4,7 +4,6 @@ import "./NotFound.css"
 
 /**
  * Simple component to be displayed when an invalid route is accessed
- * @returns 
  */
 const NotFound = () => {
     return (<div className="notFoundContainer">

@@ -43,11 +43,15 @@ app.post("/api/create", (req, res) => {
     })
 }) 
 
-// DELETE
+// Handle removing volunteers
 app.delete("/api/delete", (req, res) => {
+    // Fetch volunteers to be removed from the body
     const volunteerIDs = req.body.volunteers;
-    console.log(volunteerIDs)
+
+    // Define SQL query string
     const sqlDelete = "DELETE FROM volunteers WHERE id IN (?)";
+
+    // Execute the query
     db.query(sqlDelete, [volunteerIDs], (err, result) => {
         if(err) throw err
         console.log("Server: deleted: ", volunteerIDs)
@@ -55,10 +59,15 @@ app.delete("/api/delete", (req, res) => {
     }) 
 })
 
-// UPDATE
+// Handle updating existing volunteers
 app.put("/api/update", (req, res) => {
+    // Fetch updated volunteer object from body
     const updatedVolunteer = req.body.volunteer;
+
+    // Define SQL query string
     const sqlUpdate = "UPDATE volunteers SET first_name = ?, last_name = ?, email_address = ? WHERE id = ?"
+    
+    // Execute the query
     db.query(sqlUpdate, [updatedVolunteer.first_name, updatedVolunteer.last_name, updatedVolunteer.email_address, updatedVolunteer.id], (err, result)=>{
         if(err)  throw err;
         console.log(`Server: Updated volunteer ${updatedVolunteer.id} to ${updatedVolunteer}`)

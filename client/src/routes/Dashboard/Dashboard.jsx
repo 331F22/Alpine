@@ -7,14 +7,13 @@ import "./Dashboard.css"
 
 /**
  * The root dashboard component which houses the navigation logic
- * @returns 
  */
 const Dashboard = () => {
     // Object to define the properties of the NavigationItems displayed in the NavigationMenu
     const routes = [{
         icon: <PeopleAlt />,
-        label: "Users",
-        route: "/dashboard/users"
+        label: "Volunteers",
+        route: "/dashboard/volunteers"
     }, {
         icon: <PinIcon />,
         label: "Vouchers",
