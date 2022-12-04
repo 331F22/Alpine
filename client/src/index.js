@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import NotFound from "./routes/NotFound/NotFound";
 import Home from "./routes/Home/Home";
 import Dashboard from "./routes/Dashboard/Dashboard";
+import Users from "./components/Dashboard/Users/Users";
 
 import {
     createBrowserRouter, RouterProvider
 } from "react-router-dom"
+import Vouchers from './components/Dashboard/Vouchers/Vouchers';
 
 // Define the routes and the routing structure
 const routes = [
@@ -20,7 +22,16 @@ const routes = [
             {
                 path: "/dashboard",
                 element: <Dashboard />,
-                children: [],
+                children: [
+                    {
+                        path: "users",
+                        element: <Users />,
+                    },
+                    {
+                        path: "vouchers",
+                        element: <Vouchers />,
+                    }
+                ],
             }]
     }
 

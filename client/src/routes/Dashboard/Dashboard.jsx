@@ -1,5 +1,6 @@
 import React from "react";
 import PeopleAlt from "@mui/icons-material/PeopleAlt";
+import PinIcon from '@mui/icons-material/Pin';
 import NavigationMenu from "../../components/Dashboard/Navigation/NavigationMenu";
 import { Outlet } from "react-router-dom";
 import "./Dashboard.css"
@@ -10,14 +11,23 @@ import "./Dashboard.css"
  */
 const Dashboard = () => {
     // Object to define the properties of the NavigationItems displayed in the NavigationMenu
-    const routes = []
+    const routes = [{
+        icon: <PeopleAlt />,
+        label: "Users",
+        route: "/dashboard/users"
+    }, {
+        icon: <PinIcon />,
+        label: "Vouchers",
+        route: "/dashboard/vouchers"
+    }]
 
     return (
         <div className="dashboardContainer">
             {/* Display the navigation menu */}
             <div className="navigation">
-                <NavigationMenu title={"BSF Dashboard"} routes={routes}/>
+                <NavigationMenu title={"BSF Dashboard"} routes={routes} />
             </div>
+
             {/* Display the content for the given route */}
             <div className="content">
                 <Outlet />

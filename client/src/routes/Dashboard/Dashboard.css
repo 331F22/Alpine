@@ -1,6 +1,7 @@
 .dashboardContainer {
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .navigation {
@@ -10,4 +11,7 @@
 .content {
     width: 100%;
     background-color: #f5f3f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

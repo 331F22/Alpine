@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require ('body-parser')
 const cors = require('cors')
 const app = express()
-const mysql = require('mysql')
+const mysql = require('mysql2')
 const dotenv = require('dotenv').config()
 
 const db = mysql.createPool({ // createConnection
@@ -44,28 +44,24 @@ app.post("/api/create", (req, res) => {
 }) 
 
 // DELETE
-app.delete("/api/delete/:emailAddress", (req, res) => {
-    const ea = req.params.emailAddress;
-    console.log(ea)
-    const sqlDelete = "DELETE FROM volunteers WHERE email_address = ?";
-    db.query(sqlDelete, [ea], (err, result) => {
+app.delete("/api/delete", (req, res) => {
+    const volunteerIDs = req.body.volunteers;
+    console.log(volunteerIDs)
+    const sqlDelete = "DELETE FROM volunteers WHERE id IN (?)";
+    db.query(sqlDelete, [volunteerIDs], (err, result) => {
         if(err) throw err
-        console.log("Server: deleted: ", ea)
+        console.log("Server: deleted: ", volunteerIDs)
         res.send(result)
     }) 
 })
 
 // UPDATE
 app.put("/api/update", (req, res) => {
-    // console.log(req)
-    
-    const ne = req.body.new;
-    const oe = req.body.old;
-    console.log("Ready to change: ", oe, "to", ne)
-    const sqlUpdate = "UPDATE volunteers SET email_address = ? WHERE email_address = ?"
-    db.query(sqlUpdate, [ne, oe], (err, result)=>{
+    const updatedVolunteer = req.body.volunteer;
+    const sqlUpdate = "UPDATE volunteers SET first_name = ?, last_name = ?, email_address = ? WHERE id = ?"
+    db.query(sqlUpdate, [updatedVolunteer.first_name, updatedVolunteer.last_name, updatedVolunteer.email_address, updatedVolunteer.id], (err, result)=>{
         if(err)  throw err;
-        console.log("Server changed: ", oe, "to", ne)
+        console.log(`Server: Updated volunteer ${updatedVolunteer.id} to ${updatedVolunteer}`)
         res.send(result)
     })
 })
