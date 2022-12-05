@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
-import SignatureBox from './SignatureBox/SignatureBox.jsx';
+import WaiverSigner from './WaiverSigner';
+
 
 
 const AddEntry = () => {
@@ -9,6 +10,7 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [entryList, setEntryList] = useState([])
+  const [needWaiver, setNeedWaiver] = useState(true)
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -28,11 +30,11 @@ const AddEntry = () => {
     ref3.current.value = ""
     setEmailAddress('')
   }
-  
+
   function refreshPage() {
     window.location.reload(false);
   }
-  
+
   return (
     <div className="addEntry">
       <h2>Add an Entry</h2>
@@ -49,7 +51,16 @@ const AddEntry = () => {
           <label htmlFor="email">Email Address</label>
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
-        <SignatureBox />
+
+        <h4>Waiver</h4>
+        { needWaiver ? <WaiverSigner 
+          firstName={firstName}
+          lastName={lastName}
+          emailAddress={emailAddress}
+        />: <div>Your past waiver is still valid.</div>
+      }
+        
+
         <button className="submitBtn"
           onClick={() => {
             if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
