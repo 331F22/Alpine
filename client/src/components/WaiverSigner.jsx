@@ -25,7 +25,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
         //@TODO
 
         axios.get(`${process.env.REACT_APP_HOST}/api/checkwaiver`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
-            setNeedNew(response.data==0 ? true : false) 
+            setNeedNew(response.data==1 ? true : false) 
           })
 
         console.log("Performing check for existing waiver......")
