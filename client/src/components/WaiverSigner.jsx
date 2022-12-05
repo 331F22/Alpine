@@ -6,7 +6,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
     const [needNew, setNeedNew] = useState(false)
 
 
-    // slowModeId refers to the timeout that waits 2 seconds after the user last inputed something
+    // slowModeId refers to the timeout that waits 1 seconds after the user last inputed something
     // we need to keep track of it so we can cancel old timers 
     const [slowModeId, setSlowModeId] = useState(undefined)
 
@@ -32,7 +32,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
         if (slowModeId != undefined)
             clearTimeout(slowModeId)
 
-        setSlowModeId(setTimeout(testForExistingWaiver, 2000)) // start up new timer
+        setSlowModeId(setTimeout(testForExistingWaiver, 1000)) // start up new timer
 
     }, [firstName, lastName, emailAddress]);
 
