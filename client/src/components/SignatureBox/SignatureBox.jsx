@@ -3,7 +3,6 @@ import './SignatureBox.css';
 import SignatureCanvas from 'react-signature-canvas'
 
 const SignatureBox = () => {
-    console.log("hi")
     let sigCanvas = useRef();
 
     // this is here just for debugging/testing

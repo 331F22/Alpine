@@ -10,7 +10,7 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [entryList, setEntryList] = useState([])
-  const [needWaiver, setNeedWaiver] = useState(true)
+
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -35,6 +35,10 @@ const AddEntry = () => {
     window.location.reload(false);
   }
 
+
+
+
+
   return (
     <div className="addEntry">
       <h2>Add an Entry</h2>
@@ -53,13 +57,11 @@ const AddEntry = () => {
         </div>
 
         <h4>Waiver</h4>
-        { needWaiver ? <WaiverSigner 
+        <WaiverSigner
           firstName={firstName}
           lastName={lastName}
           emailAddress={emailAddress}
-        />: <div>Your past waiver is still valid.</div>
-      }
-        
+        />
 
         <button className="submitBtn"
           onClick={() => {
