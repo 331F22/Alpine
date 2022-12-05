@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import SignatureBox from './SignatureBox/SignatureBox.jsx';
-import axios from 'axios';
-
 
 const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
 
-    const [needNew, setNeedNew] = useState(false);
-    const [entryList, setEntryList] = useState([])
+    const [needNew, setNeedNew] = useState(false)
+
 
     // slowModeId refers to the timeout that waits 1 seconds after the user last inputed something
     // we need to keep track of it so we can cancel old timers 
@@ -29,9 +27,8 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
           })
 
         console.log("Performing check for existing waiver......")
-        // setNeedNew(true); // or false depending on what the database tells us 
+        setNeedNew(true); // or false depending on what the database tells us
     }
-
 
     // this will run every time firstname, lastname or email address changes
     useEffect(() => {
