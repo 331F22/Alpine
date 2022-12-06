@@ -118,3 +118,13 @@ thead {
   float: right;
   margin: 100px;
 }
+#Bridger{
+float: right;
+max-width: 50%;
+}
+
+.addEntry{
+  float: left;
+  margin-left: 50px;
+  max-width: 50%;
+}
