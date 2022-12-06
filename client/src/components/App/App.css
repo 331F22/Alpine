@@ -112,9 +112,13 @@ thead, tbody tr {
 
 thead {
   /* width: calc( 100% - 1em ) */
-} 
+}
 
-#whitelist {
+#rightside {
+  float: right;
+}
+
+#whitelistbtn {
   float: right;
   margin: 100px;
 }
@@ -127,4 +131,12 @@ max-width: 50%;
   float: left;
   margin-left: 50px;
   max-width: 50%;
+  margin: 50px;
+  max-width: 20%;
+}
+
+#information {
+  float: left;
+  max-width: 80%;
+  /* margin: 50px; */
 }

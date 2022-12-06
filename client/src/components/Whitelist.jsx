@@ -7,6 +7,10 @@ const Whitelist = () => {
   var fname;
   var lname;
   var reason;
+  var email;
+  var id;
+
+  var ref1;
 
   return (
     <div>
@@ -110,16 +114,21 @@ const Whitelist = () => {
       </table>
       </div>
 
-      <div id="information">
-        <p>
-          ${fname}
-          ${lname}
-          ${whiteliststatus}
-          ${reason}
-        </p>
-      </div>
       
-      <button class="btn btn-large btn-primary active" id="whitelist" onclick="history.back()">Add to ${whiteliststatus}</button>
+      <div id="rightside">
+
+        <button class="btn btn-large btn-primary active" id="whitelistbtn" onclick="history.back()">Add to ${whiteliststatus}</button>
+        <div id="information">
+          <p>
+            ${fname}
+            ${lname}
+            ${whiteliststatus}
+            ${reason}
+          </p>
+          <label htmlFor="email">Reason</label>
+          <input ref={ref1} id="reason" type="text" name="Reason" onChange={(e) => reason=(e.target.value)} />
+        </div>
+      </div>
     </div>
   )
 }
