@@ -9,7 +9,7 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [entryList, setEntryList] = useState([])
-  const externalImage = 'https://skinorthamerica100.com/wp-content/uploads/2017/02/17062241359_186265fcc5_o-768x576.jpg'
+  
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -56,7 +56,7 @@ const AddEntry = () => {
           >Add Entry</button>
         </div>
       </div>
-      <img id="Bridger" src="https://scontent-sea1-1.xx.fbcdn.net/v/t31.18172-8/14138246_1186809578049376_4550261594034015295_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=nXWVTdE5WuAAX-ZCMme&_nc_ht=scontent-sea1-1.xx&oh=00_AfCBdRrBLMpoxth3S_g4JLpepm6t0Xq0ngIgz-Rlq4YSNg&oe=63B5F395" alt="bridger"/>
+      <img id="Bridger" src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png" alt="bridger"/>
       
       
     </div>
