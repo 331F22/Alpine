@@ -82,10 +82,11 @@ body {
   display: none;
 }
 
-#table {
+#tablediv {
   width: 50%;
   margin: 50px;
   max-width: 45%;
+  float: left;
 }
 
 h1 {
@@ -95,4 +96,25 @@ h1 {
 
 #butt {
   text-align: center;
+}
+
+tbody {
+  display:block;
+  max-height:500px;
+  overflow-y:auto;
+}
+
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+thead {
+  /* width: calc( 100% - 1em ) */
+} 
+
+#whitelist {
+  float: right;
+  margin: 100px;
 }
