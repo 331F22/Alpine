@@ -4,6 +4,7 @@ import SignatureBox from './SignatureBox/SignatureBox.jsx';
 const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
 
     const [needNew, setNeedNew] = useState(false)
+    const [startedTesting, setStartedTesting] = useState(false)
 
 
     // slowModeId refers to the timeout that waits 1 seconds after the user last inputed something
@@ -18,6 +19,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
         if (firstName == "" || lastName == "" || emailAddress == "") {
             return;
         }
+        setStartedTesting(true);
 
 
         //@TODO
@@ -40,18 +42,20 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
 
     return (
         <>
-            {needNew ?
-                <>
-                    <a>Read Waiver</a>
-                    <label htmlFor="signature">Signature</label>
-                    <SignatureBox id="signature" />
-                </>
+            {!startedTesting ?
+                <div>Enter your first name, last name, email, and address to see if you need to sign up any waivers.</div>
                 :
-                <>
-                    <div>Your past waiver is still valid.</div>
-                </>
+                needNew ?
+                    <>
+                        <a>Read Waiver</a>
+                        <label htmlFor="signature">Signature</label>
+                        <SignatureBox id="signature" />
+                    </>
+                    :
+                    <>
+                        <div>Your past waiver is still valid.</div>
+                    </>
             }
-
         </>
     )
 }
