@@ -9,7 +9,7 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [entryList, setEntryList] = useState([])
-  
+
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -30,6 +30,10 @@ const AddEntry = () => {
     setEmailAddress('')
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div>
       <div className="addEntry">
@@ -47,7 +51,7 @@ const AddEntry = () => {
             <label htmlFor="email">Email Address</label>
             <input ref={ref3} id="email" type="email" class="form-control" placeholder="Email@example.com" aria-label="Email" aria-describedby="basic-addon1"  name="email" onChange={(e) => setEmailAddress(e.target.value)} />
           </div>
-          <button type="button" class="btn btn-outline-dark" className="submitBtn" 
+          <button type="button" class="btn btn-outline-dark" className="submitBtn"
             onClick={() => {
               if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
                 submitEntry()
@@ -57,8 +61,8 @@ const AddEntry = () => {
         </div>
       </div>
       <img id="Bridger" src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png" alt="bridger"/>
-      
-      
+
+
     </div>
   )
 }
