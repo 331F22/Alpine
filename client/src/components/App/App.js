@@ -14,13 +14,13 @@ function App() {
     <div className="App">
       
 
-      <AddEntry />
+      { <AddEntry /> }
       {/* <hr /> */}
       {/* <Blacklist /> */}
       {/* <hr /> */}
-      <CurrentEntries />
+      {/* <CurrentEntries /> */}
 
-      {/* <Whitelist /> */}
+      <Whitelist />
       <hr /> 
       {/* <Footer /> */}
     </div>
