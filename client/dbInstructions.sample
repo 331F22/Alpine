@@ -8,3 +8,9 @@ REACT_APP_PASSCODE='777'
 REACT_APP_HOST='http://localhost:3046'                  # local machine
 # REACT_APP_HOST='http://csci331.cs.montana.edu:3046'   # server
 PORT=5046
+
+user: user46
+pass: 46pong
+db: db46
+
+
