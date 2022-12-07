@@ -14,13 +14,13 @@ function App() {
     <div className="App">
       <h1>Admin Page</h1>
 
-      {/* <AddEntry /> */}
+      <AddEntry />
       {/* <hr /> */}
       {/* <Blacklist /> */}
       {/* <hr /> */}
-      {/* <CurrentEntries /> */}
+      <CurrentEntries />
 
-      <Whitelist />
+      {/* <Whitelist /> */}
       <hr /> 
       {/* <Footer /> */}
     </div>
