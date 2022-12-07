@@ -39,9 +39,9 @@ const Whitelist = () => {
 
   return (
     <div>
-    <div id="butt">
+    {/* <div id="butt">
       <button class="btn btn-lg btn-primary active" onclick="history.back()">Click Me Boi!</button>
-    </div>
+    </div> */}
       
       <hr/>
       <div class="table-responsive" id="tablediv">

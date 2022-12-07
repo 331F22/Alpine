@@ -18,7 +18,7 @@ function App() {
       {/* <hr /> */}
       {/* <Blacklist /> */}
       {/* <hr /> */}
-      {/* <CurrentEntries /> */}
+      {<CurrentEntries />}
 
       <Whitelist />
       <hr /> 
