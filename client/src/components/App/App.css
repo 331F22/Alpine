@@ -12,19 +12,22 @@ body {
 #userInput {
   display: flex;
   flex-direction: column;
+  
 }
 #userInput div{
   width: 100%;
   margin: auto;
+  
 }
 #userInput input{
-  width: 90%;
-  margin: 10px;
+  width: 75%;
+  margin: 0 auto;
   padding: 10px;
-  font-size: 2rem;
-  border-radius: 5px;
-  color: #333;
-  background-color:rgba(135, 206, 235, 0.3);
+  /* font-size: 2rem; */
+  border-radius: 7px;
+  color: rgb(0, 0, 0);
+  background-color:rgb(255, 255, 255);
+
 }
 #firstLastName {
   display: grid;
@@ -40,10 +43,18 @@ body {
   justify-content: center;
 }
 .submitBtn {
-  margin: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
   padding: 10px;
   width: 50%;
-  margin: 10px auto;
+  
+}
+#userInput .btn {
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  width: 50%;
+  
 }
 .editField{
   margin: 20px 0;
@@ -132,10 +143,13 @@ max-width: 50%;
 
 .addEntry{
   float: left;
-  margin-left: 50px;
-  max-width: 50%;
-  margin: 50px;
-  max-width: 20%;
+  margin: 150px;
+  max-width: 100%;
+  scale:1.3;
+  padding-left: 100px;
+  
+  
+
 }
 
 #information {
@@ -143,3 +157,36 @@ max-width: 50%;
   max-width: 80%;
   /* margin: 50px; */
 }
+
+h2, label {
+  color: #ffffff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: center;
+  
+}
+label {
+  font-size: 40px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h2 {
+  
+}
+
+/* @media (max-width:575.98px){
+  .addEntry {
+    margin:auto;
+    width:50%;
+    scale: 1;
+  
+  }
+  #Bridger {
+    margin:auto;
+    width:50%;
+  }
+  body {
+    margin:auto;
+    width:50%;
+
+  } 
+}*/

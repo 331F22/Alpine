@@ -33,21 +33,21 @@ const AddEntry = () => {
   return (
     <div>
       <div className="addEntry">
-        <h2>Add an Entry</h2>
+        <h2 class="display-1">Add Volunteers</h2>
         <div id='userInput'>
           <div>
             <label htmlFor="firstName">First Name</label>
-            <input ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+            <input ref={ref1} id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" onChange={(e) => setFirstName(e.target.value)} />
           </div>
           <div>
             <label htmlFor="lastName">Last Name</label>
-            <input ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+            <input ref={ref2} id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" onChange={(e) => setLastName(e.target.value)} />
           </div><br />
           <div className="emailField" >
             <label htmlFor="email">Email Address</label>
-            <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+            <input ref={ref3} id="email" type="email" class="form-control" placeholder="Email@example.com" aria-label="Email" aria-describedby="basic-addon1"  name="email" onChange={(e) => setEmailAddress(e.target.value)} />
           </div>
-          <button className="submitBtn"
+          <button type="button" class="btn btn-outline-dark" className="submitBtn" 
             onClick={() => {
               if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
                 submitEntry()
