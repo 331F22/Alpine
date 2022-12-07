@@ -1,5 +1,8 @@
 body {
   margin:0 10px;
+  background-image: url(https://wallpaperaccess.com/full/475110.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 .App {
   font-family: Arial, Helvetica, sans-serif;
@@ -82,10 +85,11 @@ body {
   display: none;
 }
 
-#table {
+#tablediv {
   width: 50%;
   margin: 50px;
   max-width: 45%;
+  float: left;
 }
 
 h1 {
@@ -95,4 +99,47 @@ h1 {
 
 #butt {
   text-align: center;
+}
+
+tbody {
+  display:block;
+  max-height:500px;
+  overflow-y:auto;
+}
+
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+thead {
+  /* width: calc( 100% - 1em ) */
+}
+
+#rightside {
+  float: right;
+}
+
+#whitelistbtn {
+  float: right;
+  margin: 100px;
+}
+#Bridger{
+float: right;
+max-width: 50%;
+}
+
+.addEntry{
+  float: left;
+  margin-left: 50px;
+  max-width: 50%;
+  margin: 50px;
+  max-width: 20%;
+}
+
+#information {
+  float: left;
+  max-width: 80%;
+  /* margin: 50px; */
 }

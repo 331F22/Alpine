@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
+import './App/App.css';
+import image from './Background.jpg';
 
 const AddEntry = () => {
 
@@ -7,6 +9,7 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [entryList, setEntryList] = useState([])
+  
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -28,29 +31,34 @@ const AddEntry = () => {
   }
 
   return (
-    <div className="addEntry">
-      <h2>Add an Entry</h2>
-      <div id='userInput'>
-        <div>
-          <label htmlFor="firstName">First Name</label>
-          <input ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+    <div>
+      <div className="addEntry">
+        <h2>Add an Entry</h2>
+        <div id='userInput'>
+          <div>
+            <label htmlFor="firstName">First Name</label>
+            <input ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+          </div>
+          <div>
+            <label htmlFor="lastName">Last Name</label>
+            <input ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+          </div><br />
+          <div className="emailField" >
+            <label htmlFor="email">Email Address</label>
+            <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+          </div>
+          <button className="submitBtn"
+            onClick={() => {
+              if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
+                submitEntry()
+              }
+            }}
+          >Add Entry</button>
         </div>
-        <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
-        </div><br />
-        <div className="emailField" >
-          <label htmlFor="email">Email Address</label>
-          <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
-        </div>
-        <button className="submitBtn"
-          onClick={() => {
-            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
-              submitEntry()
-            }
-          }}
-        >Add Entry</button>
       </div>
+      <img id="Bridger" src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png" alt="bridger"/>
+      
+      
     </div>
   )
 }
