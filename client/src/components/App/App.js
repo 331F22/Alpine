@@ -3,9 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import AddEntry from '../AddEntry.jsx';
-import Blacklist from '../Blacklist.jsx';
+// import Blacklist from '../Blacklist.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
-import Footer from '../Footer.jsx';
+// import Footer from '../Footer.jsx';
 import Whitelist from '../Whitelist.jsx';
 
 function App() {
@@ -14,14 +14,15 @@ function App() {
     <div className="App">
       <h1>Admin Page</h1>
 
-      <AddEntry />
+      {/* <AddEntry /> */}
       {/* <hr /> */}
-      <Blacklist />
-      <hr />
-      <CurrentEntries />
-  
+      {/* <Blacklist /> */}
+      {/* <hr /> */}
+      {/* <CurrentEntries /> */}
+
+      <Whitelist />
       <hr /> 
-      <Footer />
+      {/* <Footer /> */}
     </div>
 
 
