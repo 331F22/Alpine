@@ -178,4 +178,8 @@ module.exports = {
   sendDeleteConfirmation: (ea) => {
     sendDeleteConfirmation(ea);
   },
+
+  sendGenericMail: (ea, subject, HTMLToSend) => {
+    sendNewMail(email, subject, htmlToSend);
+  },
 };
