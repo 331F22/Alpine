@@ -109,6 +109,10 @@ const CurrentEntries = () => {
     submitEmailsButton.style.display = 'none'
   }
 
+  function handleSendVouchers() {
+
+  }
+
   function checkPasscode(e) {
     const editButton = document.getElementById('editButton')
     if ((e.target.value) === SECRET) {
@@ -204,7 +208,10 @@ const CurrentEntries = () => {
           <button
             id="submitEmailsButton"
             className="formbold-btn-small"
-            onClick={() => alert("TODO: Send It!")}
+            onClick={()=>{
+              handleSendVouchers(); 
+              handleModal(<SendVouchersModal />);
+            }}
           >
             Email Vouchers
           </button>
@@ -227,6 +234,14 @@ function UpdateConfirmModal() {
   return (
     <>
       <h1>Volunteers email updated successfully</h1>
+    </>
+  );
+}
+
+function SendVouchersModal() {
+  return (
+    <>
+      <h1>Vouchers sent successfully</h1>
     </>
   );
 }
