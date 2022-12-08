@@ -59,6 +59,37 @@ async function sendNewMail(email, subject, htmlToSend) {
 }
 
 /**
+ * Send an auto email confirmation when the volunteer requests a change in email
+ * @param {string} oldEmail the volunteers old email address
+ * @param {string} newEmail the volunteers new email address
+ */
+ async function sendVoucher(email, firstName, ticketCode) {
+  let rawHTML = await readFile(
+    "./components/mailHTMLTemplates/voucher.html",
+    "utf8"
+  ); // Read HTML template
+  let template = handlebars.compile(rawHTML); // Compile template with handlebars
+  let userInfo = {
+    firstName: firstName,
+    ticketCode: ticketCode,
+  };
+  let htmlToSend = template(userInfo); // Use handlebars to populate fields
+  let mailConfig = {
+    from: "Bridger Ski Foundation <bsf-auto@outlook.com>",
+    to: email,
+    subject: "Bridger Bowl Ski Voucher",
+    html: htmlToSend,
+  };
+  try {
+    const info = await transporter.sendMail(mailConfig);
+    console.log(`Update sent successfully, ID: ${info.messageId}`);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+/**
  * Create a confirmation & send to the proper volunteer via email
  * @param {string} email the volunteers email address
  * @param {string} firstName the volunteers first name
@@ -179,7 +210,11 @@ module.exports = {
     sendDeleteConfirmation(ea);
   },
 
-  sendGenericMail: (ea, subject, HTMLToSend) => {
+  sendGenericMail: (email, subject, htmlToSend) => {
     sendNewMail(email, subject, htmlToSend);
+  },
+
+  sendVoucher: (email, firstName, ticketCode) => {
+    sendVoucher(email, firstName, ticketCode);
   },
 };
