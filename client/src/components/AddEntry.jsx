@@ -31,7 +31,7 @@ const AddEntry = () => {
   }
 
   function refreshPage() {
-    window.location.reload(false);
+    window.location.reload(true);
   }
 
   return (
@@ -55,6 +55,7 @@ const AddEntry = () => {
             onClick={() => {
               if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
                 submitEntry()
+                refreshPage()
               }
             }}
           >Add Entry</button>
