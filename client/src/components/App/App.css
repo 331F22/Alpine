@@ -11,6 +11,11 @@ body {
   padding-bottom: 10px;
   margin: auto;
 }
+.ListDivider {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 50px;
+  margin: auto;
+}
 #userInput {
   display: flex;
   flex-direction: column;
