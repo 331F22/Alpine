@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios'
 
 import './App/App.css';
@@ -13,10 +13,8 @@ const Whitelist = () => {
   var fname;
   var lname;
   var reason;
-  var email;
-  var id;
-
-  var ref1;
+  // var email;
+  // var id;
 
   // READ (GET)
   useEffect(() => 
@@ -86,7 +84,7 @@ const Whitelist = () => {
             ${reason}
           </p>
           <label htmlFor="reasonBl">Reasons</label>
-          <input ref={ref1} className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
+          <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
           <button className="submitButton"
             onClick={() => {
               if (newReason.length > 0)
