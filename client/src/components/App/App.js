@@ -18,6 +18,7 @@ function App() {
       <hr />
       <CurrentEntries />
       <hr />
+      <hr />
       <Whitelist />
       <hr /> 
       {/* <Footer /> */}
