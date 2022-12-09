@@ -19,9 +19,12 @@ function App() {
       <CurrentEntries />
       <hr />
       <hr />
-      <Whitelist />
-      <hr /> 
-      {/* <Footer /> */}
+
+      <div className="ListDivider">
+        <Whitelist />
+        <hr /> 
+        {/* <Footer /> */}
+      </div>
 
     </div>
 
