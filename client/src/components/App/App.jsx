@@ -19,7 +19,9 @@ function App() {
         <hr />
         <CurrentEntries />
         <hr />
-        <Footer />
+        <div class="footer">
+          <Footer />
+        </div>
       </div>
       <ToastContainer />
     </ModalProvider>
