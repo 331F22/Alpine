@@ -65,29 +65,13 @@ const Whitelist = () => {
         </thead>
 
         <tbody>
-
-        {/* <div className='userData'>
           {entryList.map((val, k) => {
-            return (<div key={k}>
-                <div>{val.first_name}, {val.last_name}, {val.listing}, {val.reason} </div>
-              </div>
-            </div>)
-          })}
-        </div> */}
-
-        <div>
-          {entryList.map((val, k) => {
-            return (<div key={k}>
-              <tr>
-                <td scope="row">{val.first_name}</td>
-                <td>{val.last_name}</td>
-                <td>{val.listing}</td>
-                <td>{val.reason}</td>
-              </tr>
-            </div>)})}
-          </div>
-
-
+            return (<tr key={k}>
+              <td scope="row">{val.first_name}</td>
+              <td>{val.last_name}</td>
+              <td>{val.listing}</td>
+              <td>{val.reason}</td>
+            </tr>)})}
         </tbody>
       </table>
       </div>

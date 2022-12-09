@@ -11,6 +11,16 @@ Description:<br>
 - Jace Zavarelli, Back-End Developer: Database Interaction Builder/ Writer and Archivist
     - Site Link: [Jace's Link to Site](http://csci331.cs.montana.edu:3046/)
 
+Running Server System: 
+``` 
+forever start -c "npm start" ./ 
+```
+
+Running Client Sytem:
+```
+forever start
+```
+
 Presentation Link: [Group 5 Presentation](https://montanaedu-my.sharepoint.com/:p:/g/personal/n76t836_msu_montana_edu/EXnP-EaggBxCm5c9ba41PQEBSQJCCufEI_R-_LILFCBotw?e=fmNRHe)
 
 ## Creative Objectives
