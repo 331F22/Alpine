@@ -10,10 +10,10 @@ const Whitelist = () => {
   const [newReason, setNewReason] = useState('');
 
   const whiteliststatus = "Blacklist";
-  var fname;
-  var lname;
+  var first_name;
+  var last_name;
   var reason;
-  // var email;
+  var email_address;
   // var id;
 
   // READ (GET)
@@ -79,6 +79,7 @@ const Whitelist = () => {
           <p> Name: {last_name}, {first_name} </p>
           <p> Email: {email_address} </p>
           <button>{whiteliststatus}</button>
+          <p> Reason: {reason}</p>
 
           <label htmlFor="reasonBl">Reasons</label>
 
