@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Whitelist = () => {
 
+  const [entryList, setEntryList] = useState([])
   const [newReason, setNewReason] = useState('');
 
   const whiteliststatus = "Blacklist";
@@ -17,7 +18,14 @@ const Whitelist = () => {
 
   var ref1;
 
-
+  // READ (GET)
+  useEffect(() => 
+  {
+    axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => 
+    {
+      setEntryList(response.data)
+    })
+  }, [])
 
   const updateReason = (reason) => 
   { // replaces ALL such email instances in the database
@@ -57,84 +65,29 @@ const Whitelist = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
-          <tr>
-            <td scope="row">first_name</td>
-            <td>last_name</td>
-            <td>white_listed</td>
-            <td>reasoning is followed</td>
-          </tr>
+
+        {/* <div className='userData'>
+          {entryList.map((val, k) => {
+            return (<div key={k}>
+                <div>{val.first_name}, {val.last_name}, {val.listing}, {val.reason} </div>
+              </div>
+            </div>)
+          })}
+        </div> */}
+
+        <div>
+          {entryList.map((val, k) => {
+            return (<div key={k}>
+              <tr>
+                <td scope="row">{val.first_name}</td>
+                <td>{val.last_name}</td>
+                <td>{val.listing}</td>
+                <td>{val.reason}</td>
+              </tr>
+            </div>)})}
+          </div>
+
+
         </tbody>
       </table>
       </div>

@@ -15,29 +15,16 @@ function App() {
       
 
       <AddEntry />
-      {/* <hr /> */}
-      {/* <Blacklist /> */}
-      {/* <hr /> */}
+      <hr />
       <CurrentEntries />
-
-      {/* <Whitelist /> */}
+      <hr />
+      <Whitelist />
       <hr /> 
       {/* <Footer /> */}
+
     </div>
 
-
-    
-  
   )
 }
-
-// function ListPage() {
-
-//   return (
-//     <div
-
-//   )
-
-// }
 
 export default App;
