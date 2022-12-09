@@ -4,8 +4,36 @@
   box-sizing: border-box;
 }
 
-.App h1, h2{
+.logo{
+  width: 100%;
+}
+
+.header {
+  padding-top: 20px;
+  padding: 15px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
   text-align: center;
+  background-color: lightgrey;
+}
+
+.footer {
+  padding-top: 20px;
+  padding: 30px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.App h1, h2{
+  font: 1em sans-serif;
+  text-align: center;
+  padding-top: 2rem;
 }
 
 #confirmation {
@@ -54,6 +82,7 @@
   flex-direction: column;
   align-items: left;
   justify-content: center;
+  margin-left: 20%;
 }
 .submitBtn {
   margin: 20px;
@@ -74,8 +103,9 @@
   clear:both;
 }
 .emailListed{
-  float:right;
-  margin-right: 2rem;
+  float: right;
+  align-items: right;
+  margin-right: 20%;
 }
 .editControls{
   display: none;
@@ -102,26 +132,6 @@
 }
 
 
-
-/* */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .formbold-mb-5 {
   margin-bottom: 20px;
 }
@@ -132,7 +142,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  padding: 10px;
 }
 
 .formbold-form-wrapper {

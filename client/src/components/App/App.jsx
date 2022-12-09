@@ -2,6 +2,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 // Context API import
 import { ModalProvider } from "../../context/ModalContext";
+import Logo from "./BSFbanner.jpeg";
 
 // Component imports
 import AddEntry from "../AddEntry.jsx";
@@ -12,7 +13,8 @@ function App() {
   return (
     <ModalProvider>
       <div className="App">
-        <h1>Volunteer Signup</h1>
+        <header class="header"><img class="logo" src ={Logo} alt = "BSF Logo"/></header>
+        <h2>Volunteer Sign Up</h2>
         <AddEntry />
         <hr />
         <CurrentEntries />

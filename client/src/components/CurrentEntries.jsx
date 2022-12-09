@@ -15,7 +15,7 @@ const CurrentEntries = () => {
     axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
       setEntryList(response.data)
     })
-  }, [])
+  }, [entryList])
 
   const [newEmail, setNewEmail] = useState('')
   const [passcode, setPasscode] = useState('')
@@ -64,6 +64,9 @@ const CurrentEntries = () => {
     }
   }
 
+  // SEND VOUCHERS
+  function sendVouchers() {}
+
   const refPass = useRef(null);
 
   function handleEditList(e) {
@@ -107,10 +110,6 @@ const CurrentEntries = () => {
     editButton.style.display = 'inline'
     editButton.innerHTML = "Edit List"
     submitEmailsButton.style.display = 'none'
-  }
-
-  function handleSendVouchers() {
-
   }
 
   function checkPasscode(e) {
@@ -209,7 +208,7 @@ const CurrentEntries = () => {
             id="submitEmailsButton"
             className="formbold-btn-small"
             onClick={()=>{
-              handleSendVouchers(); 
+              sendVouchers();
               handleModal(<SendVouchersModal />);
             }}
           >
