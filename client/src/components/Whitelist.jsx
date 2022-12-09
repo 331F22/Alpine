@@ -59,6 +59,7 @@ const Whitelist = () => {
           
           <thead>
             <tr class="bg-primary">
+              <th scope="col">ID</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Listing</th>
@@ -69,7 +70,8 @@ const Whitelist = () => {
           <tbody>
             {entryList.map((val, k) => {
               return (<tr key={k}>
-                <td scope="row">{val.first_name}</td>
+                <td scope="row">{val.id}</td>
+                <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
                 <td>{val.listing}</td>
                 <td>{val.reason}</td>
@@ -82,19 +84,21 @@ const Whitelist = () => {
       <hr/>
       
       <div id="rightside">
-        <div id="information">
 
-          <p> Name: {last_name}, {first_name} </p>
-          <p> Email: {email_address} </p>
-          <button>{whiteliststatus}</button>
-          <p> Reason: {reason}</p>
+        {entryList.find((val) => {
+          return(<div id="information" key={1}>
+            <p> Name: {val.last_name}, {val.first_name} </p>
+            <p> Email: {val.email_address} </p>
+            <button>${whiteliststatus}</button>
+            <p> Reason: {val.reason}</p>
+          </div>
+        )})}
 
           <label htmlFor="reasonBl">Reasons</label>
 
           <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
           <button className="submitButton">Submit Reason</button>
 
-        </div>
       </div>
 
     </div>
