@@ -15,14 +15,14 @@ function App() {
       
 
       <AddEntry />
-      <hr />
-      <CurrentEntries />
-      <hr />
-      <hr />
+      {/* <hr /> */}
+      {/* <CurrentEntries /> */}
+      {/* <hr /> */}
+      <br />
 
       <div className="ListDivider">
         <Whitelist />
-        <hr /> 
+        <br /> 
         {/* <Footer /> */}
       </div>
 
