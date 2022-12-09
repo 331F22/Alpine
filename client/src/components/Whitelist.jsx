@@ -68,7 +68,7 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, k) => {
-              return (<tr key={k}>
+              return (<tr onclick="www.google.com" key={k}>
                 <td scope="row">{val.first_name}</td>
                 <td>{val.last_name}</td>
                 <td>{val.listing}</td>
