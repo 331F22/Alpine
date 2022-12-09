@@ -42,6 +42,14 @@ const Whitelist = () => {
   //   }
   // }
 
+  // <button className="submitButton"
+  // onClick={() => {
+  //   if (newReason.length > 0)
+  //   {
+  //     updateReason(newReason);
+  //   }
+  // }}>Submit Reason</button>
+
 
   return (
     <div>
@@ -84,13 +92,7 @@ const Whitelist = () => {
           <label htmlFor="reasonBl">Reasons</label>
 
           <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
-          <button className="submitButton"
-            onClick={() => {
-              if (newReason.length > 0)
-              {
-                updateReason(newReason);
-              }
-            }}>Submit Reason</button>
+          <button className="submitButton">Submit Reason</button>
 
         </div>
       </div>
