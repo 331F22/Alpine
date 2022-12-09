@@ -9,11 +9,11 @@ const Whitelist = () => {
   const [entryList, setEntryList] = useState([])
   const [newReason, setNewReason] = useState('');
 
-  const whiteliststatus = "Blacklist";
-  var first_name;
-  var last_name;
-  var reason;
-  var email_address;
+  const whiteliststatus = "Whitelist";
+  // var first_name;
+  // var last_name;
+  // var reason;
+  // var email_address;
   // var id;
 
   // READ (GET)
@@ -70,7 +70,7 @@ const Whitelist = () => {
           <tbody>
             {entryList.map((val, k) => {
               return (<tr key={k}>
-                <td scope="row">{val.id}</td>
+                <td>{val.id}</td>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
                 <td>{val.listing}</td>
@@ -85,14 +85,14 @@ const Whitelist = () => {
       
       <div id="rightside">
 
-        {entryList.find((val) => {
+        {/* {entryList.find((val) => {
           return(<div id="information" key={1}>
             <p> Name: {val.last_name}, {val.first_name} </p>
             <p> Email: {val.email_address} </p>
             <button>${whiteliststatus}</button>
             <p> Reason: {val.reason}</p>
           </div>
-        )})}
+        )})} */}
 
           <label htmlFor="reasonBl">Reasons</label>
 
