@@ -51,7 +51,7 @@ const AddEntry = () => {
             <label htmlFor="email">Email Address</label>
             <input ref={ref3} id="email" type="email" class="form-control" placeholder="Email@example.com" aria-label="Email" aria-describedby="basic-addon1"  name="email" onChange={(e) => setEmailAddress(e.target.value)} />
           </div>
-          <button type="button" class="btn btn-outline-dark" className="submitBtn"
+          <button type="button" className="btn btn-outline-dark submitBtn"
             onClick={() => {
               if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
                 submitEntry()
