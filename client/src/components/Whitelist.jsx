@@ -78,6 +78,7 @@ const Whitelist = () => {
 
           <p> Name: {last_name}, {first_name} </p>
           <p> Email: {email_address} </p>
+          <button>{whiteliststatus}</button>
 
           <label htmlFor="reasonBl">Reasons</label>
 
@@ -88,8 +89,7 @@ const Whitelist = () => {
               {
                 updateReason(newReason);
               }
-            }}>{whiteliststatus}
-          </button>
+            }}>Submit Reason</button>
 
         </div>
       </div>
