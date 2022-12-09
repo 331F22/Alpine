@@ -84,7 +84,7 @@ const Whitelist = () => {
                 <td>{val.id}</td>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
-                <td>{lisiting_string}</td>
+                <td>{listing_string}</td>
                 <td>{val.reason}</td>
               </tr>)})}
           </tbody>
