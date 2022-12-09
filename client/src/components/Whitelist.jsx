@@ -25,65 +25,62 @@ const Whitelist = () => {
     })
   }, [])
 
-  const updateReason = (reason) => 
-  { // replaces ALL such email instances in the database
-    axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: reason, new: newReason }).then((response) => 
+  // const updateReason = (reason) => 
+  // { // replaces ALL such email instances in the database
+  //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: reason, new: newReason }).then((response) => 
     
-    {
-      let objToChange = reason
-      objToChange.reason = newReason
-    })
+  //   {
+  //     let objToChange = reason
+  //     objToChange.reason = newReason
+  //   })
 
-    setNewReason('') // clear all update email input fields
-    let updateInputs = document.getElementsByClassName('reasonItem');
-    for (let i = 0; i < updateInputs.length; i++) 
-    {
-      updateInputs[i].value = ''
-    }
-  }
+  //   setNewReason('') // clear all update email input fields
+  //   let updateInputs = document.getElementsByClassName('reasonItem');
+  //   for (let i = 0; i < updateInputs.length; i++) 
+  //   {
+  //     updateInputs[i].value = ''
+  //   }
+  // }
 
 
   return (
     <div>
-    {/* <div id="butt">
-      <button class="btn btn-lg btn-primary active" onclick="history.back()">Click Me Boi!</button>
-    </div> */}
-      
-      <hr/>
       <div class="table-responsive" id="tablediv">
-      <table id="table" class="table border table-striped table-hover">
-        
-        <thead>
-          <tr class="bg-primary">
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Listing</th>
-            <th scope="col">Reason</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          {entryList.map((val, k) => {
-            return (<tr key={k}>
-              <td scope="row">{val.first_name}</td>
-              <td>{val.last_name}</td>
-              <td>{val.listing}</td>
-              <td>{val.reason}</td>
-            </tr>)})}
-        </tbody>
-      </table>
+        <table id="table" class="table border table-striped table-hover">
+          
+          <thead>
+            <tr class="bg-primary">
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Listing</th>
+              <th scope="col">Reason</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {entryList.map((val, k) => {
+              return (<tr key={k}>
+                <td scope="row">{val.first_name}</td>
+                <td>{val.last_name}</td>
+                <td>{val.listing}</td>
+                <td>{val.reason}</td>
+              </tr>)})}
+          </tbody>
+        </table>
+
       </div>
 
+      <hr/>
       
       <div id="rightside">
         <div id="information">
-          <p>
-            ${fname}
-            ${lname}
-            ${whiteliststatus}
-            ${reason}
-          </p>
+
+          <p> Name: {last_name}, {first_name} </p>
+          <p> Email: {email_address} </p>
+
           <label htmlFor="reasonBl">Reasons</label>
+
           <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
           <button className="submitButton"
             onClick={() => {
@@ -91,9 +88,12 @@ const Whitelist = () => {
               {
                 updateReason(newReason);
               }
-            }}>{whiteliststatus}</button>
+            }}>{whiteliststatus}
+          </button>
+
         </div>
       </div>
+
     </div>
   )
 }
