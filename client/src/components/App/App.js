@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <div className="container">
+      
 
       <Navigation />
       <Routes>
@@ -31,7 +31,6 @@ function App() {
 
   
      </div>
-    </div>
     </Router>
   )
 }

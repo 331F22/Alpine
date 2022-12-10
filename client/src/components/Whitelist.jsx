@@ -54,12 +54,12 @@ const Whitelist = () => {
 
   return (
     <div>
-      <div class="table-responsive" id="tablediv">
+      <div className="table-responsive" id="tablediv">
 
-        <table id="table" class="table border table-striped table-hover table table-striped">
+        <table id="table" className="table border table-striped table-hover table-dark table-striped">
           
           <thead>
-            <tr class="bg-primary">
+            <tr className="table-light">
               <th scope="col">ID</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
