@@ -35,9 +35,14 @@ const AddEntry = () => {
     window.location.reload(false);
   }
 
-
-
-
+  function updateDate() {
+        axios.put(`${process.env.REACT_APP_HOST}/api/updatewaiver`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
+          console.log("date updated");
+        })
+    }
+    
+  
+    
 
   return (
     <div className="addEntry">
@@ -66,7 +71,7 @@ const AddEntry = () => {
         <button className="submitBtn"
           onClick={() => {
             if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
-              submitEntry(); refreshPage();
+              submitEntry(); updateDate(); refreshPage();
             }
           }}
         >Add Entry</button>

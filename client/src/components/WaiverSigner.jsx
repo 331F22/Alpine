@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SignatureBox from './SignatureBox/SignatureBox.jsx';
+import axios from 'axios'
 
 const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
 
@@ -23,8 +24,20 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
 
 
         //@TODO
+
+        axios.get(`${process.env.REACT_APP_HOST}/api/checkwaiver`, {params: { first: firstName, last: lastName, email: emailAddress  }}).then((response) => {
+            console.log(response.data)
+            if (typeof response.data[0] == 'undefined' || response.data[0].Status == 0) {
+                setNeedNew(true)
+            }
+            else {
+                setNeedNew(false)
+            }
+            // setNeedNew(response.data[0].Status==0 ? true : false);
+          })
+
         console.log("Performing check for existing waiver......")
-        setNeedNew(true); // or false depending on what the database tells us
+        // setNeedNew(true); // or false depending on what the database tells us
     }
 
     // this will run every time firstname, lastname or email address changes

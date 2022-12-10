@@ -28,12 +28,42 @@ app.get("/api/read", (req, res) => {
     })
 })
 
+// SELECT * FROM volunteers WHERE date_signed < DATE_SUB(NOW(),INTERVAL 1 YEAR) AND first_name=? AND last_name=? AND email_address=?;
+// update volunteers set date_signed = now() where first_name=? and last_name=? and email_address=?;
+
+
+// get date_signed
+app.get("/api/checkwaiver", (req, res) => {
+    const fn = req.query.first
+    const ln = req.query.last
+    const ea = req.query.email
+    const sqlCheck = "select if(date_signed < now() - interval 1 year,false,true) as Status from volunteers where first_name=? AND last_name=? AND email_address=?;"
+    db.query(sqlCheck, [fn, ln, ea], (err, result) => {
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+// update waiver date
+app.put("/api/updatewaiver", (req, res) => {
+    const fn = req.body.first
+    const ln = req.body.last
+    const ea = req.body.email
+    const sqlUpdateWaiver = "UPDATE volunteers set date_signed = if((date_signed < now() - interval 1 year OR date_signed=NULL), now(), now()) where first_name=? and last_name=? and email_address=?;"
+    db.query(sqlUpdateWaiver, [fn, ln, ea], (err, result)=>{
+        if(err)  throw err;
+        res.send(result)
+    })
+})
+
 // CREATE
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
     const ea = req.body.email
-    const sqlInsert = "INSERT INTO volunteers (first_name, last_name, email_address) VALUES (?,?,?);"
+    const sqlInsert = "INSERT IGNORE INTO volunteers (first_name, last_name, email_address) VALUES (?,?,?);"
     db.query(sqlInsert, [fn, ln, ea], (err, result) => {
         if(err) throw err
         console.log("Server posted: ", fn, ln)
