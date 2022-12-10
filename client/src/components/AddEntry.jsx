@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
 import './App/App.css';
-import image from './Background.jpg';
+import Logo from './logo.png';
 
 const AddEntry = () => {
 
@@ -36,6 +36,7 @@ const AddEntry = () => {
 
   return (
     <div>
+      <div className="container">
       <div className="addEntry">
         <h2 className="display-1">Add Volunteers</h2>
         <div id='userInput'>
@@ -61,9 +62,9 @@ const AddEntry = () => {
           >Add Entry</button>
         </div>
       </div>
-      <img id="Bridger" src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png" alt="bridger"/>
+      </div>
 
-
+      
     </div>
   )
 }
