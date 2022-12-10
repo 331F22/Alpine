@@ -185,9 +185,21 @@ label {
   font-size: 40px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-h2 {
+
+
+#nav {
+  float: left;
+  max-width: 25%;
+  margin: 25px;
   
 }
+
+#nav a {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(255, 255, 255)
+}
+
+  
 
 /* @media (max-width:575.98px){
   .addEntry {

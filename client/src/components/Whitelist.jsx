@@ -11,11 +11,11 @@ const Whitelist = () => {
 
   const whiteliststatus = "Whitelist";
   var listing_string;
+  var identifier;
   // var first_name;
   // var last_name;
   // var reason;
   // var email_address;
-  // var id;
 
   // READ (GET)
   useEffect(() => 
@@ -97,11 +97,17 @@ const Whitelist = () => {
       <div id="rightside">
 
         {entryList.map((val) => {
-          return(<div id="information" key={1}>
-            <p> Name: {val.last_name}, {val.first_name} </p>
-            <p> Email: {val.email_address} </p>
+          let tmpID;
+
+          if(val.id == "503")
+          {
+            tmpID = val;
+          }
+          return(<div id="information">
+            <p> Name: {tmpID.last_name}, {tmpID.first_name} </p>
+            <p> Email: {tmpID.email_address} </p>
             <button>${whiteliststatus}</button>
-            <p> Reason: {val.reason}</p>
+            <p> Reason: {tmpID.reason}</p>
           </div>
         )})}
 
