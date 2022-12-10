@@ -96,7 +96,7 @@ const Whitelist = () => {
       
       <div id="rightside">
 
-        {entryList.map((val) => {
+        {/* {entryList.map((val) => {
           let tmpID;
 
           if(val.id == "503")
@@ -109,7 +109,7 @@ const Whitelist = () => {
             <button>${whiteliststatus}</button>
             <p> Reason: {tmpID.reason}</p>
           </div>
-        )})}
+        )})} */}
 
           <label htmlFor="reasonBl">Reasons</label>
 
