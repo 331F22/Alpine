@@ -9,6 +9,7 @@ const AddEntry = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
+  const [homeAddress, setHomeAddress] = useState('');
   const [entryList, setEntryList] = useState([])
 
 
@@ -18,8 +19,8 @@ const AddEntry = () => {
 
   // CREATE (POST)
   function submitEntry() {
-    axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
-      setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress }]
+    axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress, home: homeAddress }).then((response) => {
+      setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress, home: homeAddress }]
       )
     })
 
@@ -60,12 +61,17 @@ const AddEntry = () => {
           <label htmlFor="email">Email Address</label>
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
+         <div className="addressField" >
+          <label htmlFor="address">Home Address</label>
+          <input ref={ref3} id="address" type="address" name="address" onChange={(e) => setHomeAddress(e.target.value)} />
+        </div><br />
 
         <h4>Waiver</h4>
         <WaiverSigner
           firstName={firstName}
           lastName={lastName}
           emailAddress={emailAddress}
+          homeAddress={homeAddress}
         />
 
         <button className="submitBtn"

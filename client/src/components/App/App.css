@@ -1,6 +1,24 @@
+:root{
+  --main-color: rgb(176, 27, 31);
+  --second-color: rgb(117,126,133);
+}
+
 body {
   margin:0 10px;
 }
+
+h1 {
+  margin-top: 25px;
+  color: var(--main-color);
+  font-weight: bolder;
+}
+
+#logo {
+  margin-top: 5vw;
+  width: 70%;
+  margin-left: 15%;
+}
+
 .App {
   font-family: Arial, Helvetica, sans-serif;
   max-width:600px;
@@ -12,23 +30,26 @@ body {
 }
 #userInput div{
   width: 100%;
-  margin: auto;
+  /*margin: auto;*/
 }
 #userInput input{
   width: 90%;
   margin: 10px;
   padding: 10px;
   font-size: 2rem;
-  border-radius: 5px;
-  color: #333;
-  background-color:rgba(135, 206, 235, 0.3);
+  color: white;
+  height: 20%;
+  border: 3.5px solid var(--main-color);
+  background-color: rgba(117,126,133, 0.5);
 }
 #firstLastName {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 #userInput label{
   display: block;
+  color: var(--second-color);
 }
 .userData {
   display: flex;
@@ -41,6 +62,13 @@ body {
   padding: 10px;
   width: 50%;
   margin: 10px auto;
+  background-color: var(--main-color);
+  color: white;
+  /*border:3px solid var(--second-color);*/
+  border: none;
+  border-radius: 24px;
+  font-size: larger;
+  font-weight: bold;
 }
 .editField{
   margin: 20px 0;

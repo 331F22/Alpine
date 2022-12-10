@@ -8,6 +8,8 @@ function App() {
 
   return (
     <div className="App">
+      <img id="logo" src={require('./BSFlogo.jpg')} />
+      <h1>Volunteer Signup</h1>
       <h1>Entries</h1>
 
       <AddEntry />
