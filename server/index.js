@@ -64,7 +64,7 @@ app.post("/api/create", (req, res) => {
     const ln = req.body.last
     const ea = req.body.email
     const ha = req.body.home
-    const sig = req.body.home
+    const sig = req.body.signature
 
     // create a mysql compliant time 
     // source: https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
