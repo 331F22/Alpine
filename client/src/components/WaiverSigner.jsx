@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import SignatureBox from './SignatureBox/SignatureBox.jsx';
 import axios from 'axios'
 
-const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress, setSignatureImage}) => {
+const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress, setSignatureImage, needNew, setNeedNew}) => {
 
-    const [needNew, setNeedNew] = useState(false)
     const [startedTesting, setStartedTesting] = useState(false)
 
 
@@ -36,9 +35,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress, setSigna
                 else {
                     setNeedNew(false)
                 }
-                // setNeedNew(response.data[0].Status==0 ? true : false);
             })
-            setNeedNew(true);
 
         }
 

@@ -14,6 +14,9 @@ const AddEntry = () => {
   const [entryList, setEntryList] = useState([])
 
 
+  const [needSignature, setNeedSignature] = useState(true);
+
+
   // CREATE (POST)
   function submitEntry() {
     axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress, home: homeAddress, signature: signatureImage }).then((response) => {
@@ -64,14 +67,14 @@ const AddEntry = () => {
           emailAddress={emailAddress}
           homeAddress={homeAddress}
           setSignatureImage={setSignatureImage}
+          needNew={needSignature}
+          setNeedNew={setNeedSignature}
         />
 
         <button className="submitBtn"
           onClick={() => {
 
-
-
-            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0 && homeAddress.length > 0 && signatureImage.length > 0) {
+            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0 && homeAddress.length > 0 && (signatureImage.length > 0 || !needSignature)) {
               submitEntry(); updateDate(); refreshPage();
             }
           }}
