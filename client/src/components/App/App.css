@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
   /* margin:0 10px; */
   background-image: url(https://www.solidbackgrounds.com/images/1920x1080/1920x1080-vivid-sky-blue-solid-color-background.jpg);
   background-repeat: repeat;  
@@ -11,6 +12,11 @@ body {
   justify-content: center;
   width: auto;
   padding: 1rem;
+=======
+  margin:0 10px;
+  background-image: url(https://wallpaperaccess.com/full/475110.jpg);
+  background-repeat: repeat;
+>>>>>>> 17e5d5276828efa7afeaaa8b6bde71ac399875d9
 }
 
 .App {

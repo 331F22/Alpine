@@ -29,9 +29,8 @@ function App() {
         <Route path = '/' element = {<AddEntry />} />
         <Route path = '/currententries' element = {<CurrentEntries />} />
         <Route path = '/whitelist' element = {<Whitelist />} />
-
-<<<<<<< HEAD
       </Routes>
+<<<<<<< HEAD
 =======
 >>>>>>> bdadab45ba5f26b770d8ebca97248e3f62528f6c
       <AddEntry />
@@ -64,6 +63,8 @@ function App() {
 =======
       {/* </div> */}
 
+=======
+>>>>>>> 17e5d5276828efa7afeaaa8b6bde71ac399875d9
      </div>
     </Router>
 >>>>>>> bdadab45ba5f26b770d8ebca97248e3f62528f6c
