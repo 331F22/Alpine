@@ -26,11 +26,14 @@ const Whitelist = () => {
     })
   }, [])
 
-  function setWhitelistUserView(e) {
-    const currID = e.target.value;
-    console.log(currID);
-    setViewingID(viewingID, 2);
-  }
+  // function setWhitelistUserView(e) {
+  //   const currID = e.target.value;
+  //   console.log(currID);
+  //   setViewingID(viewingID, 2);
+  // }
+
+  // In Rows
+  // value={email_address} onClick={setWhitelistUserView}
 
   // const updateReason = (reason) => 
   // { // replaces ALL such email instances in the database
@@ -88,7 +91,7 @@ const Whitelist = () => {
               }
 
               return (
-              <tr key={index} value={email_address} onClick={setWhitelistUserView}>
+              <tr key={index}>
                 <td>{val.id}</td>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
