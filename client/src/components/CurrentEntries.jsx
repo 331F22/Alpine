@@ -136,7 +136,11 @@ const CurrentEntries = () => {
       <div className='userData'>
         {entryList.map((val, k) => {
           return (<div key={k}>
-            <div>{val.date_signed}  {val.last_name}, {val.first_name}, {val.home_address} <span className="emailListed">{val.email_address}</span> <img src={val.signature_img} width="50" height="20"></img>  </div>
+            <div>
+              {val.date_signed}  {val.last_name}, {val.first_name}, {val.home_address}
+              <span className="emailListed">{val.email_address}</span>
+              {val.signature_img !== '' ? <img src={val.signature_img} width="50" height="20"></img> : ""}
+            </div>
 
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
