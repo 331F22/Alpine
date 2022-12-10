@@ -56,7 +56,7 @@ const Whitelist = () => {
     <div>
       <div class="table-responsive" id="tablediv">
 
-        <table id="table" class="table border table-striped table-hover">
+        <table id="table" class="table border table-striped table-hover table table-striped">
           
           <thead>
             <tr class="bg-primary">
