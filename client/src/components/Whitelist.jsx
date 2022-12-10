@@ -9,12 +9,13 @@ const Whitelist = () => {
   const [entryList, setEntryList] = useState([])
   const [newReason, setNewReason] = useState('');
 
-  const whiteliststatus = "Blacklist";
-  var first_name;
-  var last_name;
-  var reason;
-  var email_address;
-  // var id;
+  const whiteliststatus = "Whitelist";
+  var listing_string;
+  var identifier;
+  // var first_name;
+  // var last_name;
+  // var reason;
+  // var email_address;
 
   // READ (GET)
   useEffect(() => 
@@ -55,10 +56,11 @@ const Whitelist = () => {
     <div>
       <div class="table-responsive" id="tablediv">
 
-        <table id="table" class="table border table-striped table-hover">
+        <table id="table" class="table border table-striped table-hover table table-striped">
           
           <thead>
             <tr class="bg-primary">
+              <th scope="col">ID</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Listing</th>
@@ -68,10 +70,21 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, k) => {
+              if(val.listing == 1)
+              {
+                listing_string = "Whitelisted"
+              }
+              else
+              {
+                listing_string = "Blacklisted"
+              }
+
               return (<tr key={k}>
-                <td scope="row">{val.first_name}</td>
+
+                <td>{val.id}</td>
+                <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
-                <td>{val.listing}</td>
+                <td>{listing_string}</td>
                 <td>{val.reason}</td>
               </tr>)})}
           </tbody>
@@ -82,19 +95,27 @@ const Whitelist = () => {
       <hr/>
       
       <div id="rightside">
-        <div id="information">
 
-          <p> Name: {last_name}, {first_name} </p>
-          <p> Email: {email_address} </p>
-          <button>{whiteliststatus}</button>
-          <p> Reason: {reason}</p>
+        {entryList.map((val) => {
+          let tmpID;
+
+          if(val.id == "503")
+          {
+            tmpID = val;
+          }
+          return(<div id="information">
+            <p> Name: {tmpID.last_name}, {tmpID.first_name} </p>
+            <p> Email: {tmpID.email_address} </p>
+            <button>${whiteliststatus}</button>
+            <p> Reason: {tmpID.reason}</p>
+          </div>
+        )})}
 
           <label htmlFor="reasonBl">Reasons</label>
 
           <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
           <button className="submitButton">Submit Reason</button>
 
-        </div>
       </div>
 
     </div>
