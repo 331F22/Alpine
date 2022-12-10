@@ -21,34 +21,7 @@ function App() {
         <Route path = '/' element = {<AddEntry />} />
         <Route path = '/currententries' element = {<CurrentEntries />} />
         <Route path = '/whitelist' element = {<Whitelist />} />
-
-<<<<<<< HEAD
       </Routes>
-=======
-      <AddEntry />
-      {/* <hr /> */}
-      {/* <CurrentEntries /> */}
-      {/* <hr /> */}
-      <br />
-<<<<<<< HEAD
->>>>>>> 854de3eda7f68a6d3a76c168abed5b31fd3fc4cb
-=======
->>>>>>> 854de3eda7f68a6d3a76c168abed5b31fd3fc4cb
-
-      {/* <div className="ListDivider">
-        <Whitelist />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <hr />  */}
-=======
-        <br /> 
->>>>>>> 854de3eda7f68a6d3a76c168abed5b31fd3fc4cb
-=======
-        <br /> 
->>>>>>> 854de3eda7f68a6d3a76c168abed5b31fd3fc4cb
-        {/* <Footer /> */}
-      {/* </div> */}
-
      </div>
     </Router>
   )

@@ -1,8 +1,7 @@
 body {
   margin:0 10px;
   background-image: url(https://wallpaperaccess.com/full/475110.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-repeat: repeat;
 }
 .App {
   font-family: Arial, Helvetica, sans-serif;
