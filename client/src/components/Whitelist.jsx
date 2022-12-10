@@ -7,15 +7,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Whitelist = () => {
 
   const [entryList, setEntryList] = useState([])
-  const [newReason, setNewReason] = useState('');
+  const [viewingID, setViewingID] = useState([])
+  const [newReason, setNewReason] = useState('')
 
   const whiteliststatus = "Whitelist";
   var listing_string;
-  var identifier;
   // var first_name;
   // var last_name;
   // var reason;
-  // var email_address;
+  var email_address = "edward";
 
   // READ (GET)
   useEffect(() => 
@@ -25,6 +25,12 @@ const Whitelist = () => {
       setEntryList(response.data)
     })
   }, [])
+
+  function setWhitelistUserView(e) {
+    const currID = e.target.value;
+    console.log(currID);
+    setViewingID(viewingID, 2);
+  }
 
   // const updateReason = (reason) => 
   // { // replaces ALL such email instances in the database
@@ -54,12 +60,12 @@ const Whitelist = () => {
 
   return (
     <div>
-      <div class="table-responsive" id="tablediv">
+      <div className="table-responsive" id="tablediv">
 
-        <table id="table" class="table border table-striped table-hover table table-striped">
+        <table id="table" className="table border table-striped table-hover table table-striped">
           
           <thead>
-            <tr class="bg-primary">
+            <tr className="bg-primary">
               <th scope="col">ID</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
@@ -69,7 +75,9 @@ const Whitelist = () => {
           </thead>
 
           <tbody>
-            {entryList.map((val, k) => {
+            {entryList.map((val, index) => {
+              email_address = "tempEmail"
+
               if(val.listing == 1)
               {
                 listing_string = "Whitelisted"
@@ -79,8 +87,8 @@ const Whitelist = () => {
                 listing_string = "Blacklisted"
               }
 
-              return (<tr key={k}>
-
+              return (
+              <tr key={index} value={email_address} onClick={setWhitelistUserView}>
                 <td>{val.id}</td>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
@@ -96,25 +104,18 @@ const Whitelist = () => {
       
       <div id="rightside">
 
-        {entryList.map((val) => {
-          let tmpID;
-
-          if(val.id == "503")
-          {
-            tmpID = val;
-          }
-          return(<div id="information">
-            <p> Name: {tmpID.last_name}, {tmpID.first_name} </p>
-            <p> Email: {tmpID.email_address} </p>
-            <button>${whiteliststatus}</button>
-            <p> Reason: {tmpID.reason}</p>
+        <div id="information">
+            <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
+            <p> Email: {viewingID?.email_address} </p>
+            <button>{whiteliststatus}</button>
+            {/* <p> Reason: {tmpID?.reason}</p> */}
           </div>
-        )})}
 
-          <label htmlFor="reasonBl">Reasons</label>
+
+          {/* <label htmlFor="reasonBl">Reasons</label>
 
           <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
-          <button className="submitButton">Submit Reason</button>
+          <button className="submitButton">Submit Reason</button> */}
 
       </div>
 
