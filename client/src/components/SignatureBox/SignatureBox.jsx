@@ -2,22 +2,29 @@ import React, { useRef, useState } from 'react'
 import './SignatureBox.css';
 import SignatureCanvas from 'react-signature-canvas'
 
-const SignatureBox = () => {
+const SignatureBox = (props) => {
     let sigCanvas = useRef();
 
-    // this is here just for debugging/testing
-    const [img, setImg] = useState("");   
+    function updateImg() {
+        if (sigCanvas.isEmpty()) {
+            props.setImg('')
+        }
+        else {
+            props.setImg(sigCanvas.toDataURL("image/png")) // save signature as image and propogate it up
+        }
+    }
 
     return (
         <>
             <div className='signature-wrapper'>
-                <SignatureCanvas ref={(ref) => { sigCanvas = ref }}
+                <SignatureCanvas ref={(ref) => { sigCanvas = ref }} onEnd={() => { updateImg() }}
                     penColor='black' canvasProps={{ className: 'signature' }} />
             </div>
 
             <div className='signature-controls'>
                 <button onClick={() => {
                     sigCanvas.clear();
+                    updateImg();
                 }}>Clear</button>
 
                 <button onClick={() => {
@@ -28,19 +35,12 @@ const SignatureBox = () => {
                         data.pop();
                         sigCanvas.fromData(data); // reload it after poping off the last stroke
                     }
+
+                    updateImg();
                 }}>Undo</button>
 
-
-
-                <button onClick={() => {
-                    console.log()
-                    
-                    setImg(sigCanvas.toDataURL("image/png"))
-
-                }}>Test</button>
             </div>
 
-            <img src={img}></img>
         </>
     )
 }

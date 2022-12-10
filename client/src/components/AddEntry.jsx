@@ -10,26 +10,18 @@ const AddEntry = () => {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [homeAddress, setHomeAddress] = useState('');
+  const [signatureImage, setSignatureImage] = useState('');
   const [entryList, setEntryList] = useState([])
 
 
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-
   // CREATE (POST)
   function submitEntry() {
-    axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress, home: homeAddress }).then((response) => {
-      setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress, home: homeAddress }]
+    axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress, home: homeAddress, signature: signatureImage }).then((response) => {
+      setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress, home: homeAddress, signature: signatureImage }]
       )
     })
 
-    ref1.current.value = ""
-    setFirstName('')
-    ref2.current.value = ""
-    setLastName('')
-    ref3.current.value = ""
-    setEmailAddress('')
+
   }
 
   function refreshPage() {
@@ -37,13 +29,12 @@ const AddEntry = () => {
   }
 
   function updateDate() {
-        axios.put(`${process.env.REACT_APP_HOST}/api/updatewaiver`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
-          console.log("date updated");
-        })
-    }
-    
-  
-    
+    axios.put(`${process.env.REACT_APP_HOST}/api/updatewaiver`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
+      console.log("date updated");
+    })
+  }
+
+
 
   return (
     <div className="addEntry">
@@ -51,19 +42,19 @@ const AddEntry = () => {
       <div id='userInput'>
         <div>
           <label htmlFor="firstName">First Name</label>
-          <input ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+          <input id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="lastName">Last Name</label>
-          <input ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+          <input id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
         </div><br />
         <div className="emailField" >
           <label htmlFor="email">Email Address</label>
-          <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+          <input id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
-         <div className="addressField" >
+        <div className="addressField" >
           <label htmlFor="address">Home Address</label>
-          <input ref={ref3} id="address" type="address" name="address" onChange={(e) => setHomeAddress(e.target.value)} />
+          <input id="address" type="address" name="address" onChange={(e) => setHomeAddress(e.target.value)} />
         </div><br />
 
         <h4>Waiver</h4>
@@ -72,11 +63,15 @@ const AddEntry = () => {
           lastName={lastName}
           emailAddress={emailAddress}
           homeAddress={homeAddress}
+          setSignatureImage={setSignatureImage}
         />
 
         <button className="submitBtn"
           onClick={() => {
-            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
+
+
+
+            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0 && homeAddress.length > 0 && signatureImage.length > 0) {
               submitEntry(); updateDate(); refreshPage();
             }
           }}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SignatureBox from './SignatureBox/SignatureBox.jsx';
 import axios from 'axios'
 
-const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress }) => {
+const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress, setSignatureImage}) => {
 
     const [needNew, setNeedNew] = useState(false)
     const [startedTesting, setStartedTesting] = useState(false)
@@ -11,7 +11,6 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress }) => {
     // slowModeId refers to the timeout that waits 1 seconds after the user last inputed something
     // we need to keep track of it so we can cancel old timers 
     const [slowModeId, setSlowModeId] = useState(undefined)
-
 
 
     // this will run every time firstname, lastname or email address changes
@@ -39,6 +38,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress }) => {
                 }
                 // setNeedNew(response.data[0].Status==0 ? true : false);
             })
+            setNeedNew(true);
 
         }
 
@@ -49,7 +49,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress }) => {
 
         setSlowModeId(setTimeout(testForExistingWaiver, 1000)) // start up new timer
 
-    }, [firstName, lastName, emailAddress, slowModeId]);
+    }, [firstName, lastName, emailAddress, homeAddress]);
 
 
 
@@ -62,7 +62,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress }) => {
                     <>
                         <a href="https://github.com/331F22/resources/blob/c41f31287f51e4a23e6b3d4f88bcb79cf8fd17ae/Volunteer%20Competition%20Worker%20Registration%20USSA.pdf">Read Waiver</a>
                         <label htmlFor="signature">Signature</label>
-                        <SignatureBox id="signature" />
+                        <SignatureBox id="signature" setImg={setSignatureImage}/>
                     </>
                     :
                     <>
