@@ -63,13 +63,15 @@ app.post("/api/create", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
     const ea = req.body.email
+    const ha = req.body.home
+    const sig = req.body.home
 
     // create a mysql compliant time 
     // source: https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
     const datesigned = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-    const sqlInsert = "INSERT IGNORE INTO volunteers (first_name, last_name, email_address, date_signed) VALUES (?,?,?,?);"
-    db.query(sqlInsert, [fn, ln, ea, datesigned], (err, result) => {
+    const sqlInsert = "INSERT IGNORE INTO volunteers (first_name, last_name, email_address, home_address, date_signed, signature_img) VALUES (?,?,?,?,?,?);"
+    db.query(sqlInsert, [fn, ln, ea, ha, datesigned, sig], (err, result) => {
         if(err) throw err
         console.log("Server posted: ", fn, ln)
         res.send(result)

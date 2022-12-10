@@ -56,7 +56,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress, homeAddress, setSigna
     return (
         <>
             {!startedTesting ?
-                <div>Enter your first name, last name, email, and address to see if you need to sign up any waivers.</div>
+                <div>Enter your first name, last name, email, and address to see if you need to sign up for any waivers.</div>
                 :
                 needNew ?
                     <>
