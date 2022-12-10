@@ -12,44 +12,44 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
     // we need to keep track of it so we can cancel old timers 
     const [slowModeId, setSlowModeId] = useState(undefined)
 
-    function testForExistingWaiver() {
-        setSlowModeId(undefined) // reset
 
-        // if nothing give up: it's not our focus for our project to work on input validation, 
-        // this is the bare minimum to not check for existing so much
-        if (firstName == "" || lastName == "" || emailAddress == "") {
-            return;
-        }
-        setStartedTesting(true);
-
-
-        //@TODO
-
-        axios.get(`${process.env.REACT_APP_HOST}/api/checkwaiver`, {params: { first: firstName, last: lastName, email: emailAddress  }}).then((response) => {
-            console.log(response.data)
-            if (typeof response.data[0] == 'undefined' || response.data[0].Status == 0) {
-                setNeedNew(true)
-            }
-            else {
-                setNeedNew(false)
-            }
-            // setNeedNew(response.data[0].Status==0 ? true : false);
-          })
-
-        console.log("Performing check for existing waiver......")
-        // setNeedNew(true); // or false depending on what the database tells us
-    }
 
     // this will run every time firstname, lastname or email address changes
     useEffect(() => {
 
+        function testForExistingWaiver() {
+            setSlowModeId(undefined) // reset
+
+            // if nothing give up: it's not our focus for our project to work on input validation, 
+            // this is the bare minimum to not check for existing so much
+            if (firstName === "" || lastName === "" || emailAddress === "") {
+                return;
+            }
+            setStartedTesting(true);
+
+
+            // test whether we need a need waiver signature
+            axios.get(`${process.env.REACT_APP_HOST}/api/checkwaiver`, { params: { first: firstName, last: lastName, email: emailAddress } }).then((response) => {
+                console.log(response.data)
+                if (typeof response.data[0] === 'undefined' || response.data[0].Status === 0) {
+                    setNeedNew(true)
+                }
+                else {
+                    setNeedNew(false)
+                }
+                // setNeedNew(response.data[0].Status==0 ? true : false);
+            })
+
+        }
+
+
         // reset any previous timeout before it finishes
-        if (slowModeId != undefined)
+        if (slowModeId !== undefined)
             clearTimeout(slowModeId)
 
         setSlowModeId(setTimeout(testForExistingWaiver, 1000)) // start up new timer
 
-    }, [firstName, lastName, emailAddress]);
+    }, [firstName, lastName, emailAddress, slowModeId]);
 
 
 
@@ -60,7 +60,7 @@ const WaiverSigner = ({ firstName, lastName, emailAddress }) => {
                 :
                 needNew ?
                     <>
-                        <a>Read Waiver</a>
+                        <a href="https://github.com/331F22/resources/blob/c41f31287f51e4a23e6b3d4f88bcb79cf8fd17ae/Volunteer%20Competition%20Worker%20Registration%20USSA.pdf">Read Waiver</a>
                         <label htmlFor="signature">Signature</label>
                         <SignatureBox id="signature" />
                     </>
