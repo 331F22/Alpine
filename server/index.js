@@ -61,7 +61,7 @@ app.put("/api/update", (req, res) => {
     console.log("Ready to change: ", oe, "to", ne)
     const sqlUpdate = "UPDATE volunteers SET email_address = ? WHERE email_address = ?"
     db.query(sqlUpdate, [ne, oe], (err, result)=>{
-        if(err)  throw err;
+        if(err)  throw err
         console.log("Server changed: ", oe, "to", ne)
         res.send(result)
     })
