@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios'
 
+
 const CurrentEntries = () => {
 
   const SECRET = process.env.REACT_APP_PASSCODE
@@ -139,11 +140,11 @@ const CurrentEntries = () => {
             <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
 
             <div className="editControls editGui">
-              <button className='delete' onClick={() => {
+              <button className='Delete' class="btn btn-danger btn-lg" onClick={() => {
 
                 deleteEntry(val.email_address)
               }}>delete</button>
-              <button className='update' onClick={() => {
+              <button className='Update' class="btn btn-danger btn-lg" onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
@@ -155,13 +156,13 @@ const CurrentEntries = () => {
 
         })}
         <div className="editField editGui">
-          <button id="editButton" onClick={handleEditList}>Edit List</button>
-          <button id="doneButton" onClick={handleFinishedEditing}>Finished Editing</button>
-          <input id="editPasscodeInput" ref={refPass} type="password"
+          <button id="editButton" type="button" className="btn btn-danger btn-sm btn btn-outline-Secondary submitBtn"  onClick={handleEditList}>Edit List</button>
+          <button id="doneButton"type="button" className="btn btn-danger btn-sm btn btn-outline-Secondary submitBtn" onClick={handleFinishedEditing}>Finished Editing</button>
+          <input id="editPasscodeInput" class="form-control" aria-label="Passcode" aria-describedby="basic-addon1" ref={refPass} type="password"
             placeholder='Enter passcode' onChange={checkPasscode}
             onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
         </div>
-        <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
+        <button id="submitEmailsButton" className='submitBtn'class="btn btn-danger btn-sm btn btn-outline-Secondary" onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
 
       </div>
     </div>
