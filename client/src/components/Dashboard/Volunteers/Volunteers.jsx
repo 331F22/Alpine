@@ -137,7 +137,7 @@ const Volunteers = () => {
         axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
             console.log(response.data);
             setEntryList(response.data)
-        })
+        }).catch()
     }, [])
 
     return (

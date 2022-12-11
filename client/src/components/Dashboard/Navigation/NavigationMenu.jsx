@@ -3,6 +3,8 @@ import { React, useState } from "react";
 import NavigationItem from "./NavigationItem";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Divider from '@mui/material/Divider';
 import "./Navigation.css"
 
 /**
@@ -38,12 +40,19 @@ const NavigationContainer = ({ title, routes }) => {
                 </a>
             </div>
 
+            <div className={"itemsContainer"}>
             {/* Create NavigationItem components for each route */}
             {routes.map(({ icon, label, route }) => {
                 return <NavigationItem icon={icon} label={label} route={route} />
             })}
+            </div>
+            <Divider variant={"middle"} className={"divider"} />
+            <div className={"navigationFooterContainer"}>
+                <NavigationItem icon={<LogoutIcon />} label={"Sign out"} route={"/"} />
+            </div>
         </div>
     )
 }
+
 
 export default NavigationContainer;

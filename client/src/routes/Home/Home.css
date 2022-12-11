@@ -1,83 +1,114 @@
 body {
-  margin:0 10px;
+  margin: 0 10px;
 }
+
 .App {
   font-family: Arial, Helvetica, sans-serif;
-  max-width:600px;
+  max-width: 600px;
   margin: auto;
 }
+
 #userInput {
   display: flex;
   flex-direction: column;
 }
-#userInput div{
+
+#userInput div {
   width: 100%;
   margin: auto;
 }
-#userInput input{
+
+#userInput input {
   width: 90%;
   margin: 10px;
   padding: 10px;
   font-size: 2rem;
   border-radius: 5px;
   color: #333;
-  background-color:rgba(135, 206, 235, 0.3);
+  background-color: rgba(135, 206, 235, 0.3);
 }
+
 #firstLastName {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-#userInput label{
+
+#userInput label {
   display: block;
 }
+
 .userData {
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
 }
+
 .submitBtn {
   margin: 20px;
   padding: 10px;
   width: 50%;
   margin: 10px auto;
 }
-.editField{
+
+.editField {
   margin: 20px 0;
 }
-.floatLeft{
-  float:left;
+
+.floatLeft {
+  float: left;
 }
-.floatRight{
-  float:right;
+
+.floatRight {
+  float: right;
 }
+
 .clear {
-  clear:both;
+  clear: both;
 }
-.emailListed{
-  float:right;
+
+.emailListed {
+  float: right;
   margin-right: 2rem;
 }
-.editControls{
+
+.editControls {
   display: none;
 }
+
 .editGui {
   margin-bottom: 20px;
 }
+
 .editGui button {
   width: 20%;
   margin-right: 1em;
 }
+
 .editGui input {
   width: 50%;
   padding: 5px;
 }
-#doneButton{
+
+#doneButton {
   display: none;
 }
-#editPasscodeInput{
+
+#editPasscodeInput {
   visibility: hidden;
 }
-#submitEmailsButton{
+
+#submitEmailsButton {
   display: none;
+}
+
+.loginBtnContainer {
+  text-align: center;
+}
+
+.loginBtn {
+  margin: 20px;
+  padding: 10px;
+  width: 50%;
+  margin: 10px auto;
 }
