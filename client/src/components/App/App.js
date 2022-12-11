@@ -39,20 +39,9 @@ function App() {
       <Footer />
 
     </div>
-
-      <Navigation />
-      <Routes>
-        <Route path = '/' element = {<AddEntry />} />
-        <Route path = '/currententries' element = {<CurrentEntries />} />
-        <Route path = '/whitelist' element = {<Whitelist />} />
-        
-      </Routes>
       
-      <Footer/>
-
-    
-     </div>
-    </Router>
+     
+   
   )
 
 }
