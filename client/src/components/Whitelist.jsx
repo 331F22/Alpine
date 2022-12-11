@@ -8,28 +8,10 @@ const Whitelist = () => {
 
   const [entryList, setEntryList] = useState([])
   const [viewingID, setViewingID] = useState([])
-  const [whitelistStatus, setStatus] = useState("Blacklist");
-  const [newReason, setNewReason] = useState('')
 
   var listing_string;
-  // var first_name;
-  // var last_name;
-  // var reason;
-  var email_address = "edward";
 
   // ----------------------------------------------------------------------------------------
-  const changeStatus = (id) => {
-
-    if (id == 1)
-    {
-      setStatus("Whitelist")
-
-    }
-    else
-    {
-      setStatus("Blacklist")
-    }
-  }
 
 
   // -----------------------------------------------------------------------------------------
@@ -80,8 +62,8 @@ const Whitelist = () => {
 
 
   return (
-    <div>
-      <div className="table-responsive" id="tablediv">
+    <div id="grid-container">
+      <div className="table-responsive" id="grid-inner-right">
 
         <table id="table" className="table border table-striped table-hover table-dark table-striped">
           
@@ -97,9 +79,8 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, index) => {
-              email_address = "emailTest";
 
-              if(val.listing == 1)
+              if(val.listing === 1)
               {
                 listing_string = "Whitelisted"
               }
@@ -119,19 +100,16 @@ const Whitelist = () => {
         </table>
 
       </div>
-
-      <hr/>
-      
-      <div className="rightFormat">
+      <div id="grid-inner-left">
         
-          <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
-          <p> Email: {viewingID?.email_address} </p>
-          
-          {/* <button type="button" className="btn btn-dark" onClick={() => changeStatus(tempID)}>{whitelistStatus}</button> */}
-          
-          {/* <button type="button" className="btn" onClick={this.handleState}>Click Here to Test View</button>
-          <p>{this.state.content}</p> */}
-      
+          <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
+          <p className="h5"> Email: {viewingID?.email_address} </p>
+          <br />
+          <button type="button" className="btn btn-dark">Blacklist</button>
+          <br /><br />
+          <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning">{viewingID?.reason}</textarea>
+          <br />
+          <button type="button" className="btn btn-dark">Submit Reason</button>
       </div>
     </div>
   )

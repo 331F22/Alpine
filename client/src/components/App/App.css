@@ -212,14 +212,37 @@ footer {
   
 }
 
-.rightFormat {
-
-}
-
 .currentEntries {
 background: rgba(36, 120, 176, 0.4);
-max-width: 70%;
+max-width: 100%;
 margin: auto;
+}
+
+
+/*Whitelist Grid CSS*/
+
+#grid-container {
+width: 100%;
+background: mediumspringgreen;
+display: grid;
+padding: 25px 25px 25px 25px;
+grid-template-columns: auto auto;
+gap: 20px 20px;
+}
+
+#grid-inner-right {
+background: green;
+width: 100%;
+margin: 1px 1px 1px 1px;
+grid-column: 1;
+}
+
+#grid-inner-left {
+background: green;
+width: 600px; 
+margin: 1px 1px 1px 1px;
+padding: 10px 10px 10px 10px;
+grid-column: 2;
 }
 
 /* @media (max-width:575.98px){
