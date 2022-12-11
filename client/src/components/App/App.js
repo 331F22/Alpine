@@ -11,6 +11,7 @@ import CurrentEntries from '../CurrentEntries.jsx';
 // import Footer from '../Footer.jsx';
 import Whitelist from '../Whitelist.jsx';
 import Navigation from '../Navigation'
+import Footer from '../Footer';
 
 
 
@@ -27,12 +28,16 @@ function App() {
         <Route path = '/' element = {<AddEntry />} />
         <Route path = '/currententries' element = {<CurrentEntries />} />
         <Route path = '/whitelist' element = {<Whitelist />} />
+        
       </Routes>
+      
+      <Footer/>
 
-  
+    
      </div>
     </Router>
   )
+
 }
 
 export default App;
