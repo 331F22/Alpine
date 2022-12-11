@@ -122,7 +122,7 @@ const Whitelist = () => {
 
       <hr/>
       
-      <div id="rightside">
+      <div className="rightFormat">
         
           <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p> Email: {viewingID?.email_address} </p>
