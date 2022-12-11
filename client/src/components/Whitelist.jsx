@@ -15,7 +15,6 @@ const Whitelist = () => {
   // var first_name;
   // var last_name;
   // var reason;
-  var tempID;
   var email_address = "edward";
 
   // ----------------------------------------------------------------------------------------
@@ -24,12 +23,11 @@ const Whitelist = () => {
     if (id == 1)
     {
       setStatus("Whitelist")
-      tempID = 0
+
     }
     else
     {
       setStatus("Blacklist")
-      tempID = 1
     }
   }
 
@@ -45,11 +43,12 @@ const Whitelist = () => {
     })
   }, [])
 
-  // function setWhitelistUserView(e) {
-  //   const currID = e.target.value;
-  //   console.log(currID);
-  //   setViewingID(viewingID, 2);
-  // }
+  function setWhitelistUserView(e) {
+    var tempID = entryList[e];
+    setViewingID(tempID);
+    console.log("Print Email: " + e);
+    //setViewingID(viewingID, 2);
+  }
 
   // In Rows
   // value={email_address} onClick={setWhitelistUserView}
@@ -98,7 +97,7 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, index) => {
-              email_address = "tempEmail"
+              email_address = "emailTest";
 
               if(val.listing == 1)
               {
@@ -108,9 +107,8 @@ const Whitelist = () => {
               {
                 listing_string = "Blacklisted"
               }
-
               return (
-              <tr key={index}>
+              <tr key={index} onClick={() => setWhitelistUserView(index)}>
                 <td>{val.id}</td>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
@@ -129,7 +127,7 @@ const Whitelist = () => {
           <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p> Email: {viewingID?.email_address} </p>
           
-          <button type="button" className="btn btn-dark" onClick={() => changeStatus(tempID)}>{whitelistStatus}</button>
+          {/* <button type="button" className="btn btn-dark" onClick={() => changeStatus(tempID)}>{whitelistStatus}</button> */}
           
           {/* <button type="button" className="btn" onClick={this.handleState}>Click Here to Test View</button>
           <p>{this.state.content}</p> */}

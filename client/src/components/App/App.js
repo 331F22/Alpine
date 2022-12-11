@@ -6,7 +6,6 @@ import { HashRouter as Router, Routes, Route}
 import 'bootstrap/dist/css/bootstrap.css';
 
 import AddEntry from '../AddEntry.jsx';
-// import Blacklist from '../Blacklist.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx';
 import Whitelist from '../Whitelist.jsx';
