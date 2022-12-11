@@ -150,7 +150,7 @@ const Whitelist = () => {
           <br /><br />
           <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
           <br />
-          <button type="button" className="Update" class="btn btn-danger btn-lg" onClick={() => {
+          <button type="button" className="Update" class="btn btn-outline-dark btn-lg" onClick={() => {
             setNewListing(0);
             if (newReason.length > 0) {
               updateReason(viewingID?.email_address);
