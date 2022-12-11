@@ -75,8 +75,10 @@ const Whitelist = () => {
 
 
   return (
+    <div>
+      <h2 clannName="h2">Whitlisting/Blacklisting</h2>
     <div id="grid-container">
-      <div className="table-responsive" id="grid-inner-right">
+      <div className="table-responsive" id="grid-inner-left">
 
         <table id="table" className="table border table-striped table-hover table-dark table-striped">
           
@@ -114,7 +116,7 @@ const Whitelist = () => {
         </table>
 
       </div>
-      <div id="grid-inner-left">
+      <div id="grid-inner-right">
         
           <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p className="h5"> Email: {viewingID?.email_address} </p>
@@ -125,6 +127,7 @@ const Whitelist = () => {
           <br />
           <button type="button" className="btn btn-dark">Submit Reason</button>
       </div>
+    </div>
     </div>
   )
 }
