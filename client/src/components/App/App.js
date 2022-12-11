@@ -11,7 +11,7 @@ import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx';
 import Whitelist from '../Whitelist.jsx';
 import Navigation from '../Navigation'
-import Footer from '../Footer';
+
 
 
 
@@ -21,8 +21,9 @@ function App() {
   return (
 
     <div className="App">
+      
+      
       <Router>
-      <div>
         
 
         <Navigation />
@@ -33,10 +34,11 @@ function App() {
         </Routes>
 
     
-      </div>
+        
       </Router>
+      <Footer/>
 
-      <Footer />
+      
 
     </div>
       

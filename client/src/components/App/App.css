@@ -6,12 +6,6 @@ body {
   
 }
 
-footer {
-  display: table-row;
-  height: 0;
-  margin: auto;
-}
-
 .App {
   font-family: Arial, Helvetica, sans-serif;
   /* max-width: 75%; */
@@ -206,13 +200,14 @@ label {
 }
 
 footer {
-  position: fixed;
+  position:absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100%; 
   background-color: #dc3545;
   color: white;
   text-align: center;
+  
 }
 
 .currentEntries {
