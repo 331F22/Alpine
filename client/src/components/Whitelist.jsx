@@ -9,6 +9,8 @@ const Whitelist = () => {
   const [entryList, setEntryList] = useState([])
   const [viewingID, setViewingID] = useState([])
   const [stringStatus, setStringStatus] = useState("Blacklist")
+  const [newReason, setNewReason] = useState('')
+  const [newListing, setNewListing] = useState()
 
   // ----------------------------------------------------------------------------------------
 
@@ -34,6 +36,18 @@ const Whitelist = () => {
     setStringStatus(listing_string);
   }
 
+  function getObjectByValue(objVal) {
+    let objectWithValue = {}
+    entryList.forEach(entry => {
+      if (Object.values(entry).indexOf(objVal) > -1) 
+      { // email value is inside obj inside array
+        console.log('entry', entry)
+        objectWithValue = entry
+      }
+    })
+    return objectWithValue
+  }
+
   // -----------------------------------------------------------------------------------------
 
   // READ (GET)
@@ -45,11 +59,23 @@ const Whitelist = () => {
     })
   }, [])
 
-  // UPDATE (SET)
-  // const updateReason = (reason) => {
-  //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) =>
+  // UPDATE (PUT)
+  const updateReason = (email) => {
+    axios.put(`${process.env.REACT_APP_HOST}/api/blacklist`, { old: email, whitelist: newListing, reasons: newReason }).then((response) => {
+      let objToChange = getObjectByValue(email)
+      const index = entryList.indexOf(objToChange)
+      
+      objToChange.reason = newReason
+      objToChange.listing = 0;
 
-  // }
+      if (index > -1) {
+        let entryListCopy = [...entryList]
+        entryListCopy[index] = objToChange
+        setEntryList(entryListCopy)
+      }
+
+    })
+  }
 
     // // UPDATE (PUT)
     // const updateEmail = (email) => { // replaces ALL such email instances in the database
@@ -120,9 +146,14 @@ const Whitelist = () => {
           <br />
           <button type="button" className="btn btn-dark" onLoad={() => setListingStatus(viewingID?.listing)}>{stringStatus}</button>
           <br /><br />
-          <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning">{viewingID?.reason}</textarea>
+          <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
           <br />
-          <button type="button" className="btn btn-dark">Submit Reason</button>
+          <button type="button" className="Update" class="btn btn-danger btn-lg" onClick={() => {
+            setNewListing(0);
+            if (newReason.length > 0) {
+              updateReason(viewingID?.email_address);
+            }
+          }}>Submit Reason</button>
       </div>
     </div>
   )
