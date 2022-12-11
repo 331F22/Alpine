@@ -34,6 +34,7 @@ Description:<br>
 - **React & Express**: This is the primary tool that is used within the project, which means we will utilize React and Express together to make all our other components combine. The react components will use JSX files that will link different functions on our feature page. The feature will show a view of the DB which will utilize components in Express to give us a correct output, however the server does not link easily to the clients view and JSX files providing some minor issues. The Express system will do basic SQL queries and function delivery that will provide an open-ended functionality of our banning page that edits and modifies the DB that is used by Group 5.
 - **Bootstrap**: Bootstrap acts as a minor component in the development of our feature. Bootstrap will be utilized to format the tables in our view, and is used for a generalized formatation process. If the project were to merge with another groups then we will have the CSS and Bootstrap easily modifiable for the needs of the merged groups. A CSS file in our feature does override some function of the total projects Bootstrap systems.
 - **Javascript**: The Javascript in the project works along with the JSX files in order to build our system with multiple functions. However, the Javascript will also server as the calling and button connection system needed within the group feature. The Javascript is more featured through with the connection and the development of the server system that will be used amongst the different files. 
+- **Routing**: 
 
 ## Individual Notes
 Description:<br>
@@ -74,3 +75,12 @@ Description:<br>
 - “React-Main-Page.” React, https://reactjs.org/docs/getting-started.html.  
 
 - “W3Schools Free Online Web Tutorials.” W3Schools Online Web Tutorials, https://www.w3schools.com/.  
+
+- Hooks and Node Items, https://www.geeksforgeeks.org/how-to-change-the-state-of-react-component-on-click/
+
+- Router-Dom, https://www.geeksforgeeks.org/reactjs-router/
+
+- Further Assistance, The TA Britney, Group-20 on Paging, 
+
+- Bootstrap, https://getbootstrap.com/docs/4.0/getting-started/introduction/
+

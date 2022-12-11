@@ -8,14 +8,33 @@ const Whitelist = () => {
 
   const [entryList, setEntryList] = useState([])
   const [viewingID, setViewingID] = useState([])
+  const [whitelistStatus, setStatus] = useState("Blacklist");
   const [newReason, setNewReason] = useState('')
 
-  const whiteliststatus = "Whitelist";
   var listing_string;
   // var first_name;
   // var last_name;
   // var reason;
+  var tempID;
   var email_address = "edward";
+
+  // ----------------------------------------------------------------------------------------
+  const changeStatus = (id) => {
+
+    if (id == 1)
+    {
+      setStatus("Whitelist")
+      tempID = 0
+    }
+    else
+    {
+      setStatus("Blacklist")
+      tempID = 1
+    }
+  }
+
+
+  // -----------------------------------------------------------------------------------------
 
   // READ (GET)
   useEffect(() => 
@@ -106,22 +125,16 @@ const Whitelist = () => {
       <hr/>
       
       <div id="rightside">
-
-        <div id="information">
-            <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
-            <p> Email: {viewingID?.email_address} </p>
-            <button>{whiteliststatus}</button>
-            {/* <p> Reason: {tmpID?.reason}</p> */}
-          </div>
-
-
-          {/* <label htmlFor="reasonBl">Reasons</label>
-
-          <input className="reasonItem" type="text" name="reason" onChange={(e) => setNewReason(e.target.value)} />
-          <button className="submitButton">Submit Reason</button> */}
-
+        
+          <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
+          <p> Email: {viewingID?.email_address} </p>
+          
+          <button type="button" className="btn btn-dark" onClick={() => changeStatus(tempID)}>{whitelistStatus}</button>
+          
+          {/* <button type="button" className="btn" onClick={this.handleState}>Click Here to Test View</button>
+          <p>{this.state.content}</p> */}
+      
       </div>
-
     </div>
   )
 }

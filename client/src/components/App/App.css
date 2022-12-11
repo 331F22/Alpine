@@ -4,6 +4,12 @@ body {
   background-repeat: repeat;
 }
 
+footer {
+  display: table-row;
+  height: 0;
+  margin: auto;
+}
+
 .App {
   font-family: Arial, Helvetica, sans-serif;
   /* max-width: 75%; */
