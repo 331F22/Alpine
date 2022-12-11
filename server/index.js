@@ -28,13 +28,11 @@ app.get("/api/read", (req, res) => {
     })
 })
 
-// CREATE - "INSERT INTO volunteers (first_name, last_name, email_address, white_list, reason) VALUES (?,?,?,?,?);"
+// CREATE
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
     const ea = req.body.email
-    // const wht = req.body.whitelist => AutoSet
-    // const reas = req.body.reason => AutoSet
     const sqlInsert = "INSERT INTO volunteers (first_name, last_name, email_address) VALUES (?,?,?);"
     db.query(sqlInsert, [fn, ln, ea], (err, result) => {
         if(err) throw err

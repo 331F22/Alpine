@@ -45,34 +45,33 @@ const Whitelist = () => {
     })
   }, [])
 
-  // In Rows
-  // value={email_address} onClick={setWhitelistUserView}
+  // UPDATE (SET)
+  // const updateReason = (reason) => {
+  //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) =>
 
-  // const updateReason = (reason) => 
-  // { // replaces ALL such email instances in the database
-  //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: reason, new: newReason }).then((response) => 
-    
-  //   {
-  //     let objToChange = reason
-  //     objToChange.reason = newReason
-  //   })
-
-  //   setNewReason('') // clear all update email input fields
-  //   let updateInputs = document.getElementsByClassName('reasonItem');
-  //   for (let i = 0; i < updateInputs.length; i++) 
-  //   {
-  //     updateInputs[i].value = ''
-  //   }
   // }
 
-  // <button className="submitButton"
-  // onClick={() => {
-  //   if (newReason.length > 0)
-  //   {
-  //     updateReason(newReason);
-  //   }
-  // }}>Submit Reason</button>
+    // // UPDATE (PUT)
+    // const updateEmail = (email) => { // replaces ALL such email instances in the database
+    //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
+    //     let objToChange = getObjectByValue(email)
+    //     const index = entryList.indexOf(objToChange)  // deletes ONE instance in the state var
+    //     objToChange.email_address = newEmail
+    //     if (index > -1) {
+    //       let entryListCopy = [...entryList]
+    //       entryListCopy[index] = objToChange
+    //       setEntryList(entryListCopy)
+    //     }
+    //   }) //close .then()
+  
+    //   setNewEmail('') // clear all update email input fields
+    //   let updateInputs = document.getElementsByClassName('updateInput');
+    //   for (let i = 0; i < updateInputs.length; i++) {
+    //     updateInputs[i].value = ''
+    //   }
+    // }
 
+    // -----------------------------------------------------------------------------------------
 
   return (
     <div id="grid-container">

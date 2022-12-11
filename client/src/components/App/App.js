@@ -35,16 +35,14 @@ function App() {
     
         
       </Router>
-      <Footer/>
 
+      <div id="grid-footer">
+        <Footer/>
+      </div>
       
 
     </div>
-      
-     
-   
   )
-
 }
 
 export default App;

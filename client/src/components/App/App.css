@@ -230,6 +230,14 @@ grid-template-columns: auto auto;
 gap: 20px 20px;
 }
 
+/* #grid-container-core {
+
+}
+
+#grid-footer {
+
+} */
+
 #grid-inner-right {
 background: green;
 width: 100%;
