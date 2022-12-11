@@ -8,7 +8,6 @@ import Volunteers from "./components/Dashboard/Volunteers/Volunteers";
 import {
     createBrowserRouter, RouterProvider
 } from "react-router-dom"
-import Vouchers from './components/Dashboard/Vouchers/Vouchers';
 
 // Define the routes and the routing structure
 const routes = [
@@ -26,10 +25,6 @@ const routes = [
                     {
                         path: "Volunteers",
                         element: <Volunteers />,
-                    },
-                    {
-                        path: "vouchers",
-                        element: <Vouchers />,
                     }
                 ],
             }]

@@ -14,10 +14,6 @@ const Dashboard = () => {
         icon: <PeopleAlt />,
         label: "Volunteers",
         route: "/dashboard/volunteers"
-    }, {
-        icon: <PinIcon />,
-        label: "Vouchers",
-        route: "/dashboard/vouchers"
     }]
 
     return (
