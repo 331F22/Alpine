@@ -10,6 +10,7 @@ import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx';
 import Whitelist from '../Whitelist.jsx';
 import Navigation from '../Navigation'
+import Footer from '../Footer';
 
 
 
@@ -37,8 +38,11 @@ function App() {
       <Footer />
 
     </div>
-
+      
+     
+   
   )
+
 }
 
 export default App;
