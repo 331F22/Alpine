@@ -64,8 +64,8 @@ const AddEntry = () => {
       </div>
       </div>
       <img
-            src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png"
-            alt="logo"></img>
+        src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/58c72f55fd3103f64ceef729_alpine%20logo%20transp-p-500x417.png" alt="logo">
+        </img>
       
     </div>
   )

@@ -100,8 +100,10 @@ const Whitelist = () => {
     // -----------------------------------------------------------------------------------------
 
   return (
+    <div>
+      <h2 clannName="h2">Whitlisting/Blacklisting</h2>
     <div id="grid-container">
-      <div className="table-responsive" id="grid-inner-right">
+      <div className="table-responsive" id="grid-inner-left">
 
         <table id="table" className="table border table-striped table-hover table-dark table-striped">
           
@@ -139,7 +141,7 @@ const Whitelist = () => {
         </table>
 
       </div>
-      <div id="grid-inner-left">
+      <div id="grid-inner-right">
         
           <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p className="h5"> Email: {viewingID?.email_address} </p>
@@ -148,13 +150,14 @@ const Whitelist = () => {
           <br /><br />
           <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
           <br />
-          <button type="button" className="Update" class="btn btn-danger btn-lg" onClick={() => {
+          <button type="button" className="Update" class="btn btn-outline-dark btn-lg" onClick={() => {
             setNewListing(0);
             if (newReason.length > 0) {
               updateReason(viewingID?.email_address);
             }
           }}>Submit Reason</button>
       </div>
+    </div>
     </div>
   )
 }
