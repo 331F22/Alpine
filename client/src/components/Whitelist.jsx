@@ -8,11 +8,31 @@ const Whitelist = () => {
 
   const [entryList, setEntryList] = useState([])
   const [viewingID, setViewingID] = useState([])
-
-  var listing_string;
+  const [stringStatus, setStringStatus] = useState("Blacklist")
 
   // ----------------------------------------------------------------------------------------
 
+  function setWhitelistUserView(e) {
+    var tempID = entryList[e];
+    setViewingID(tempID);
+    console.log("Print Email: " + e);
+    //setViewingID(viewingID, 2);
+  }
+
+  function setListingStatus(e) {
+    var listing_string;
+
+    if(e === 1)
+    {
+      listing_string = "Blacklist";
+    }
+    else
+    {
+      listing_string = "Whitelist";
+    }
+
+    setStringStatus(listing_string);
+  }
 
   // -----------------------------------------------------------------------------------------
 
@@ -24,13 +44,6 @@ const Whitelist = () => {
       setEntryList(response.data)
     })
   }, [])
-
-  function setWhitelistUserView(e) {
-    var tempID = entryList[e];
-    setViewingID(tempID);
-    console.log("Print Email: " + e);
-    //setViewingID(viewingID, 2);
-  }
 
   // In Rows
   // value={email_address} onClick={setWhitelistUserView}
@@ -79,6 +92,7 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, index) => {
+              var listing_string;
 
               if(val.listing === 1)
               {
@@ -105,7 +119,7 @@ const Whitelist = () => {
           <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p className="h5"> Email: {viewingID?.email_address} </p>
           <br />
-          <button type="button" className="btn btn-dark">Blacklist</button>
+          <button type="button" className="btn btn-dark" onLoad={() => setListingStatus(viewingID?.listing)}>{stringStatus}</button>
           <br /><br />
           <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning">{viewingID?.reason}</textarea>
           <br />
