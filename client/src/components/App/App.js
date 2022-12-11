@@ -19,8 +19,11 @@ function App() {
   return (
 
     <div className="App">
-      <div className="footerPlacement">
+      
+      
       <Router>
+        
+
 
         <Navigation />
         <Routes>
@@ -29,10 +32,12 @@ function App() {
           <Route path = '/whitelist' element = {<Whitelist />} />
         </Routes>
 
-        </Router>
-      </div>
+    
+        
+      </Router>
+      <Footer/>
 
-      <Footer />
+      
 
     </div>
       
