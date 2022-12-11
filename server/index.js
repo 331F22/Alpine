@@ -28,13 +28,11 @@ app.get("/api/read", (req, res) => {
     })
 })
 
-// CREATE - "INSERT INTO volunteers (first_name, last_name, email_address, white_list, reason) VALUES (?,?,?,?,?);"
+// CREATE
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
     const ea = req.body.email
-    // const wht = req.body.whitelist => AutoSet
-    // const reas = req.body.reason => AutoSet
     const sqlInsert = "INSERT INTO volunteers (first_name, last_name, email_address) VALUES (?,?,?);"
     db.query(sqlInsert, [fn, ln, ea], (err, result) => {
         if(err) throw err
@@ -69,24 +67,19 @@ app.put("/api/update", (req, res) => {
     })
 })
 
-// // UPDATE - BLACKLIST
-// app.put("/api/blacklist", (req, res) => {
-//     // console.log(req)
-    
-//     // const ne = req.body.new;
-//     // const oe = req.body.old;
-//     const wht = req.body.whitelist;
-//     const reas = req.body.reason;
-//     const oe = req.body.old;
+// UPDATE - BLACKLIST
+app.put("/api/blacklist", (req, res) => {
+    // console.log(req)
+    const wht = req.body.whitelist;
+    const reas = req.body.reasons;
+    const oe = req.body.old;
 
-//     // console.log("Ready to change: ", oe, "to", ne)
-//     const sqlUpdate = "UPDATE volunteers SET white_list = ?, reason = ? WHERE email_address = ?"
-//     db.query(sqlUpdate, [wht, reas, oe], (err, result)=>{
-//         if(err)  throw err;
-//         console.log("Server changed: ", wht, reas, "to", ne)
-//         res.send(result)
-//     })
-// })
+    const sqlUpdate = "UPDATE volunteers SET listing = ?, reason = ? WHERE email_address = ?"
+    db.query(sqlUpdate, [wht, reas, oe], (err, result)=>{
+        if(err)  throw err;
+        res.send(result)
+    })
+})
 
 const PORT = 3046 //process.env.EXPRESSPORT;
 const msg = `Running on PORT ${PORT}`
