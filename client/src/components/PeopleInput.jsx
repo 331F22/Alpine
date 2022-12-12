@@ -34,14 +34,13 @@ const PeopleInput = () => {
 
     const ref1 = useRef(null)
     const ref2 = useRef(null)
-
-    return(
+return(
         <div id="people-inputs">
             <label htmlFor="firstName">First Name: </label>
                 <input ref={ref1} type="text" name="firstName" id="firstName" onInput={e => setFinput(e.target.value)}></input>
             <label htmlFor="lastName">Last Name: </label>
                 <input ref={ref2} type="text" name="lastName" id="lastName" onInput={e => setLinput(e.target.value)}></input>
-            <div>
+           <div>
               <br/>
                 <Button id="search-button" variant="contained" sx={{ textTransform: 'capitalize', borderRadius:0, color: "#b01b1f", borderColor: "#b01b1f", backgroundColor:"white", ':hover': {backgroundColor:"#b01b1f", color:"white"}, ':click': {backgroundColor:"#b01b1f", color:"white"} }} onClick={() => {
             if (fInput.length > 0 && lInput.length > 0) {
