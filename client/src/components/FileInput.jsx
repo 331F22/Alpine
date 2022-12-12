@@ -3,17 +3,18 @@ import axios from "axios";
 
 const FileInput = () => {
     const fileInputRef = useRef(null);
-    const fileRef = useRef(null);
+    const [file, setFile] = useState(null);
     const [fileUploaded, setFileUploaded] = useState(false);
     const [canUpload, setCanUpload] = useState(false);
     const [uploadFail, setUploadFail] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+	if (!file) return;
         setUploadFail(false);
         setCanUpload(false);
         const formData = new FormData();
-        formData.append("ticket_sheet", fileRef.current);
+        formData.append("ticket_sheet", file);
         const url = `${process.env.REACT_APP_HOST}/api/ticket_sheet`;
         const config = {
             headers: {
@@ -21,9 +22,8 @@ const FileInput = () => {
             }
         };
         axios.post(url, formData, config).then((res) => {
-            setCanUpload(true);
             fileInputRef.current.value = null;
-            fileRef.current = null;
+            setFile(null);
             setFileUploaded(true);
         }).catch((err) => {
             setCanUpload(true);
@@ -33,8 +33,8 @@ const FileInput = () => {
     };
 
     const handleFileChange = (e) => {
-        fileRef.current = e.target.files[0];
-        setCanUpload(!!fileInputRef.current);
+	setFile(e.target.files[0]);
+        setCanUpload(!!e.target.files[0]);
         setFileUploaded(false);
         setUploadFail(false);
     }
