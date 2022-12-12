@@ -41,9 +41,9 @@ Description:<br>
 &emsp;The delegated and described task, as of, by each member within Group 5. Each member of Group 5 has given different contributions and notes on the work accomplished within the project. Notes can consist of problems, risk, developments, tools, and much more that is assessed within the greater project.
 
 - Ali
-    - Personal Work:
-    - A
-    - B
+    - Personal Work: I work as the Front-End for Group 5's Project, and I am the main developer of all the structure and partial design of the Front-End. I worked on developing the structural look of the Navigation Bar, the Logo, the Current Entries Table, the Footer Design, and many other parts of our feature. My Front-End development helped to set columns and lanes that can be seen across all our pages, and I had part in making sure that the background image fits properly to the whole of our project feature. 
+    - The development had lots of issues during development and it took me a good amount of time. The scaling for the page was a time consuming process that involved a lot more steps to work with the Back-Ends developments. I also worked very closely with Jace to develop most of our feature page and have the items that we needed to display. The styling on the home page was also done by me and had a lot involvement with setting up the proper layout, then modifying the CSS to suit the groups needs.
+    - I found that there was a major risk to scaling on different platforms early on into the project, and I went into a lot of the development never doing front-end before, which was because I wanted to challenge myself. I found that working with my group members and reaching out to Britney helped me but I definately need to practice a lot more CSS and front-end. The development done is very new for me but I am learning lots to work with front-end much easier.
 
 
 - Kelby
