@@ -8,14 +8,14 @@ const CodeInput = (props) => {
 
     const [columns, setColumns] = useState([])
     const [results, setResults] = useState([])
-
-    useEffect(() => {axios.get(`${process.env.REACT_APP_HOST}/api/read/peopleByCodes/${ref1.current.value}`).then((response) => {
+    const [code, setCode] = useState('')
+    useEffect(() => {axios.get(`${process.env.REACT_APP_HOST}/api/read/peopleByCodes/${code}`).then((response) => {
         setResults(response.data)
       })}, [])
 
     const ref1 = useRef(null)
 
-    const [code, setCode] = useState('')
+    //const [code, setCode] = useState('')
 
     const search = () => {
         axios.get(`${process.env.REACT_APP_HOST}/api/read/peopleByCodes/${ref1.current.value}`).then((response) => {
@@ -33,7 +33,6 @@ const CodeInput = (props) => {
       })
       return objectWithValue
     } */
-
     const checkLen = () => {
       if (code.length > 0) {
         search(code);
@@ -45,16 +44,17 @@ const CodeInput = (props) => {
         <div id="code-input">
             <TextField
               sx={{
-                width: .33, 
+                width: .33,
                 justifySelf: "center"
               }}
               id="codeInput"
               label="Code"
               ref={ref1}
-              onChange={e => setCode(e.target.value)}
+              onInput={e => setCode(e.target.value)}
             />
-            <br/>
+            <br/><br/>
             <Button id="search-button" variant="contained" sx={{ textTransform: 'capitalize', borderRadius:0, color: "#b01b1f", borderColor: "#b01b1f", backgroundColor:"white", ':hover': {backgroundColor:"#b01b1f", color:"white"}, ':click': {backgroundColor:"#b01b1f", color:"white"} }} onClick={() => {checkLen()}}>Search</Button>
+            {code}
         </div>
         </div>
     )
