@@ -1,8 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
   margin:0 10px;
   background-image: url(https://wallpaperaccess.com/full/475110.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  min-height: 100%;
 }
 
 .App {
@@ -218,8 +224,9 @@ label {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   left: 0;
+  right: 0;
   bottom: 0;
   width: 100%; 
   background-color: #212529;
@@ -227,6 +234,20 @@ footer {
   text-align: center;
   overflow: hidden;
   padding-top: 20px;
+  margin-bottom: -20px;
+}
+
+footer ul {
+  /* text-align: left; */
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+footer li {
+  position: relative;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 33%;
 }
 
 html {
