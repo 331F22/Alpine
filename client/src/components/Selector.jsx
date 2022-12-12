@@ -11,7 +11,9 @@ const Selector = () => {
         {value: "codesByEvent", label: "Codes by Event"},
         {value: "peopleByCodes", label: "People by Codes"},
         {value: "codesByPeople", label: "Codes by People"},
-        {value: "peopleByEvents", label: "People by Events"}
+        {value: "peopleByEvents", label: "People by Events"},
+            {value: "issuedTickets", label: "Issued Tickets"},
+            {value: "emailList", label:"Emails"}
     ]
     const handleChange = (e) => {
         setSelectedValue(e.value)
@@ -22,12 +24,12 @@ const Selector = () => {
     const getSelectedValue = () => {
         return(selectedValue)
     }
-    
+
     return(
         <div id="selector-div">
             <form id="selector-form">
-                <Select 
-                id="selector" 
+                <Select
+                id="selector"
                 options={options}
                 placeholder="Select search type..."
                 value={options.filter(function(option) {
@@ -37,7 +39,6 @@ const Selector = () => {
             </form>
             <SetInputs searchType={getSelectedValue()}/>
         </div>
-    )
+ )
 }
-
 export default Selector
