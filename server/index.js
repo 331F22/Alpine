@@ -61,7 +61,7 @@ app.put("/api/update", (req, res) => {
     console.log("Ready to change: ", oe, "to", ne)
     const sqlUpdate = "UPDATE volunteers SET email_address = ? WHERE email_address = ?"
     db.query(sqlUpdate, [ne, oe], (err, result)=>{
-        if(err)  throw err;
+        if(err)  throw err
         console.log("Server changed: ", oe, "to", ne)
         res.send(result)
     })
@@ -73,10 +73,11 @@ app.put("/api/blacklist", (req, res) => {
     const wht = req.body.whitelist;
     const reas = req.body.reasons;
     const oe = req.body.old;
-
+    console.log("Ready to change: ", oe, "Reason")
     const sqlUpdate = "UPDATE volunteers SET listing = ?, reason = ? WHERE email_address = ?"
     db.query(sqlUpdate, [wht, reas, oe], (err, result)=>{
         if(err)  throw err;
+        console.log("Server changed: ", oe, "Reason to", reas)
         res.send(result)
     })
 })
