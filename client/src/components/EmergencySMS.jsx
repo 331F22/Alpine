@@ -5,6 +5,7 @@ const SMS = () => {
         <p>Type your message and hit submit to send a SMS:</p>
         <textarea name="message" id="userInputSMS"></textarea>
         <input type="button" value="Submit" class="submitBtn" onClick={() => {
+        /*
             var AWS = require('aws-sdk');
             AWS.config.update({
                 accessKeyId: '',
@@ -13,7 +14,7 @@ const SMS = () => {
             })
 
             var params = {
-                Message: 'TEST', /* required */
+                Message: 'TEST', // required
                 PhoneNumber: '4066907119',
             };
 
@@ -27,6 +28,7 @@ const SMS = () => {
             function(err) {
                 console.error(err, err.stack);
             });
+	*/
         }}/>
         </form>
     )

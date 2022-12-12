@@ -4,6 +4,7 @@ import AddEntry from '../AddEntry.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx'
 import FileInput from "../FileInput.jsx";
+import EmergencySMS from "../EmergencySMS.jsx";
 
 function App() {
 
@@ -15,8 +16,11 @@ function App() {
       <hr />
       <CurrentEntries />
       <hr />
-      <Footer />
       <FileInput/>
+      <hr />
+      <EmergencySMS/>
+      <hr />
+      <Footer />
     </div>
   )
 }
