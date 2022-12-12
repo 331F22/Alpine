@@ -2,14 +2,14 @@
 
 # Blacklisting/Whitelisting Volunteers
 Description:<br> 
-&emsp;Group 5, delegated to presenting a blacklist/whitelist system to properly ban or permit volunteers to the foundation through the platform. BSF foundation works as a ski foundation and has many volunteers, the following page that group 5 is developing will bring more quality of life progress to the safety of the foundation.
+&emsp;Group 5, delegated to presenting a blacklist/whitelist system to properly ban or permit volunteers to the foundation through the platform. BSF foundation works as a ski foundation and has many volunteers, the following page that group 5 is developing will bring more quality of life progress to the safety of the foundation. Administrators can check, delete, update, and ban members with our feature/ environment on the web platform.
 
 - Ali Khaef, Front-End Developer: User-Interface and View Builder
-    - Site Link: [Ali's Link to Site](http://csci331.cs.montana.edu:3010/)
+    - Site Link: [Ali's Link to Site](http://csci331.cs.montana.edu:5010/)
 - Kelby Abel, Back-End Developer: Javascript/ Interaction Builder
-    - Site Link: [Kelby's Link to Site](http://csci331.cs.montana.edu:3073/)
+    - Site Link: [Kelby's Link to Site](http://csci331.cs.montana.edu:5073/)
 - Jace Zavarelli, Back-End Developer: Database Interaction Builder/ Writer and Archivist
-    - Site Link: [Jace's Link to Site](http://csci331.cs.montana.edu:3046/)
+    - Site Link: [Jace's Link to Site](http://csci331.cs.montana.edu:5046/)
 
 Running Server System: 
 ``` 
@@ -34,7 +34,7 @@ Description:<br>
 - **React & Express**: This is the primary tool that is used within the project, which means we will utilize React and Express together to make all our other components combine. The react components will use JSX files that will link different functions on our feature page. The feature will show a view of the DB which will utilize components in Express to give us a correct output, however the server does not link easily to the clients view and JSX files providing some minor issues. The Express system will do basic SQL queries and function delivery that will provide an open-ended functionality of our banning page that edits and modifies the DB that is used by Group 5.
 - **Bootstrap**: Bootstrap acts as a minor component in the development of our feature. Bootstrap will be utilized to format the tables in our view, and is used for a generalized formatation process. If the project were to merge with another groups then we will have the CSS and Bootstrap easily modifiable for the needs of the merged groups. A CSS file in our feature does override some function of the total projects Bootstrap systems.
 - **Javascript**: The Javascript in the project works along with the JSX files in order to build our system with multiple functions. However, the Javascript will also server as the calling and button connection system needed within the group feature. The Javascript is more featured through with the connection and the development of the server system that will be used amongst the different files. 
-- **Routing**: 
+- **Routing**:  React-routing-DOM is a tool that allows the navigation of webpages within the react npm packaged tools, which allows us to have a proper navigation system within our feature. The group decided upon this tool following the demonstration of Group 20's navigation systems, which was properly referenced below. The team modified the code from the web documentation and works by a navigation file, hyperlink, system. 
 
 ## Individual Notes
 Description:<br>
@@ -62,7 +62,7 @@ Description:<br>
 Description:<br>
 &emsp;The developments of Group 5 are done in association, and under the guidance, with Montana State Universities professors, teacher assistants, and online resources provided to the student body. The following acknowledges the assistance that these listed items have given for the overall success of Group 5's task.
 <br>
-&emsp;Group 5 has developed an Admin access, and unique, blacklist whitelist page for quick banning usage for the BSF entity. The page acts as a clean and unique view for administrators to view all blacklisted individuals, or to blacklist individuals that have recieved many complaints, and or, issues on the grounds of BSF. Group 5 feels we have learned more about the world of Javascript, React, and Express. The group took multiple tools, as listed above, and were able to use a database to access an archive of volunteers and sort them into proper listings. The feature developed took much time to develop, but is a simple tool that implements extra functionality in a select area for any administrator. The Group worked hard to achieve the overall goal of the project and bring it to a working level for future usage. Thus concludes the work done by Group 5 of CSCI 331.
+&emsp;Group 5 has developed an Admin access, and unique, blacklist whitelist page for quick banning usage for the BSF entity. The page acts as a clean and unique view for administrators to view all blacklisted individuals, or to blacklist individuals that have recieved many complaints, and or, issues on the grounds of BSF. Group 5 feels we have learned more about the world of Javascript, React, and Express. The group took multiple tools, as listed above, and were able to use a database to access an archive of volunteers and modifiy them by their specific listings. The feature developed took much time to develop, but is a simple tool that implements extra functionality in a select area for any administrator. The Group worked hard to achieve the overall goal of the project and bring it to a working level for future usage possibly within the administrative tools of another group.
 
 ## Works Cited
 

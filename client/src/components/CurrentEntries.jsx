@@ -58,7 +58,7 @@ const CurrentEntries = () => {
     }) //close .then()
 
     setNewEmail('') // clear all update email input fields
-    let updateInputs = document.getElementsByClassName('form-control');
+    let updateInputs = document.getElementsByClassName('updateInput');
     for (let i = 0; i < updateInputs.length; i++) {
       updateInputs[i].value = ''
     }
