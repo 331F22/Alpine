@@ -117,7 +117,7 @@ const Whitelist = () => {
 
   return (
     <div>
-      <h2 clannName="h2">Whitlisting/Blacklisting</h2>
+      <h2 className="h2">Whitlisting/Blacklisting</h2>
     <div id="grid-container">
       <div className="table-responsive" id="grid-inner-left">
 

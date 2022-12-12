@@ -20,7 +20,6 @@ function App() {
 
     <div className="App">
       
-      
       <Router>
         
 
@@ -37,8 +36,7 @@ function App() {
       </Router>
       <Footer/>
       
-      
-
+    
     </div>
   )
 }
