@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.get("/api/read", (req, res) => {
     console.log(req)
     const sqlSelect = "SELECT * FROM volunteers;"
-    db.query(sqlSelect, (err, result) => { 
+    db.query(sqlSelect, (err, result) => {
         if(err){
             throw err;
         }
@@ -31,14 +31,13 @@ app.get("/api/read", (req, res) => {
 
 app.get("/api/read/events", (req, res) => {
     const sqlSelect = "SELECT event_name FROM events;"
-    db.query(sqlSelect, (err, result) => { 
+    db.query(sqlSelect, (err, result) => {
         if(err){
             throw err;
         }
         res.send(result);
     })
 })
-
 app.get("/api/read/codesByEvent/", (req, res) => {
     const sqlSelect = "SELECT event_name, event_date, ticketCode FROM events JOIN volunteer_lists ON events.volunteer_list_id=volunteer_lists.volunteer_list_id JOIN volunteers ON volunteer_lists.volunteer_id=volunteers.volunteer_id JOIN tickets ON volunteers.volunteer_id=tickets.volunteer_id WHERE event_name=?;"
     db.query(sqlSelect, (err, result) => { //[evt], (err, result) => { 
@@ -50,9 +49,9 @@ app.get("/api/read/codesByEvent/", (req, res) => {
 })
 
 app.get("/api/read/codesByEvent/:evt", (req, res) => {
-    const evtt = req.params.evt
+    const evtt = req.params[0]
     const sqlSelect = "SELECT event_name, event_date, ticketCode FROM events JOIN volunteer_lists ON events.volunteer_list_id=volunteer_lists.volunteer_list_id JOIN volunteers ON volunteer_lists.volunteer_id=volunteers.volunteer_id JOIN tickets ON volunteers.volunteer_id=tickets.volunteer_id WHERE event_name=?;"
-    db.query(sqlSelect, [evtt], (err, result) => { 
+    db.query(sqlSelect, [evtt], (err, result) => {
         if(err){
             throw err;
         }
@@ -63,7 +62,7 @@ app.get("/api/read/codesByEvent/:evt", (req, res) => {
 app.get("/api/read/peopleByCodes/", (req, res) => {
     //const cd = req.params.cd
     const sqlSelect = "SELECT first_name, last_name, email_address, ticketCode FROM tickets JOIN volunteers ON tickets.volunteer_id=volunteers.volunteer_id;"
-    db.query(sqlSelect, [cd], (err, result) => { 
+    db.query(sqlSelect, (err, result) => {
         if(err){
             throw err;
         }
@@ -73,8 +72,8 @@ app.get("/api/read/peopleByCodes/", (req, res) => {
 
 app.get("/api/read/peopleByCodes/:code", (req, res) => {
     const cd = req.params[0]
-    const sqlSelect = "SELECT first_name, last_name, email_address, ticketCode FROM tickets JOIN volunteers ON tickets.volunteer_id=volunteers.volunteer_id WHERE ticketCode=?;"
-    db.query(sqlSelect, [cd], (err, result) => { 
+const sqlSelect = "SELECT first_name, last_name, email_address, ticketCode FROM tickets JOIN volunteers ON tickets.volunteer_id=volunteers.volunteer_id WHERE ticketCode=?;"
+    db.query(sqlSelect, [cd], (err, result) => {
         if(err){
             throw err;
         }
@@ -84,10 +83,10 @@ app.get("/api/read/peopleByCodes/:code", (req, res) => {
 })
 
 app.get("/api/read/codesByPeople/:fn/:ln", (req, res) => {
-    const first = req.params.fn
-    const last = req.params.ln
+    const first = req.params[0]
+    const last = req.params[1]
     const sqlSelect = "SELECT ticketCode, first_name, last_name FROM volunteers JOIN tickets ON volunteers.volunteer_id=tickets.volunteer_id WHERE first_name=? and last_name=?;"
-    db.query(sqlSelect, [first, last], (err, result) => { 
+    db.query(sqlSelect, [first, last], (err, result) => {
         if(err){
             throw err;
         }
@@ -96,9 +95,9 @@ app.get("/api/read/codesByPeople/:fn/:ln", (req, res) => {
 })
 
 app.get("/api/read/peopleByEvents/:evt", (req, res) => {
-    const evtt = req.params.evt
+    const evt = req.params[0]
     const sqlSelect = "SELECT event_name, event_date, first_name, last_name FROM events JOIN volunteer_lists ON events.volunteer_list_id=volunteer_lists.volunteer_list_id JOIN volunteers ON volunteer_lists.volunteer_id=volunteers.volunteer_id WHERE event_name=?;"
-    db.query(sqlSelect, [evtt], (err, result) => { 
+    db.query(sqlSelect, [evt], (err, result) => {
         if(err){
             throw err;
         }
@@ -117,7 +116,7 @@ app.post("/api/create", (req, res) => {
         console.log("Server posted: ", fn, ln)
         res.send(result)
     })
-}) 
+})
 
 // DELETE
 app.delete("/api/delete/:emailAddress", (req, res) => {
@@ -128,17 +127,17 @@ app.delete("/api/delete/:emailAddress", (req, res) => {
         if(err) throw err
         console.log("Server: deleted: ", ea)
         res.send(result)
-    }) 
+    })
 })
 
 // UPDATE
 app.put("/api/update", (req, res) => {
     // console.log(req)
-    
+
     const ne = req.body.new;
     const oe = req.body.old;
     console.log("Ready to change: ", oe, "to", ne)
-    const sqlUpdate = "UPDATE volunteers SET email_address = ? WHERE email_address = ?"
+const sqlUpdate = "UPDATE volunteers SET email_address = ? WHERE email_address = ?"
     db.query(sqlUpdate, [ne, oe], (err, result)=>{
         if(err)  throw err;
         console.log("Server changed: ", oe, "to", ne)
@@ -146,7 +145,7 @@ app.put("/api/update", (req, res) => {
     })
 })
 
-const PORT = 3000 //process.env.EXPRESSPORT;
+const PORT = process.env.EXPRESSPORT;
 const msg = `Running on PORT ${PORT}`
 app.get("/", (req, res) => {
     res.send(`<h1>Express Server</h1><p>${msg}<p>`)
@@ -154,4 +153,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(msg)
 })
-
