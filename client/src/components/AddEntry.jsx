@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import axios from 'axios'
 import './App/App.css';
-import Logo from './logo.png';
 
 const AddEntry = () => {
 
