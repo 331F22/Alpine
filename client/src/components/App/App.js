@@ -35,10 +35,8 @@ function App() {
     
         
       </Router>
-
-      <div id="grid-footer">
-        {/* <Footer/> */}
-      </div>
+      <Footer/>
+      
       
 
     </div>
