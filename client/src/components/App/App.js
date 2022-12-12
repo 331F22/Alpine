@@ -4,7 +4,6 @@ import AddEntry from '../AddEntry.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx'
 import FileInput from "../FileInput.jsx";
-import TicketSheets from "../TicketSheets.jsx";
 
 function App() {
 
@@ -18,7 +17,6 @@ function App() {
       <hr />
       <Footer />
       <FileInput/>
-      <TicketSheets/>
     </div>
   )
 }
