@@ -1,6 +1,7 @@
 import * as React from 'react';
 import "./App/App.css"
 
+
 export default function VoucherTable() {
     return(
         <>
