@@ -77,31 +77,7 @@ const Whitelist = () => {
     })
 
     setNewReason('') // clear all update email input fields
-    let updateInputs = document.getElementsByClassName('updateInput');
-    for (let i = 0; i < updateInputs.length; i++) {
-      updateInputs[i].value = ''
-    }
   }
-
-    // // UPDATE (PUT)
-    // const updateEmail = (email) => { // replaces ALL such email instances in the database
-    //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
-    //     let objToChange = getObjectByValue(email)
-    //     const index = entryList.indexOf(objToChange)  // deletes ONE instance in the state var
-    //     objToChange.email_address = newEmail
-    //     if (index > -1) {
-    //       let entryListCopy = [...entryList]
-    //       entryListCopy[index] = objToChange
-    //       setEntryList(entryListCopy)
-    //     }
-    //   }) //close .then()
-  
-    //   setNewEmail('') // clear all update email input fields
-    //   let updateInputs = document.getElementsByClassName('updateInput');
-    //   for (let i = 0; i < updateInputs.length; i++) {
-    //     updateInputs[i].value = ''
-    //   }
-    // }
 
     // -----------------------------------------------------------------------------------------
 
@@ -152,9 +128,9 @@ const Whitelist = () => {
           <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
           <p className="h5"> Email: {viewingID?.email_address} </p>
           <br />
-          <button type="button" className="btn btn-dark" onLoad={() => setListingStatus(viewingID?.listing)}>{stringStatus}</button>
+          <button type="button" className="btn btn-dark">{stringStatus}</button>
           <br /><br />
-          <textarea type="input" className="form-control" rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
+          <textarea type="input" id="updateReasonArea" className="form-control" rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
           <br />
           <button type="button" className="Update" class="btn btn-outline-dark btn-lg" onClick={() => {
             setNewListing(0);
