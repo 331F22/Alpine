@@ -1,11 +1,12 @@
 // required modules in here:npm install mysql xlsx
 const xlsx = require("xlsx");
 
-function insertTicketsToDB(file, db) {
+function insertTicketsToDB(buffer, db) {
   // opening the spreadsheet file
-  const workbook = xlsx.readFile("ticket_sheets/" + file),
+  const workbook = xlsx.read(buffer),//xlsx.readFile("ticket_sheets/" + file),
       worksheet = workbook.Sheets[workbook.SheetNames[0]],
       range = xlsx.utils.decode_range(worksheet["!ref"]);
+  console.log(workbook);
 
   // importing the spreadsheet
   for (let row=range.s.r; row<=range.e.r; row++) {
