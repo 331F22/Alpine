@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios'
+import './App/App.css';
 
 
 const CurrentEntries = () => {
@@ -130,40 +131,46 @@ const CurrentEntries = () => {
   }
 
   return (
+    <div>
+      <h2 className="h2">Current Entries</h2>
+      <div className="currentEntries posRel">
+        
 
-    <div className="currentEntries posRel">
-      <h2>Current Entries</h2>
+        <div className='userData'>
+          {entryList.map((val, k) => {
+            return (
+            <div key={k}>
+              <div>
+                <h3 className="h3">{val.last_name}, {val.first_name} </h3>
+                {/* <span className="emailListed">{val.email_address}</span>  */}
+              </div>
 
-      <div className='userData'>
-        {entryList.map((val, k) => {
-          return (<div key={k}>
-            <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
+              <div className="editControls editGui">
+                <button className='Delete' class="btn btn-dark btn-lg" onClick={() => {
 
-            <div className="editControls editGui">
-              <button className='Delete' class="btn btn-danger btn-lg" onClick={() => {
+                  deleteEntry(val.email_address)
+                }}>delete</button>
+                <button className='Update' class="btn btn-dark btn-lg" onClick={() => {
+                  if (newEmail.length > 0) {
+                    updateEmail(val.email_address);
+                  }
+                }}>update</button>
+                <input type="email" className="updateInput" placeholder={val.email_address}
+                  onChange={(e) => setNewEmail(e.target.value)} />
+              </div>
+            </div>)
 
-                deleteEntry(val.email_address)
-              }}>delete</button>
-              <button className='Update' class="btn btn-danger btn-lg" onClick={() => {
-                if (newEmail.length > 0) {
-                  updateEmail(val.email_address);
-                }
-              }}>update</button>
-              <input type="email" className="updateInput" placeholder={val.email_address}
-                onChange={(e) => setNewEmail(e.target.value)} />
-            </div>
-          </div>)
+          })}
+          <div className="editField editGui">
+            <button id="editButton" type="button" className="btn btn-outline-dark btn-sm btn submitBtn"  onClick={handleEditList}>Edit List</button>
+            <button id="doneButton"type="button" className="btn btn-outline-dark btn-sm btn submitBtn" onClick={handleFinishedEditing}>Finished Editing</button>
+            <input id="editPasscodeInput" class="form-control" aria-label="Passcode" aria-describedby="basic-addon1" ref={refPass} type="password"
+              placeholder='Enter passcode' onChange={checkPasscode}
+              onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
+          </div>
+          {/* <button id="submitEmailsButton" className='submitBtn'class="btn btn-outline-dark btn-sm btn" onClick={() => alert('TODO: Send It!')}>Email Vouchers</button> */}
 
-        })}
-        <div className="editField editGui">
-          <button id="editButton" type="button" className="btn btn-danger btn-sm btn btn-outline-Secondary submitBtn"  onClick={handleEditList}>Edit List</button>
-          <button id="doneButton"type="button" className="btn btn-danger btn-sm btn btn-outline-Secondary submitBtn" onClick={handleFinishedEditing}>Finished Editing</button>
-          <input id="editPasscodeInput" class="form-control" aria-label="Passcode" aria-describedby="basic-addon1" ref={refPass} type="password"
-            placeholder='Enter passcode' onChange={checkPasscode}
-            onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
         </div>
-        <button id="submitEmailsButton" className='submitBtn'class="btn btn-danger btn-sm btn btn-outline-Secondary" onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
-
       </div>
     </div>
   )

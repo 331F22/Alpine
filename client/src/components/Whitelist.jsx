@@ -8,29 +8,75 @@ const Whitelist = () => {
 
   const [entryList, setEntryList] = useState([])
   const [viewingID, setViewingID] = useState([])
-  const [whitelistStatus, setStatus] = useState("Blacklist");
+
+  const [stringStatus, setStringStatus] = useState("Blacklist")
   const [newReason, setNewReason] = useState('')
 
-  var listing_string;
-  // var first_name;
-  // var last_name;
-  // var reason;
-  var email_address = "edward";
+  const [currentState, setCurrState] = useState(true)
+  const [newListing, setNewListing] = useState()
 
   // ----------------------------------------------------------------------------------------
-  const changeStatus = (id) => {
 
-    if (id == 1)
+  function setWhitelistUserView(e) {
+    var tempID = entryList[e];
+    setViewingID(tempID);
+
+    if(tempID.listing === 1)
     {
-      setStatus("Whitelist")
-
+      setStringStatus("Blacklist");
     }
     else
-    {
-      setStatus("Blacklist")
+    { 
+      setStringStatus("Whitelist");
     }
   }
 
+  function setListingStatus(email) {
+    let objToChange = getObjectByValue(email)
+    const index = entryList.indexOf(objToChange)
+
+    var listing_num = objToChange.listing;
+    var listing_string;
+
+    if(listing_num === 1)
+    {
+      listing_string = "Blacklist";
+      setCurrState(false);
+    }
+    else
+    {
+      listing_string = "Whitelist";
+      setCurrState(true);
+
+      
+      axios.put(`${process.env.REACT_APP_HOST}/api/blacklist`, { old: email, whitelist: newListing, reasons: newReason }).then((response) => {
+
+       objToChange.reason = "";
+       objToChange.listing = 1;
+ 
+       if (index > -1) {
+         let entryListCopy = [...entryList]
+         entryListCopy[index] = objToChange
+         setEntryList(entryListCopy)
+       }
+
+      })
+    }
+
+    setStringStatus(listing_string);
+  }
+
+  function getObjectByValue(objVal) {
+    let objectWithValue = {}
+    entryList.forEach(entry => {
+      if (Object.values(entry).indexOf(objVal) > -1) 
+      { // email value is inside obj inside array
+        console.log('entry', entry)
+        objectWithValue = entry
+      }
+    })
+    return objectWithValue
+  }
 
   // -----------------------------------------------------------------------------------------
 
@@ -43,45 +89,37 @@ const Whitelist = () => {
     })
   }, [])
 
-  function setWhitelistUserView(e) {
-    var tempID = entryList[e];
-    setViewingID(tempID);
-    console.log("Print Email: " + e);
-    //setViewingID(viewingID, 2);
+  // UPDATE (PUT)
+  const updateReason = (email) => {
+    axios.put(`${process.env.REACT_APP_HOST}/api/blacklist`, { old: email, whitelist: newListing, reasons: newReason }).then((response) => {
+      let objToChange = getObjectByValue(email)
+      const index = entryList.indexOf(objToChange)
+      
+      objToChange.reason = newReason
+      objToChange.listing = 0;
+
+      if (index > -1) {
+        let entryListCopy = [...entryList]
+        entryListCopy[index] = objToChange
+        setEntryList(entryListCopy)
+      }
+
+    })
+
+    setNewReason('') // clear all update email input fields
+    let updateInputs = document.getElementsByClassName('form-control');
+    for (let i = 0; i < updateInputs.length; i++) {
+      updateInputs[i].value = ''
+    }
   }
 
-  // In Rows
-  // value={email_address} onClick={setWhitelistUserView}
-
-  // const updateReason = (reason) => 
-  // { // replaces ALL such email instances in the database
-  //   axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: reason, new: newReason }).then((response) => 
-    
-  //   {
-  //     let objToChange = reason
-  //     objToChange.reason = newReason
-  //   })
-
-  //   setNewReason('') // clear all update email input fields
-  //   let updateInputs = document.getElementsByClassName('reasonItem');
-  //   for (let i = 0; i < updateInputs.length; i++) 
-  //   {
-  //     updateInputs[i].value = ''
-  //   }
-  // }
-
-  // <button className="submitButton"
-  // onClick={() => {
-  //   if (newReason.length > 0)
-  //   {
-  //     updateReason(newReason);
-  //   }
-  // }}>Submit Reason</button>
-
+    // -----------------------------------------------------------------------------------------
 
   return (
     <div>
-      <div className="table-responsive" id="tablediv">
+      <h2 clannName="h2">Whitlisting/Blacklisting</h2>
+    <div id="grid-container">
+      <div className="table-responsive" id="grid-inner-left">
 
         <table id="table" className="table border table-striped table-hover table-dark table-striped">
           
@@ -97,9 +135,9 @@ const Whitelist = () => {
 
           <tbody>
             {entryList.map((val, index) => {
-              email_address = "emailTest";
+              var listing_string;
 
-              if(val.listing == 1)
+              if(val.listing === 1)
               {
                 listing_string = "Whitelisted"
               }
@@ -119,20 +157,23 @@ const Whitelist = () => {
         </table>
 
       </div>
-
-      <hr/>
-      
-      <div id="rightside">
+      <div id="grid-inner-right">
         
-          <p> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
-          <p> Email: {viewingID?.email_address} </p>
-          
-          {/* <button type="button" className="btn btn-dark" onClick={() => changeStatus(tempID)}>{whitelistStatus}</button> */}
-          
-          {/* <button type="button" className="btn" onClick={this.handleState}>Click Here to Test View</button>
-          <p>{this.state.content}</p> */}
-      
+          <p className="h4"> Name: {viewingID?.last_name}, {viewingID?.first_name} </p>
+          <p className="h5"> Email: {viewingID?.email_address} </p>
+          <br />
+          <button type="button" className="btn btn-dark" onClick={() => setListingStatus(viewingID?.reason)}>{stringStatus}</button>
+          <br /><br />
+          <textarea type="input" id="updateReasonArea" className="form-control" disabled={currentState} rows="6" placeholder="Reason for Volunteers Banning" onChange={(e) => setNewReason(e.target.value)}>{viewingID?.reason}</textarea>
+          <br />
+          <button type="button" className="Update" class="btn btn-outline-dark btn-lg" disabled={currentState} onClick={() => {
+            setNewListing(0);
+            if (newReason.length > 0) {
+              updateReason(viewingID?.email_address);
+            }
+          }}>Submit Reason</button>
       </div>
+    </div>
     </div>
   )
 }

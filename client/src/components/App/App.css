@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
   padding: 0px;
@@ -8,6 +12,8 @@ body {
   background-repeat: 'no-repeat';
   
   
+  position: relative;
+  min-height: 100%;
 }
 
 .App {
@@ -15,6 +21,9 @@ body {
   /* max-width: 75%; */
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 75px;
   /* margin: auto; */
 }
 .ListDivider {
@@ -54,14 +63,25 @@ body {
   flex-direction: column;
   align-items: left;
   justify-content: center;
+  background-color: white;
+  margin-left: 2rem;
 }
+
+.updateInput {
+  margin: 0 auto;
+  border-radius: 7px;
+  color: rgb(0, 0, 0);
+  background-color:rgb(255, 255, 255);
+}
+
 .submitBtn {
   margin: 0 auto;
   margin-top: 20px;
   padding: 10px;
   width: 50%;
-  
+  display: none;
 }
+
 #userInput .btn {
   margin: 0 auto;
   margin-top: 20px;
@@ -82,7 +102,7 @@ body {
   clear:both;
 }
 .emailListed{
-  float:right;
+  float: right;
   margin-right: 2rem;
 }
 .editControls{
@@ -105,6 +125,7 @@ body {
 #editPasscodeInput{
   visibility: hidden;
 }
+
 #submitEmailsButton{
   display: none;
 }
@@ -222,21 +243,85 @@ a {
   color:rgb(255, 255, 255)
 }
 
+#nav li {
+  background-color: #212529;
+}
+
 footer {
-  position:absolute;
+  position: relative;
   left: 0;
+  right: 0;
   bottom: 0;
   width: 100%; 
-  background-color: #dc3545;
+  background-color: #212529;
   color: white;
   text-align: center;
+  overflow: hidden;
+  padding-top: 20px;
+  margin-bottom: -20px;
+}
 
+footer ul {
+  /* text-align: left; */
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+footer li {
+  position: relative;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 33%;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 .currentEntries {
-background: rgba(36, 120, 176, 0.4);
-max-width: 70%;
-margin: auto;
+  background: white;
+  width: 75%;
+  margin: auto;
+  padding: 25px;
+  gap: 20px 20px;
+}
+
+
+/*Whitelist Grid CSS*/
+
+#grid-container {
+  width: 100%;
+  display: grid;
+  padding: 25px 25px 25px 25px;
+  grid-template-columns: auto auto;
+  gap: 20px 20px;
+  border-radius: 7px;
+  color: rgb(0, 0, 0);
+  background-color:rgb(255, 255, 255);
+}
+
+/* #grid-container-core {
+
+}
+
+#grid-footer {
+
+} */
+
+#grid-inner-right {
+  /* background: green; */
+  width: 600px; 
+  margin: 1px 1px 1px 1px;
+  padding: 10px 10px 10px 10px;
+  grid-column: 2;
+}
+
+#grid-inner-left {
+  /* background: green; */
+  width: 100%;
+  margin: 1px 1px 1px 1px;
+  grid-column: 1;
 }
 
 

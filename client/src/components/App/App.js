@@ -13,7 +13,6 @@ import Navigation from '../Navigation'
 
 
 
-
 function App() {
 
 
@@ -24,6 +23,7 @@ function App() {
       
       <Router>
         
+
 
         <Navigation />
         <Routes>
@@ -36,15 +36,11 @@ function App() {
         
       </Router>
       <Footer/>
-
+      
       
 
     </div>
-      
-     
-   
   )
-
 }
 
 export default App;
