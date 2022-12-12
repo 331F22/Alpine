@@ -211,40 +211,34 @@ label {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-
 #nav {
   float:left;
   width: 100%;
   margin: 25px;
-  /* list-style-type: none; */
-  
 }
+
 #nav ul{
   list-style-type:none;
   
   margin: 0px;
   padding: 0px;
 }
-#nav il{
-  display: inline;
-}
-li {
-  float: left;
-}
 
-a {
-  display: block;
-  padding: 8px;
-  background-color: #dc3545;
+#nav li {
+  float: left;
+  display: inline;
 }
 
 #nav a {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color:rgb(255, 255, 255)
+  color:rgb(255, 255, 255);
+  display: block;
+  padding: 8px;
+  text-decoration: none;
 }
 
-#nav li {
-  background-color: #212529;
+#nav a:hover {
+  background-color: red;
 }
 
 footer {
