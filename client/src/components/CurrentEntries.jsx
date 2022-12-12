@@ -26,8 +26,7 @@ const CurrentEntries = () => {
 
   const [newEmail, setNewEmail] = useState('')
   const [passcode, setPasscode] = useState('')
-
-  function getObjectByValue(objVal) {
+function getObjectByValue(objVal) {
     let objectWithValue = {}
     entryList.forEach(entry => {
       if (Object.values(entry).indexOf(objVal) > -1) { // email value is inside obj inside array
@@ -50,8 +49,7 @@ const CurrentEntries = () => {
       }
     }) //close .then()
   }
-
-  // UPDATE (PUT)
+// UPDATE (PUT)
   const updateEmail = (email) => { // replaces ALL such email instances in the database
     axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
       let objToChange = getObjectByValue(email)
@@ -72,8 +70,7 @@ const CurrentEntries = () => {
   }
 
   const refPass = useRef(null);
-
-  function handleEditList(e) {
+function handleEditList(e) {
     const collection = document.getElementsByClassName("editing")
     const editButton = document.getElementById('editButton')
     const doneButton = document.getElementById('doneButton')
@@ -103,8 +100,7 @@ const CurrentEntries = () => {
     setPasscode('')
     refPass.current.value = ''
   }
-
-  function handleFinishedEditing() {
+function handleFinishedEditing() {
     const editPasscodeInput = document.getElementById('editPasscodeInput')
     const editButton = document.getElementById('editButton')
     const doneButton = document.getElementById('doneButton')
@@ -142,8 +138,7 @@ const CurrentEntries = () => {
       editPasscodeInput.style.visibility = 'hidden'
     }
   }
-
-  return (
+ return (
 
     <div className="currentEntries posRel">
 <h2>Current Entries</h2>
@@ -194,13 +189,15 @@ const CurrentEntries = () => {
 
       <div className='userData'>
         <div className="editField editGui">
+          <br/>
           <Button id="editButton" variant="contained" onClick={handleEditList} sx={{ textTransform: 'capitalize', borderRadius:0, color: "#b01b1f", borderColor: "#b01b1f", backgroundColor:"white", ':hover': {backgroundColor:"#b01b1f", color:"white"}, ':click': {backgroundColor:"#b01b1f", color:"white"} }}>Edit List</Button>
           <Button id="doneButton" variant="contained" onClick={handleFinishedEditing} sx={{ textTransform: 'capitalize', borderRadius:0, color: "#b01b1f", borderColor: "#b01b1f", backgroundColor:"white", ':hover': {backgroundColor:"#b01b1f", color:"white"}, ':click': {backgroundColor:"#b01b1f", color:"white"} }}>Finished Editing</Button>
-          <br/>
+          <br/><br/>
           <Input id="editPasscodeInput" ref={refPass} type="password"
             placeholder='Enter passcode' onChange={checkPasscode}
             onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
         </div>
+<br/><br/>
         <Button id="submitEmailsButton" className='submitBtn' variant="contained" sx={{ textTransform: 'capitalize', borderRadius:0, color: "#b01b1f", borderColor: "#b01b1f", backgroundColor:"white", ':hover': {backgroundColor:"#b01b1f", color:"white"}, ':click': {backgroundColor:"#b01b1f", color:"white"} }} onClick={() => alert('TODO: Send It!')}>Email Vouchers</Button>
       </div>
     </div>
