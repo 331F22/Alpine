@@ -47,9 +47,9 @@ Description:<br>
 
 
 - Kelby
-    - Personal Work:
-    - A
-    - B
+    - Personal Work: I work as both a Front-End and kind of Back-End developer for Group 5's project. I worked on implementing CSS, HTML, and Bootstrap to help with the design aspect of the site. I also worked on react components to make different pages work.
+    - Navigation: I used reactDOM using React router to create paging between each of our sites pages. Using Router you are able to set paths for different react components that are linked to via the Link field (which implements HTML <a> tag). I used bootstrap to give a listing style and formatted the navbar to be on every page with consistent styling.
+    - Design: Along with bootstrapping the navbar, both Ali and I worked on the design aspects of different pages, I took to design the Whitelist and Current Entries page. The Whitelist page uses a bootstrap table with clickable rows and bootstrap buttons (Jace fully implemented clickable rows) to display details of each volunteer. For the current entries page, I made the buttons match previous pages and simplified the design of displaying the entries. I also helped Ali with designing of the Add Entry page. 
 
 
 - Jace
