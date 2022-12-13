@@ -7,9 +7,10 @@ import Footer from '../Footer.jsx'
 function App() {
 
   return (
-    <div className="App">
-      <h1>Entries</h1>
 
+    <div className="App">
+      <img src="https://uploads-ssl.webflow.com/57b4d56c1f986d4879b0574d/581d0395c6f121fb068e4d22_BSFlogo.jpg" width="300px" />
+      <hr />
       <AddEntry />
       <hr />
       <CurrentEntries />
