@@ -1,26 +1,33 @@
 import React from 'react';
 import './App.css';
-import AddEntry from '../AddEntry.jsx';
-import CurrentEntries from '../CurrentEntries.jsx';
-import Footer from '../footer.js'
-import VoucherTable from "../vouchers";
-import Header from "../header";
+
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "../Home";
 import VoucherGrid from "../VoucherGrid";
+import {Button} from "@mui/material";
 
 function App() {
 
   return (
-    <div className="App">
-        <Header/>
-      <h1>Entries</h1>
 
-      <AddEntry />
-      <hr />
-      <CurrentEntries />
-      <hr />
-        <VoucherTable/>
-        <VoucherGrid/>
-    </div>
+      <BrowserRouter>
+
+         <ul>
+             <li>
+             <Link to={"/"}>Home </Link>
+             </li>
+             <li>
+                 <Link to={"/vouchers"}>Vouchers </Link>
+             </li>
+         </ul>
+          <Routes>
+              <Route path="/" element={<Home />}>
+                  <Route index element={<Home />} />
+                  <Route exact path="/vouchers" element={<VoucherGrid />} />
+              </Route>
+          </Routes>
+      </BrowserRouter>
+
   )
 }
 
