@@ -1,8 +1,13 @@
+*{
+  box-sizing: border-box;
+}
 body {
   margin:0 10px;
+  text-align: center;
+  background-color: #B8BCBF;
 }
 .App {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open sans', sans-serif;
   max-width:600px;
   margin: auto;
 }
@@ -80,4 +85,38 @@ body {
 }
 #submitEmailsButton{
   display: none;
+}
+.login {
+  	width: 100%;
+  	background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+button {
+  	width: 100%;
+  	padding: 15px;
+ 	margin-top: 0px;
+  	background-color: #B01B1F;
+  	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+}
+button:hover {
+	background-color: #e82b30;
+  	transition: background-color 0.2s;
+}
+.contact-info{
+	text-align: center;
+	padding: 10px;
+	background-color: #B01B1F;
+	color: #B8BCBF;
+}
+footer{
+	background-color: #B01B1F;
+	width: 100%;
+	margin-left: 300px;
+	margin-top: 10px;
+	margin: auto;
 }
